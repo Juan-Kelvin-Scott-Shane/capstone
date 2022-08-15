@@ -3,8 +3,8 @@ package com.example.capstone.models;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "users")
+//@Entity
+//@Table(name = "users")
 public class User {
 //	@Id
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
