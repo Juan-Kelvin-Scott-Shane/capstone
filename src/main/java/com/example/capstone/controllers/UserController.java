@@ -1,5 +1,6 @@
 package com.example.capstone.controllers;
 
+import com.example.capstone.models.User;
 import com.example.capstone.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
@@ -37,7 +38,7 @@ public class UserController {
 
     @GetMapping("/register")
     public String registrationForm(Model model){
-        model.addAttribute("newUser",new User);
+        model.addAttribute("newUser",new User());
                 return "register";
     }
     @PostMapping("/register")

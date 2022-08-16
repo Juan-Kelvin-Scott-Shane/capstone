@@ -1,6 +1,9 @@
 package com.example.capstone.services;
 
 
+import com.example.capstone.models.User;
+import com.example.capstone.models.UserWithRoles;
+import com.example.capstone.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
