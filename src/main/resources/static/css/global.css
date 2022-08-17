@@ -1,4 +1,7 @@
+/*----------------global body settings/colors/styles-------------------*/
+
 body {
+    box-sizing: border-box;
     background-image: url(../img/NewBackground-byob.png) !important;
     background-position: center center;
     background-attachment: fixed;
@@ -7,6 +10,7 @@ body {
     height: 100vh;
 }
 
+/*----------------created break point to move to a hamburger button and resize photo-----------*/
 @media (min-width: 710px) {
     body {
         background-position: center center;
@@ -17,9 +21,12 @@ body {
     }
 }
 
+
+/*--------------------------------------------NAV BAR-----------------------------------------*/
 .navbar-custom {
-    font-size: 22px;
-    background-color: black !important;
+    font-family: Arial, serif !important;
+    font-size: 20px;
+    /*background-color: black !important;*/
     color: black !important;
     box-shadow: rgba(120, 193, 238, 0.65) 0px 54px 55px, rgba(138, 180, 196, 0.84) 0px -12px 30px, rgb(255, 255, 255) 0px 4px 6px, rgb(255, 255, 255) 0px 12px 13px, rgb(255, 255, 255) 0px -3px 5px;
 }
@@ -62,12 +69,78 @@ body {
      border-bottom: 4px solid #000000;
      background: #82a5b2;
      padding: 6px 0;
-     border-radius: 15%;
+     border-radius: 25px;
      text-shadow: 6px 6px 0px rgba(255,255,255,0.2);
  }
 
+/*-------------------------Social Media Link positioning -------------------*/
 .social-media{
     display: flex;
     flex-direction: row;
     text-align: center;
 }
+
+/*------------------------Containers for forms and profile------------------*/
+.container{
+    margin-top: 110px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    z-index: 1;
+}
+
+/*------------------------inner cards with that hold data-------------*/
+.container .card{
+    position: relative;
+    width: 700px;
+    height: 600px;
+    margin: 30px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px);
+}
+
+
+/*-------------------------login form styles, can make global for registration and edit------*/
+.loginTitle{
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    text-shadow: -1px 0 black, 0 7px black, 1px 0 black, 0 -1px black;
+}
+
+form{
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: Arial, serif;
+    font-size: 20px;
+    width: 600px;
+    text-align: center;
+}
+
+/*---------------input and submit button styles, can use for all forms--------*/
+input{
+    text-align: center;
+    border-radius: 25px;
+    width: 60%;
+}
+
+button{
+    border-radius: 25px;
+    text-align: center;
+    width: auto;
+    height: 40px;
+}
+
+
+
