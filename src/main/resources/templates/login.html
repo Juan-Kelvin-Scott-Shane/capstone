@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <head th:replace="partials/fragment :: head('Login')"></head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<nav th:replace="partials/fragment :: navbar"></nav>
+    <div class="container">
+        <div class="card">
+            <div class="content">
+                <h1 class="loginTitle">Login</h1>
+                <form>
+                    <label for="username">User Name:</label><br>
+                    <input type="text" id="username" name="username" placeholder="User Name"><br>
+                    <br><label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password" placeholder="Password"><br>
+                   <br> <button style="border-radius: 25px" type="submit" value="submit">Submit</button><br>
+                    <br><a style="text-align: center" href="/">Forgot your password?</a>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
