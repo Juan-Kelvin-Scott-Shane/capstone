@@ -63,6 +63,12 @@ public class User {
 
     public User() {
     }
+    public User(User copy) {
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
 
     public User(long id, String firstName, String lastName, String embed_link, String username, String email, String password, String city, String state, String description, String profile_img, List<Instrument> instruments, List<Genre> genres, List<Proficiency> proficiencies) {
         this.id = id;
