@@ -16,6 +16,7 @@ public class MailController {
 		Content content = new Content("text/plain", "and easy to do anywhere, even with Java");
 		Mail mail = new Mail(from, subject, to, content);
 
+		//SendGrid sg = new SendGrid("SENDGRID_API_KEY");
 		SendGrid sg = new SendGrid("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");
 		Request request = new Request();
 		try {
