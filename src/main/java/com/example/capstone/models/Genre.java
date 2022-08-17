@@ -14,7 +14,7 @@ public class Genre {
 	private String title;
 
     @ManyToOne
-	@JoinColumn(name="genre_id")
+	@JoinColumn(name="event_id")
     private Event event;
 
     @ManyToMany(mappedBy = "genres")
