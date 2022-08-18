@@ -7,6 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController {
@@ -25,13 +27,13 @@ public static void main(String[] args) {
 		this.userDao = userRepository;
 	}
 
-	@GetMapping("/registration")
+	@GetMapping("/register")
 	public String registrationForm(Model model) {
 		model.addAttribute("newUser", new User());
-		return "registration";
+		return "register";
 	}
 
-	@PostMapping("/registration")
+	@PostMapping("/register")
 	public String registration(@ModelAttribute User user) {
 		String hash = passwordEncoder.encode(user.getPassword());
 		user.setPassword(hash);
@@ -39,7 +41,7 @@ public static void main(String[] args) {
 		System.out.println(user.getEmail());
 		System.out.println(user.getPassword());
 		userDao.save(user);
-		return "redirect:/profile";
+		return "redirect:/";
 	}
 }
 

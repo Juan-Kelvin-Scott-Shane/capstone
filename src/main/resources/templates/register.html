@@ -11,7 +11,7 @@
     <div class="card">
         <div class="content">
             <h1 class="loginTitle">Registration</h1>
-            <form class="form" th:action="@{/registration}" th:method="POST" th:object="${newUser}">
+            <form class="form" th:action="@{/register}" th:method="POST" th:object="${newUser}">
                 <label for="username">User Name:</label><br>
                 <input type="text" id="username" name="username" placeholder="User Name" th:field="*{username}"><br>
                 <br><label for="email">Email:</label><br>
