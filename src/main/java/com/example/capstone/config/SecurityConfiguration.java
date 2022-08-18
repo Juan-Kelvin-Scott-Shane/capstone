@@ -11,10 +11,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+<<<<<<< HEAD
     private UserDetailsLoader userDetailsLoader;
 
 
@@ -44,7 +46,7 @@ public class SecurityConfiguration {
                 .logoutSuccessUrl("/login?logout")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/profile", "/registration")
+                .antMatchers("/", "/registration", "/browse")
                 .permitAll()
                 .and()
                 .authorizeRequests()
