@@ -41,7 +41,6 @@ public static void main(String[] args) {
 		System.out.println(user.getEmail());
 		System.out.println(user.getPassword());
 		userDao.save(user);
-		return "redirect:/";
+		return "reg-conf";
 	}
 }
-
