@@ -110,7 +110,66 @@ body {
     backdrop-filter: blur(6px);
 }
 
+.container-about{
+    margin-top: 60px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    /*max-width: 1200px;*/
+    flex-wrap: wrap;
+    z-index: 1;
+}
 
+.container-about .card-about{
+    position: relative;
+    width: 800px;
+    height: 200px;
+    margin: 20px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    display: flex;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px);
+}
+
+.byob-definition{
+    padding: 20px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    display: flex;
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px);
+    margin-left: 85px;
+    margin-right: 85px;
+}
+
+.portrait{;
+    align-self: start;
+    height: 200px;
+    width: 200px;
+}
+
+.verbiage{
+    padding: 10px;
+    text-align: center;
+    width: 600px;
+    height: 190px;
+}
+
+p {
+    font-size: 20px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 /*-------------------------login form styles, can make global for registration and edit------*/
 .loginTitle{
     margin-top: 10px;
