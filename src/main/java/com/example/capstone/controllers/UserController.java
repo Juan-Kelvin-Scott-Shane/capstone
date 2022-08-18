@@ -3,19 +3,22 @@ package com.example.capstone.controllers;
 import com.example.capstone.models.User;
 import com.example.capstone.repositories.UserRepository;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UserController {
-//    private PasswordEncoder passwordEncoder;
+    private static PasswordEncoder passwordEncoder;
     private UserRepository userDao;
 
-//    public UserController(PasswordEncoder passwordEncoder, UserRepository userRepository) {
-//        this.passwordEncoder = passwordEncoder;
-//        this.userDao = userRepository;
-//    }
+    public UserController(PasswordEncoder passwordEncoder, UserRepository userRepository) {
+        this.passwordEncoder = passwordEncoder;
+        this.userDao = userRepository;
+    }
 
 //    public PasswordEncoder getPasswordEncoder() {
 //        return passwordEncoder;
@@ -47,7 +50,11 @@ public class UserController {
 //        user.setPassword(hash);
 //        userDao.save(user);
 //        return "redirect:/profile";
-
+public static void main(String[] args) {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    String hash = passwordEncoder.encode("password");
+    System.out.println(hash);
+}
 
 //    }
 }
