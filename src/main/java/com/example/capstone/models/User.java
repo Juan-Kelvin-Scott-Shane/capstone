@@ -11,10 +11,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     private String firstName;
 
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     private String lastName;
 
     @Column(length = 50, nullable = false, unique = true)
@@ -26,23 +26,23 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(length = 100)
+    @Column(nullable = true, length = 100)
     private String city;
 
-    @Column(length = 50)
+    @Column(length = 50, nullable = true)
     private String state;
 
-    @Column
+    @Column(nullable = true)
     private String description;
 
-    @Column
+    @Column(nullable = true)
     private String profile_img;
 
-    @Column
+    @Column(nullable = true)
     private String youtube;
 
 
-    @Column
+    @Column(nullable = true)
     private String embed_link;
 
     @Column(name= "verification_code",length=64)
@@ -76,17 +76,7 @@ public class User {
         password = copy.password;
     }
 
-
     public User(long id, String firstName, String lastName, String embed_link, String username, String email, String password, String city, String state, String description, String profile_img, String verification_code, boolean enable, List<Instrument> instruments, List<Genre> genres, List<Proficiency> proficiencies) {
-
-    public User(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
-
-    public User(long id, String firstName, String lastName, String embed_link, String username, String email, String password, String city, String state, String description, String profile_img, List<Instrument> instruments, List<Genre> genres, List<Proficiency> proficiencies) {
-
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
