@@ -45,6 +45,12 @@ public class User {
     @Column(nullable = true)
     private String embed_link;
 
+    @Column(name= "verification_code",length=64)
+    private String verification_code;
+
+    @Column(name="enable")
+    private boolean enable;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Proficiency> proficiencies;
@@ -70,7 +76,7 @@ public class User {
         password = copy.password;
     }
 
-    public User(long id, String firstName, String lastName, String embed_link, String username, String email, String password, String city, String state, String description, String profile_img, List<Instrument> instruments, List<Genre> genres, List<Proficiency> proficiencies) {
+    public User(long id, String firstName, String lastName, String embed_link, String username, String email, String password, String city, String state, String description, String profile_img, String verification_code, boolean enable, List<Instrument> instruments, List<Genre> genres, List<Proficiency> proficiencies) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -83,12 +89,14 @@ public class User {
         this.description = description;
 
         this.profile_img = profile_img;
+        this.verification_code = verification_code;
+        this.enable = enable;
         this.instruments = instruments;
         this.genres = genres;
         this.proficiencies = proficiencies;
     }
 
-    public User(String username, String firstName, String lastName, String embed_link, String email, String password, String city, String state, String description, String profile_img, List<Instrument> instruments, List<Genre> genres, List<Proficiency> proficiencies) {
+    public User(String username, String firstName, String lastName, String embed_link, String email, String password, String city, String state, String description, String profile_img, String verification_code, boolean enable, List<Instrument> instruments, List<Genre> genres, List<Proficiency> proficiencies) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -100,6 +108,8 @@ public class User {
         this.embed_link = embed_link;
 
         this.profile_img = profile_img;
+        this.verification_code = verification_code;
+        this.enable = enable;
         this.instruments = instruments;
         this.genres = genres;
         this.proficiencies = proficiencies;
