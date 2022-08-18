@@ -11,10 +11,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String firstName;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String lastName;
 
     @Column(length = 50, nullable = false, unique = true)
@@ -26,23 +26,22 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = true, length = 100)
+    @Column(length = 100)
     private String city;
 
-    @Column(length = 50, nullable = true)
+    @Column(length = 50)
     private String state;
 
-    @Column(nullable = true)
+    @Column()
     private String description;
 
-    @Column(nullable = true)
+    @Column()
     private String profile_img;
 
-    @Column(nullable = true)
+    @Column()
     private String youtube;
 
-
-    @Column(nullable = true)
+    @Column()
     private String embed_link;
 
     @Column(name= "verification_code",length=64)
@@ -50,7 +49,6 @@ public class User {
 
     @Column(name="enable")
     private boolean enable;
-
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Proficiency> proficiencies;

@@ -1,4 +1,4 @@
-USE example_db;
+USE capstone_db;
 INSERT INTO event(description, location, title)
 VALUE ('Looking for a bass player. Need one today!','San Antonio,Tx','White Rabbit'),
     ('Having a nice Reggae event, need a band', 'Dallas,TX', 'A Bar'),

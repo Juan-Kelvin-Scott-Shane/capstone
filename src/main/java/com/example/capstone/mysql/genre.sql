@@ -1,4 +1,4 @@
-USE example_db;
+USE capstone_db;
 
 INSERT INTO genre(title)
 VALUES ('Rock & Roll'),

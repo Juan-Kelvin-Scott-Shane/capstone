@@ -46,7 +46,7 @@ public class SecurityConfiguration {
                 .logoutSuccessUrl("/login?logout")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/registration", "/browse")
+                .antMatchers("/", "/register", "/browse")
                 .permitAll()
                 .and()
                 .authorizeRequests()
