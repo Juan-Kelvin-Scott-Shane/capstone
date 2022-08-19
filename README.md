@@ -1,4 +1,4 @@
-# Bring Your Own Band (BYOB)
+# Build Your Own Band (BYOB)
 
 Have you ever wanted to play with other music members or needed a last-minute fill in for a gig?  What about needing a band for your venue?  BYOB SOLVES YOUR PROBLEM! 
 
