@@ -2,6 +2,8 @@ package com.example.capstone.controllers;
 
 import com.example.capstone.models.User;
 import com.example.capstone.repositories.UserRepository;
+import com.example.capstone.services.UserDetailsLoader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 
 @Controller
 public class UserController {
@@ -33,14 +39,33 @@ public static void main(String[] args) {
 		return "register";
 	}
 
+	@Autowired
+	private UserDetailsLoader service;
+
 	@PostMapping("/register")
-	public String registration(@ModelAttribute User user) {
-		String hash = passwordEncoder.encode(user.getPassword());
-		user.setPassword(hash);
-		System.out.println(user.getUsername());
-		System.out.println(user.getEmail());
-		System.out.println(user.getPassword());
-		userDao.save(user);
+	public String processRegister(User user, HttpServletRequest request)
+			throws UnsupportedEncodingException, MessagingException {
+//		System.out.println(user.getUsername());
+//		System.out.println(user.getEmail());
+//		System.out.println(user.getPassword());
+		service.register(user, getSiteURL(request));
 		return "reg-conf";
 	}
+
+	private String getSiteURL(HttpServletRequest request) {
+		String siteURL = request.getRequestURL().toString();
+		return siteURL.replace(request.getServletPath(), "");
+	}
+
+// Original post mapping below
+//	@PostMapping("/register")
+//	public String registration(@ModelAttribute User user) {
+//		String hash = passwordEncoder.encode(user.getPassword());
+//		user.setPassword(hash);
+//		System.out.println(user.getUsername());
+//		System.out.println(user.getEmail());
+//		System.out.println(user.getPassword());
+//		userDao.save(user);
+//		return "reg-conf";
+//	}
 }
