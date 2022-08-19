@@ -31,11 +31,9 @@ public class UserDetailsLoader implements UserDetailsService {
 	@Autowired
 	private UserRepository repo;
 
-//    @Autowired
-	//private PasswordEncoder passwordEncoder;
-
 	private PasswordEncoder passwordEncoder;
 	@Autowired
+	//Use @Lazy mode to prevent a dependency loop
 	public void setPassword(@Lazy PasswordEncoder passwordEncoder) {
 		this.passwordEncoder = passwordEncoder;
 	}
@@ -75,6 +73,18 @@ public class UserDetailsLoader implements UserDetailsService {
 		content = content.replace("[[URL]]", verifyURL);
 		helper.setText(content, true);
 		mailSender.send(message);
+	}
+
+	public boolean verify(String verificationCode) {
+		User user = repo.findByVerificationCode(verificationCode);
+		if (user == null || user.isEnabled()) {
+			return false;
+		} else {
+			user.setVerificationCode(null);
+			user.setEnabled(true);
+			repo.save(user);
+			return true;
+		}
 	}
 
 	@Override
