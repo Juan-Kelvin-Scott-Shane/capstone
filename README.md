@@ -7,15 +7,18 @@ BYOB is a website / application that searches and gets band members together, pl
 
 
 ## 🛠 Skills
--	Spring			-
--	Java			- MySQL
--	HTML			- Thymeleaf
--	CSS			- CSS Grid
--	Javascript		- Restful API
--	Wireframe Draw.IO	- Canva
+-	Spring
+-	Java
+-	HTML
+-	CSS	
+-	Javascript
+-	Wireframe Draw.IO
 -	File Stack
 -   Git
 -   MySQL
+- Thymeleaf
+- Restful API
+- Canva
 
 
 
@@ -58,26 +61,26 @@ Insert gif or link to demo
 
 ## Features
 
-1.  Register users and login auth
-2.  Create an Ad
-3.  Individual Ad show page
-4.  Create an Ads index page which should contain links to each individual Ad page.
+1.  Register users and login authorization
+2.  Create an musicians
+3.  Individual profiles displayed for each user
+4.  Create an muscians' index page which should contain links to each individual muscian's
 5.  Lock down your profile page (only available for the logged in user)
 6.  Allow users to logout
-7.  Search functionality that allows users to search through the ads in your database by title or description.
-8.  Show the user's Ads on their profile page
+7.  Search functionality that allows users to search through the users based on musical instrument and music genre
+8.  Show the user's contact information, and embedded artits' links
 9.  Ensure usernames are unique
 10. Dynamic navbar for logged in users and guests
-11. Allow users to update and delete Ads
-12. Allow users to update their profile information
-13. Error messages
-14. Sticky Forms
-15. Allow an Ad to have many categories
-16. Allow an Ad to have an image
+11. Allow users to update and delete profile
+12. Allow users to edit/update their profile information
+13. Error messages (follows requirements outlined within user profile parameters)
+14. Displays toggle/hover functions within website navbar and windows feature tilt
+15. Allow an User to have many categories via their insturments and proficiency of the musical talent
+16. Allow an User to have an image for their profile
 17. Intended Redirects
 18. Implement a Mail API
 19. Implement a Maps/Geolocation API
-20. Mobile responsiveness
+20. Mobile and desktop responsiveness
 
 
 
