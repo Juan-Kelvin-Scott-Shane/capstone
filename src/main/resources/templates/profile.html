@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <head th:replace="partials/fragment :: head('Login')"></head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<nav th:replace="partials/fragment :: navbar"></nav>
+<div class="container-bio">
+    <div class="bio-card">
+    </div>
+    <div class="bio-card">
+        <div class="profile-top"><img class="profile-photo" src="/img/scott.png"></div>
+        <div id="mid-card-content">
+            <div class="user-title">Sroberts</div>
+        </div>
+    </div>
+    <div class="bio-card">
+    </div>
+</div>
 </body>
 </html>
