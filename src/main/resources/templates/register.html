@@ -11,19 +11,27 @@
     <div class="card">
         <div class="content">
             <h1 class="loginTitle">Registration</h1>
-            <form class="form" th:action="@{/registration}" th:method="POST" th:object="${newUser}">
+            <form class="form" th:action="@{/}" th:method="POST" th:object="${newUser}">
                 <label for="username">User Name:</label><br>
-                <input type="text" id="username" name="username" placeholder="User Name" th:field="*{username}"><br>
+                <input type="text" id="username" name="username" placeholder="User Name" required th:field="*{username}"><br>
                 <br><label for="email">Email:</label><br>
-                <input type="email" id="email" name="password" placeholder="Email@" th:field="*{email}"><br>
+                <input type="email" id="email" name="email" placeholder="Email@" required th:field="*{email}"><br>
                 <br><label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" placeholder="Password" th:field="*{password}"><br>
+                <input type="password" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required th:field="*{password}"><br>
                 <br><label for="password">Password:</label><br>
                 <input type="password" id="verify-password" name="verify-password" placeholder="Verify Password"><br>
                 <br> <button style="border-radius: 25px" type="submit" value="submit">Submit</button>
             </form>
+            <div id="message">
+                <h3>Password must contain the following:</h3>
+                <p  id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                <p  id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                <p  id="number" class="invalid">A <b>number</b></p>
+                <p  id="length" class="invalid">Minimum <b>8 characters</b></p>
+            </div>
         </div>
     </div>
 </div>
+<div th:replace="partials/fragment :: script"></div>
 </body>
 </html>

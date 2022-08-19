@@ -24,7 +24,6 @@ body {
 
 /*--------------------------------------------NAV BAR-----------------------------------------*/
 .navbar-custom {
-    font-family: Arial, serif !important;
     font-size: 20px;
     /*background-color: black !important;*/
     color: black !important;
@@ -34,13 +33,13 @@ body {
 .navbar-custom .navbar-brand {
     text-align: center;
     color: white !important;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black!important;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important;
 }
 
-.nav-item  .nav-link{
+.nav-item .nav-link {
     text-align: center;
     color: white !important;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black!important;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important;
 }
 
 .navbar-dark .navbar-toggler-icon {
@@ -51,38 +50,38 @@ body {
     text-align: center;
     display: inline;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 18px;
     text-decoration: none;
     color: white;
-    font-family: "open-sans", serif;
+    font-family: Arial, serif !important;
     transition: 0.3s ease;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
     margin: 0 10px;
-    padding: 10px 0;
+    padding: 5px 0;
 
 }
 
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover {
-     border-top: 4px solid #000000;
-     border-bottom: 4px solid #000000;
-     background: #82a5b2;
-     padding: 6px 0;
-     border-radius: 25px;
-     text-shadow: 6px 6px 0px rgba(255,255,255,0.2);
- }
+    border-top: 4px solid #000000;
+    border-bottom: 4px solid #000000;
+    background: #82a5b2;
+    padding: 6px 0;
+    border-radius: 25px;
+    text-shadow: 6px 6px 0px rgba(255, 255, 255, 0.2);
+}
 
 /*-------------------------Social Media Link positioning -------------------*/
-.social-media{
+.social-media {
     display: flex;
     flex-direction: row;
     text-align: center;
 }
 
 /*------------------------Containers for forms and profile------------------*/
-.container{
-    margin-top: 110px;
+.container {
+    margin-top: 50px;
     display: flex;
     position: relative;
     justify-content: center;
@@ -93,11 +92,10 @@ body {
 }
 
 /*------------------------inner cards with that hold data-------------*/
-.container .card{
+.container .card {
     position: relative;
-    width: 700px;
-    height: 600px;
-    margin: 30px;
+    width: 750px;
+    height: 850px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     background: rgba(0, 0, 0, 0.5);
@@ -110,18 +108,17 @@ body {
     backdrop-filter: blur(6px);
 }
 
-.container-about{
+.container-about {
     margin-top: 60px;
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
-    /*max-width: 1200px;*/
     flex-wrap: wrap;
     z-index: 1;
 }
 
-.container-about .card-about{
+.container-about .card-about {
     position: relative;
     width: 800px;
     height: 200px;
@@ -138,7 +135,62 @@ body {
     backdrop-filter: blur(6px);
 }
 
-.byob-definition{
+.container-bio {
+    margin-top: 60px;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 1;
+}
+
+
+.container-bio .bio-card {
+    position: relative;
+    width: 550px;
+    height: 85vh;
+    margin: 20px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    display: flex;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px);
+}
+
+
+#mid-card-content{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 74vh;
+    margin-top: 100px;
+    border-radius: 15px;
+    background: rgba(225, 225, 225, 0.9);
+    overflow: hidden;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+.user-title{
+    display: flex;
+    margin-top: 70px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    font-size: 22px;
+    height: 100px;
+    width: 100%;
+}
+
+.byob-definition {
     padding: 20px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
@@ -152,13 +204,32 @@ body {
     margin-right: 85px;
 }
 
-.portrait{;
+.profile-top {
+    display: flex;
+    height: 170px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.profile-photo {
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.portrait {
     align-self: start;
     height: 200px;
     width: 200px;
 }
 
-.verbiage{
+.verbiage {
     padding: 10px;
     text-align: center;
     width: 600px;
@@ -168,17 +239,17 @@ body {
 p {
     font-size: 20px;
     color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
 }
+
 /*-------------------------login form styles, can make global for registration and edit------*/
-.loginTitle{
-    margin-top: 10px;
+.loginTitle {
     text-align: center;
     color: white;
     text-shadow: -1px 0 black, 0 7px black, 1px 0 black, 0 -1px black;
 }
 
-form{
+form {
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-family: Arial, serif;
@@ -188,18 +259,52 @@ form{
 }
 
 /*---------------input and submit button styles, can use for all forms--------*/
-input{
+input {
     text-align: center;
     border-radius: 25px;
     width: 60%;
 }
 
-button{
+button {
     border-radius: 25px;
     text-align: center;
     width: auto;
     height: 40px;
 }
 
+#message {
+    display: none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+}
 
+#message p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+}
 

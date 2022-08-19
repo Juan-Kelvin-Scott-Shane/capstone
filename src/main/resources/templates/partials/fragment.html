@@ -28,19 +28,16 @@
                     <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/register">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/browse">Bands</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/browse">Musicians</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/browse">Venues</a>
+                    <a class="nav-link" href="/browse">Browse List</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/about">About Us</a>
@@ -71,12 +68,8 @@
 <footer th:fragment="footer">
     This is a footer.
 </footer>
-<script type="text/javascript" src="/js/vanilla-tilt.js"></script>
-<script>
-    VanillaTilt.init(document.querySelector(".card"), {
-        max: 25,
-        speed: 400
-    });
-</script>
+<div th:fragment="script">
+<script type="text/javascript" src="/js/global.js"></script>
+</div>
 </body>
 </html>
