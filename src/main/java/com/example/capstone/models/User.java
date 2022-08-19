@@ -47,7 +47,6 @@ public class User {
     @Column(name = "verification_code", length = 64)
     private String verificationCode;
 
-
     @Column(name = "enabled", nullable = false)
     private boolean enabled;
 
