@@ -3,14 +3,14 @@ package com.example.capstone.models;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
 
-public class UserWithRoles extends User implements UserDetails {
+public class UserWithRoles implements UserDetails {
+
+    private User user;
 
     public UserWithRoles(User user) {
-
-        super(user);  // Call the copy constructor defined in User
+        this.user = user;
     }
 
     @Override
@@ -19,6 +19,15 @@ public class UserWithRoles extends User implements UserDetails {
         return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
     }
 
+    @Override
+    public String getPassword() {
+        return user.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUsername();
+    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -37,6 +46,6 @@ public class UserWithRoles extends User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return user.isEnabled();
     }
 }
