@@ -24,16 +24,20 @@ public class UserServices {
 	private JavaMailSender mailSender;
 
 	public void register(User user, String siteURL) throws UnsupportedEncodingException, MessagingException {
+		//Get and hash password
 		String encodedPassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
+		//create random code to function as the verification code and save to database
 		String randomCode = RandomString.make(64);
 		user.setVerificationCode(randomCode);
+		//set the enabled flag to false in order to prevent login until verified and save the user
 		user.setEnabled(false);
 		repo.save(user);
 		sendVerificationEmail(user, siteURL);
 	}
 
 	private void sendVerificationEmail(User user, String siteURL) throws MessagingException, UnsupportedEncodingException {
+		//build email message content
 		String toAddress = user.getEmail();
 		String fromAddress = "byob@buildyourownband.com";
 		String senderName = "BYOB";
@@ -52,14 +56,17 @@ public class UserServices {
 		String verifyURL = siteURL + "/verify?code=" + user.getVerificationCode();
 		content = content.replace("[[URL]]", verifyURL);
 		helper.setText(content, true);
+		//send message, credentials in application.properties
 		mailSender.send(message);
 	}
 
 	public boolean verify(String verificationCode) {
+		//find the user with the verification code token in the email link
 		User user = repo.findByVerificationCode(verificationCode);
 		if (user == null || user.isEnabled()) {
 			return false;
 		} else {
+			//if a valid user, remove the code and enable the user
 			user.setVerificationCode(null);
 			user.setEnabled(true);
 			repo.save(user);

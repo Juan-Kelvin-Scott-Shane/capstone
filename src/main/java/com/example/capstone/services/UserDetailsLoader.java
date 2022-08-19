@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserDetailsLoader implements UserDetailsService {
+public class UserDetailsLoader extends User implements UserDetailsService {
 	private final UserRepository users;
 	public UserDetailsLoader(UserRepository users) {
 		this.users = users;
