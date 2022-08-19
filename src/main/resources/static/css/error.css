@@ -1,0 +1,29 @@
+body {
+	background-image:url("/img/fog.jpg");
+	background-size: cover;
+	color: aliceblue;
+}
+
+#metal {
+	width: 600px;
+	height: auto;
+}
+
+#tr2 {
+	justify-content: start;
+	align-items: start;
+	align-content: start;
+}
+
+hr {
+	color:#C0C0C0
+}
+
+a:link {
+	font:8pt/11pt verdana; color:red;
+}
+
+a:visited {
+	font:8pt/11pt verdana;
+	color:#4e4e4e
+}
