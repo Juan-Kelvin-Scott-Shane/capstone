@@ -42,13 +42,13 @@ public class User {
     private String youtube;
 
     @Column()
-    private String social_media;
+    private String embed_link;
 
-    @Column(name= "verification_code",length=64)
-    private String verification_code;
+    @Column(name = "verification_code", length = 64)
+    private String verificationCode;
 
-    @Column(name="enable")
-    private boolean enable;
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Proficiency> proficiencies;
@@ -64,9 +64,9 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "genre_id")})
     private List<Genre> genres;
 
-
     public User() {
     }
+
     public User(User copy) {
         id = copy.id;
         email = copy.email;
@@ -74,42 +74,43 @@ public class User {
         password = copy.password;
     }
 
-    public User(long id, String firstName, String lastName, String social_media, String username, String email, String password, String city, String state, String description, String profile_img, String verification_code, boolean enable, List<Instrument> instruments, List<Genre> genres, List<Proficiency> proficiencies) {
+    public User(long id, String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String embed_link, String verificationCode, boolean enabled, List<Proficiency> proficiencies, List<Instrument> instruments, List<Genre> genres) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.social_media = social_media;
         this.city = city;
         this.state = state;
         this.description = description;
         this.profile_img = profile_img;
-        this.verification_code = verification_code;
-        this.enable = enable;
+        this.youtube = youtube;
+        this.embed_link = embed_link;
+        this.verificationCode = verificationCode;
+        this.enabled = enabled;
+        this.proficiencies = proficiencies;
         this.instruments = instruments;
         this.genres = genres;
-        this.proficiencies = proficiencies;
     }
 
-    public User(String username, String firstName, String lastName, String social_media, String email, String password, String city, String state, String description, String profile_img, String verification_code, boolean enable, List<Instrument> instruments, List<Genre> genres, List<Proficiency> proficiencies) {
-        this.username = username;
+    public User(String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String embed_link, String verificationCode, boolean enabled, List<Proficiency> proficiencies, List<Instrument> instruments, List<Genre> genres) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.city = city;
         this.state = state;
         this.description = description;
-        this.social_media = social_media;
-
         this.profile_img = profile_img;
-        this.verification_code = verification_code;
-        this.enable = enable;
+        this.youtube = youtube;
+        this.embed_link = embed_link;
+        this.verificationCode = verificationCode;
+        this.enabled = enabled;
+        this.proficiencies = proficiencies;
         this.instruments = instruments;
         this.genres = genres;
-        this.proficiencies = proficiencies;
     }
 
     public User(String firstName, String lastName, String username, String email, String password) {
@@ -222,39 +223,31 @@ public class User {
         return proficiencies;
     }
 
-    public String getYoutube() {
-        return youtube;
+    public String getEmbed_link() {
+        return embed_link;
     }
 
-    public void setYoutube(String youtube) {
-        this.youtube = youtube;
-    }
-
-    public String getSocial_media() {
-        return social_media;
-    }
-
-    public void setSocial_media(String social_media) {
-        this.social_media = social_media;
-    }
-
-    public String getVerification_code() {
-        return verification_code;
-    }
-
-    public void setVerification_code(String verification_code) {
-        this.verification_code = verification_code;
-    }
-
-    public boolean isEnable() {
-        return enable;
-    }
-
-    public void setEnable(boolean enable) {
-        this.enable = enable;
+    public void setEmbed_link(String embed_link) {
+        this.embed_link = embed_link;
     }
 
     public void setProficiencies(List<Proficiency> proficiencies) {
         this.proficiencies = proficiencies;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 }

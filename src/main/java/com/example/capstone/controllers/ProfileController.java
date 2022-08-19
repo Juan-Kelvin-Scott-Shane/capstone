@@ -16,8 +16,6 @@ public class ProfileController {
         this.userDao = userDao;
     }
 
-
-
     @RequestMapping (path = "/profile", method = RequestMethod.GET)
     public String viewProfile(){
         return "profile";
@@ -25,12 +23,6 @@ public class ProfileController {
 
     @GetMapping("/profile/{id}/edit")
     public String editProfile(Model model,@PathVariable long id){
-
         return"profile";
-
     }
-
-
-
-
 }
