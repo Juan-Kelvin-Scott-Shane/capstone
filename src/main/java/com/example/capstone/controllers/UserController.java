@@ -61,16 +61,4 @@ public static void main(String[] args) {
 			return "verify_fail";
 		}
 	}
-
-// Original post mapping below
-//	@PostMapping("/register")
-//	public String registration(@ModelAttribute User user) {
-//		String hash = passwordEncoder.encode(user.getPassword());
-//		user.setPassword(hash);
-//		System.out.println(user.getUsername());
-//		System.out.println(user.getEmail());
-//		System.out.println(user.getPassword());
-//		userDao.save(user);
-//		return "reg-conf";
-//	}
 }
