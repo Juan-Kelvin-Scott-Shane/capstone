@@ -24,15 +24,17 @@ public class UserServices {
 	private JavaMailSender mailSender;
 
 	public void register(User user, String siteURL) throws UnsupportedEncodingException, MessagingException {
-		//Get and hash password
+		//Get and hash the password
 		String encodedPassword = passwordEncoder.encode(user.getPassword());
+		//save the new hashed password to the user object
 		user.setPassword(encodedPassword);
-		//create random code to function as the verification code and save to database
+		//create random code to function as the verification code and save to the database record of the newly created user
 		String randomCode = RandomString.make(64);
 		user.setVerificationCode(randomCode);
-		//set the enabled flag to false in order to prevent login until verified and save the user
+		//set the user enabled flag to false in order to prevent login until the user is verified and save the user
 		user.setEnabled(false);
 		repo.save(user);
+		//send the user an email
 		sendVerificationEmail(user, siteURL);
 	}
 
@@ -61,17 +63,17 @@ public class UserServices {
 	}
 
 	public boolean verify(String verificationCode) {
-		//find the user with the verification code token in the email link
+		//find the user with the matching verification code token in the email link
 		User user = repo.findByVerificationCode(verificationCode);
+		//if a user with the code isn't found or the user is already enabled, fail the verification
 		if (user == null || user.isEnabled()) {
 			return false;
 		} else {
-			//if a valid user, remove the code and enable the user
+			//if the user is valid and the code matches, remove the code and enable the user
 			user.setVerificationCode(null);
 			user.setEnabled(true);
 			repo.save(user);
 			return true;
 		}
 	}
-
 }

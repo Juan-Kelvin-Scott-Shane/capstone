@@ -44,10 +44,11 @@ public static void main(String[] args) {
 	@PostMapping("/register")
 	public String processRegister(User user, HttpServletRequest request)
 			throws UnsupportedEncodingException, MessagingException {
+		//runs user creation process in the UserServices service file
 		service.register(user, getSiteURL(request));
 		return "reg-conf";
 	}
-
+	//method determines what the site URL should be for the creation of the link emailed to the user
 	private String getSiteURL(HttpServletRequest request) {
 		String siteURL = request.getRequestURL().toString();
 		return siteURL.replace(request.getServletPath(), "");
@@ -55,6 +56,7 @@ public static void main(String[] args) {
 
 	@GetMapping("/verify")
 	public String verifyUser(@Param("code") String code) {
+		//runs verification process from the UserServices service file to see if the code in the emailed link matches the one stored in the database
 		if (service.verify(code)) {
 			return "verify_success";
 		} else {
