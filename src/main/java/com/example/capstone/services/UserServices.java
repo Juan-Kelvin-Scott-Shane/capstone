@@ -28,26 +28,34 @@ public class UserServices {
 		String encodedPassword = passwordEncoder.encode(user.getPassword());
 		//save the new hashed password to the user object
 		user.setPassword(encodedPassword);
-		//create random code to function as the verification code and save to the database record of the newly created user
+		//create random code to function as the verification code and save to the user object
 		String randomCode = RandomString.make(64);
 		user.setVerificationCode(randomCode);
-		//set the user enabled flag to false in order to prevent login until the user is verified and save the user
+		//set the user enabled flag to false in order to prevent login until the user is verified and save the user to the database
 		user.setEnabled(false);
 		repo.save(user);
-		//send the user an email
+		//run the email method by passing the created user object and URL for the site
 		sendVerificationEmail(user, siteURL);
 	}
 
 	private void sendVerificationEmail(User user, String siteURL) throws MessagingException, UnsupportedEncodingException {
-		//build email message content
+		//build email message content using the passed user object and URL from the above register function
 		String toAddress = user.getEmail();
 		String fromAddress = "byob@buildyourownband.com";
 		String senderName = "BYOB";
 		String subject = "Please verify your registration";
-		String content = "Dear [[name]],<br>"
-				+ "Please click the link below to verify your registration:<br>"
-				+ "<h3><a href=\"[[URL]]\" target=\"_self\">VERIFY</a></h3>"
-				+ "Thank you,<br>"
+		String content = "Dear [[name]],"
+				+ "<br>"
+				+ "Please click the link below to verify your registration:"
+				+ "<br>"
+				+ "<h3><a href=\"[[URL]]\" target=\"_self\">Click to VERIFY your account</a></h3>"
+				+ "<br>"
+				+ "You can also copy/paste this link directly into your browser:"
+				+ "<br>"
+				+ "[[URL]]"
+				+ "<br>"
+				+ "Thank you,"
+				+ "<br>"
 				+ "BYOB";
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
@@ -69,7 +77,7 @@ public class UserServices {
 		if (user == null || user.isEnabled()) {
 			return false;
 		} else {
-			//if the user is valid and the code matches, remove the code and enable the user
+			//if the user is valid and the code matches, remove the code and enable the user, and save to the database and return true so login continues
 			user.setVerificationCode(null);
 			user.setEnabled(true);
 			repo.save(user);
