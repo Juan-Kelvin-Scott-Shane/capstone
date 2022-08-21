@@ -10,13 +10,13 @@
     <div class="container">
         <div class="card">
                 <h1 class="loginTitle">Login</h1>
-<!--                <div th:if="${param.error}">-->
-<!--                Invalid username or password-->
-<!--                </div>-->
-<!--                <div th:if="${param.logout}">-->
-<!--                    you've been logged out-->
-
-<!--                </div>-->
+                <div class="alert alert-danger" th:if="${param.error}" th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
+                    Your login attempt was not successful, try again.<br />
+                    Reason: <span th:text="${errorMsg}">Wrong input!</span>
+                </div>
+                <div class="alert alert-danger" th:if="${param.logout}">
+                    You've been logged out
+                </div>
                 <form th:action="@{/login}"method="post">
                     <label for="username">User Name:</label><br>
                     <input type="text" id="username" name="username" placeholder="User Name" required><br>

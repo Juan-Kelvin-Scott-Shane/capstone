@@ -35,11 +35,6 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public AuthenticationFailureHandler authenticationFailureHandler() {
-        return new CustomAuthenticationFailureHandler();
-    }
-
-    @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .formLogin()
@@ -59,5 +54,4 @@ public class SecurityConfiguration {
                 .authenticated();
         return httpSecurity.build();
     }
-
 }
