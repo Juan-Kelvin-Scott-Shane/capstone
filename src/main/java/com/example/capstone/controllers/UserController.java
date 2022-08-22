@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -19,14 +20,17 @@ import java.io.UnsupportedEncodingException;
 @Controller
 public class UserController {
 
-public static void main(String[] args) {
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    String hash = passwordEncoder.encode("password");
-    System.out.println(hash);
-}
+	public static void main(String[] args) {
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hash = passwordEncoder.encode("password");
+		System.out.println(hash);
+	}
 
 	private PasswordEncoder passwordEncoder;
 	private UserRepository userDao;
+
+	@Autowired
+	private UserServices service;
 
 	public UserController(PasswordEncoder passwordEncoder, UserRepository userRepository) {
 		this.passwordEncoder = passwordEncoder;
@@ -39,16 +43,26 @@ public static void main(String[] args) {
 		return "register";
 	}
 
-	@Autowired
-	private UserServices service;
-
 	@PostMapping("/register")
-	public String processRegister(User user, HttpServletRequest request)
-			throws UnsupportedEncodingException, MessagingException {
-		//runs user creation process in the UserServices service file
-		service.register(user, getSiteURL(request));
-		return "reg-conf";
+	public String processRegister(User user, HttpServletRequest request) throws UnsupportedEncodingException, MessagingException {
+		//Setup 3 variables to help check for error and existing data
+		boolean inputHasErrors = user.getUsername().isEmpty() || user.getEmail().isEmpty() || user.getPassword().isEmpty();
+		User newUser = userDao.findByUsername(user.getUsername());
+		User uEmail = userDao.findByEmail(user.getEmail());
+		//run the first if to verify we aren't missing any data and that an existing user and/or email was not found
+		if (!inputHasErrors && newUser == null && uEmail == null) {
+			//runs user creation process in the UserServices service file
+			service.register(user, getSiteURL(request));
+			return "reg-conf";
+			//Else-if an existing user was found, redirect with a parameter
+		} else if (newUser != null) {
+			return "redirect:/register?uexists";
+			//else this handles the finding of an existing email. redirect with parameter
+		} else {
+			return "redirect:/register?eexists";
+		}
 	}
+
 	//method determines what the site URL should be for the creation of the link emailed to the user
 	private String getSiteURL(HttpServletRequest request) {
 		String siteURL = request.getRequestURL().toString();
