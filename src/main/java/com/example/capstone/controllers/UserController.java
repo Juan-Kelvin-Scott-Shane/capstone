@@ -47,7 +47,7 @@ public class UserController {
 
 	@PostMapping("/register")
 	public String processRegister(User user, HttpServletRequest request, RedirectAttributes rm) throws UnsupportedEncodingException, MessagingException {
-		//Setup 3 variables to help check for error and existing data
+		//Setup 4 variables to help check for error and existing data
 		boolean inputHasErrors = user.getUsername().isEmpty() || user.getEmail().isEmpty() || user.getPassword().isEmpty();
 		String passwordConfirmation = request.getParameter("verify-password");
 		User newUser = userDao.findByUsername(user.getUsername());
