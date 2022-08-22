@@ -47,7 +47,7 @@ public class UserController {
 
 	@PostMapping("/register")
 	public String processRegister(User user, HttpServletRequest request, RedirectAttributes rm) throws UnsupportedEncodingException, MessagingException {
-		//Setup 3 variables to help check for error and existing data
+		//Setup 4 variables to help check for error and existing data
 		boolean inputHasErrors = user.getUsername().isEmpty() || user.getEmail().isEmpty() || user.getPassword().isEmpty();
 		String passwordConfirmation = request.getParameter("verify-password");
 		User newUser = userDao.findByUsername(user.getUsername());
@@ -57,19 +57,19 @@ public class UserController {
 			//runs user creation process in the UserServices service file
 			service.register(user, getSiteURL(request));
 			return "reg-conf";
-			//Else-if password/confirmed password do not match, redirect with a parameter
+		//Else-if password/confirmed password do not match, redirect with a parameter
 		} else if (!String.valueOf(user.getPassword()).equals(passwordConfirmation)){
 			System.out.println(String.valueOf(user.getUsername()));
 			//set username & email attribute in session so that the fields repopulate on load and redirect
 			rm.addFlashAttribute("uName", String.valueOf(user.getUsername()));
 			rm.addFlashAttribute("email", String.valueOf(user.getEmail()));
 			return "redirect:/register?pmfail";
-			//Else-if an existing user was found, redirect with a parameter
+		//Else-if an existing user was found, redirect with a parameter
 		} else if (newUser != null) {
 			//set email attribute in session so that the email field repopulates on load and redirect
 			rm.addFlashAttribute("email", String.valueOf(user.getEmail()));
 			return "redirect:/register?uexists";
-			//else this handles the finding of an existing email. redirect with parameter
+		//else this handles the finding of an existing email. redirect with parameter
 		} else {
 			//set username attribute in session so that the username field repopulates on load and redirect
 			rm.addFlashAttribute("uName", String.valueOf(user.getUsername()));
