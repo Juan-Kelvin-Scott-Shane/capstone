@@ -1,6 +1,10 @@
 package com.example.capstone.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,6 +22,10 @@ public class Event {
 
 	@Column(nullable = false)
 	private String location;
+
+    @Column(nullable = false)
+    @CreationTimestamp
+    private Date date;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
     private List<Genre> genres;
