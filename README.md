@@ -25,7 +25,7 @@ BYOB is a website / application that searches and gets band members together, pl
 ## Authors
 - Shane Banks | Scott Roberts | Kelvin Wade | Juan Silva
 
-- [@BYOB - About Us](https://www.bringyourownband.com/aboutus)
+- [@BYOB - About Us](https://www.buildyourownband.com/aboutus)
 
 
 ## API Reference
