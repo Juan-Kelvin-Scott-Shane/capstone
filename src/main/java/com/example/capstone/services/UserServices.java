@@ -24,18 +24,18 @@ public class UserServices {
 	private JavaMailSender mailSender;
 
 	public void register(User user, String siteURL) throws UnsupportedEncodingException, MessagingException {
-		//Get and hash the password
-		String encodedPassword = passwordEncoder.encode(user.getPassword());
-		//save the new hashed password to the user object
-		user.setPassword(encodedPassword);
-		//create random code to function as the verification code and save to the user object
-		String randomCode = RandomString.make(64);
-		user.setVerificationCode(randomCode);
-		//set the user enabled flag to false in order to prevent login until the user is verified and save the user to the database
-		user.setEnabled(false);
-		repo.save(user);
-		//run the email method by passing the created user object and URL for the site
-		sendVerificationEmail(user, siteURL);
+				//Get and hash the password
+				String encodedPassword = passwordEncoder.encode(user.getPassword());
+				//save the new hashed password to the user object
+				user.setPassword(encodedPassword);
+				//create random code to function as the verification code and save to the user object
+				String randomCode = RandomString.make(64);
+				user.setVerificationCode(randomCode);
+				//set the user enabled flag to false in order to prevent login until the user is verified and save the user to the database
+				user.setEnabled(false);
+				repo.save(user);
+				//run the email method by passing the created user object and URL for the site
+				sendVerificationEmail(user, siteURL);
 	}
 
 	private void sendVerificationEmail(User user, String siteURL) throws MessagingException, UnsupportedEncodingException {
