@@ -21,11 +21,10 @@ body {
     }
 }
 
-
 /*--------------------------------------------NAV BAR-----------------------------------------*/
 .navbar-custom {
     font-size: 14px;
-    /*background-color: black !important;*/
+    background-color: black !important;
     color: black !important;
     box-shadow: rgba(120, 193, 238, 0.65) 0px 54px 55px, rgba(138, 180, 196, 0.84) 0px -12px 30px, rgb(255, 255, 255) 0px 4px 6px, rgb(255, 255, 255) 0px 12px 13px, rgb(255, 255, 255) 0px -3px 5px;
 }
@@ -81,7 +80,7 @@ body {
 
 /*------------------------Containers for forms and profile------------------*/
 .container {
-    margin-top: 50px;
+    margin-top: 40px;
     display: flex;
     position: relative;
     justify-content: center;
@@ -108,31 +107,43 @@ body {
     backdrop-filter: blur(6px);
 }
 
-.container-about {
-    margin-top: 60px;
+/*------------------profile page bio cards----------------*/
+.profile-top {
     display: flex;
-    position: relative;
-    justify-content: center;
+    height: 170px;
+    width: 100%;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.profile-photo {
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
     z-index: 1;
 }
 
-.container-about .card-about {
-    position: relative;
+.portrait {
+    align-self: start;
+    height: 150px;
+    width: 150px;
+}
+
+.verbiage {
+    padding: 10px;
+    text-align: center;
     width: 600px;
-    height: 180px;
-    margin: 20px;
-    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.8);
-    overflow: hidden;
-    display: flex;
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    border-top: 2px solid rgba(255, 255, 255, 0.5);
-    border-left: 2px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(6px);
+    height: 190px;
+}
+
+p {
+    font-size: 14px;
+    color: white;
+
 }
 
 .container-bio {
@@ -147,11 +158,10 @@ body {
     z-index: 1;
 }
 
-
 .container-bio .bio-card {
     position: relative;
     width: 425px;
-    height: 85vh;
+    height: 74vh;
     margin: 20px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
@@ -165,7 +175,7 @@ body {
     backdrop-filter: blur(6px);
 }
 
-
+/*---------middle Bio card different styling----------*/
 #mid-card-content{
     display: flex;
     position: absolute;
@@ -190,6 +200,33 @@ body {
     width: 100%;
 }
 
+/*---------------------about us page styles---------------------*/
+
+.container-about {
+    margin-top: 50px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 1;
+}
+
+.container-about .card-about {
+    position: relative;
+    width: 600px;
+    height: 150px;
+    margin: 20px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    display: flex;
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px);
+}
+
 .byob-definition {
     padding: 20px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
@@ -204,43 +241,6 @@ body {
     margin-right: 85px;
 }
 
-.profile-top {
-    display: flex;
-    height: 170px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.profile-photo {
-    margin-top: 5px;
-    align-items: center;
-    justify-content: center;
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.portrait {
-    align-self: start;
-    height: 200px;
-    width: 200px;
-}
-
-.verbiage {
-    padding: 10px;
-    text-align: center;
-    width: 600px;
-    height: 190px;
-}
-
-p {
-    font-size: 20px;
-    color: white;
-
-}
 
 /*-------------------------login form styles, can make global for registration and edit------*/
 .loginTitle {
@@ -253,8 +253,8 @@ form {
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-family: Arial, serif;
-    font-size: 20px;
-    width: 600px;
+    font-size: 16px;
+    width: 450px;
     text-align: center;
 }
 
@@ -265,6 +265,10 @@ input {
     width: 60%;
 }
 
+input[type=text]:focus {
+    background-color: lightblue;
+}
+
 button {
     border-radius: 25px;
     text-align: center;
@@ -272,18 +276,20 @@ button {
     height: 40px;
 }
 
+/*---------------validation fields that pop up--------------------*/
+
 #message {
     display: none;
     background: #f1f1f1;
-    color: #000;
     position: relative;
-    padding: 20px;
-    margin-top: 10px;
+    padding: 5px;
+    margin-top: 5px;
 }
 
 #message p {
-    padding: 10px 35px;
-    font-size: 18px;
+    text-shadow: none;
+    padding: 10px 5px;
+    font-size: 14px;
 }
 
 /* Add a green text color and a checkmark when the requirements are right */
@@ -306,5 +312,73 @@ button {
     position: relative;
     left: -35px;
     content: "✖";
+}
+
+/*-----------------Browse Post Cards----------------------------------*/
+
+.mini-img{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.info{
+    color: white;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.grid {
+    margin: 10px;
+    display: grid;
+    /*grid-template-columns: repeat(4, 1fr);*/
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1rem;
+    grid-auto-rows: 250px;
+    align-items: center;
+}
+
+
+.grid > article {
+    display: grid;
+    text-decoration: none;
+    grid-auto-rows: 250px;
+    margin: 0;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px);
+}
+
+.card-text {
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.username-small {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    -webkit-animation: username-small 1s ease-in-out infinite alternate;
+    -moz-animation: username-small 1s ease-in-out infinite alternate;
+    animation: username-small 1s ease-in-out infinite alternate;
+}
+
+
+
+@-webkit-keyframes username-small {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #6294cc, 0 0 40px #4382af, 0 0 50px #e60073, 0 0 60px #3075c4, 0 0 70px #1370dc;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #5eafd3, 0 0 40px #4794e3, 0 0 50px #1d98bd, 0 0 60px #ff4da6, 0 0 70px #2e5cc2, 0 0 80px #126fcb;
+    }
 }
 
