@@ -8,8 +8,8 @@
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div class="container-bio">
-    <div class="bio-card">
-        <div class="profile-header">
+    <div class="bio-card" style="display: flex">
+        <div class="profile-header" style="text-align: center; display: flex">
             <button class="edit-button" type="submit" value="submit"><i class="fa-solid fa-pen-to-square"></i>
             </button><h3>Profile Info:</h3>
         </div><br>
@@ -26,14 +26,11 @@
     </div>
     </div>
     <div class="bio-card">
-        <div class="profile-top"><img class="profile-photo" src="/img/juan.png"></div>
-        <div id="mid-card-content">
+        <div class="profile-top"><img class="profile-photo" th:src="${#authentication.principal.profile_img}"></div>
             <div class="user-title">JuanaFunk</div>
-        </div>
     </div>
     <div class="bio-card">
     </div>
-</div>
 </div>
 </body>
 </html>
