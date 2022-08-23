@@ -35,8 +35,8 @@ public class User {
     @Column()
     private String description;
 
-    @Column()
-    private String profile_img;
+    @Column(nullable = false)
+    private String profile_img = "https://cdn.filestackcontent.com/RUeUf2m3SiCYjVoIVXIm";
 
     @Column()
     private String youtube;
@@ -69,9 +69,24 @@ public class User {
 
     public User(User copy) {
         id = copy.id;
-        email = copy.email;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
         username = copy.username;
+        email = copy.email;
         password = copy.password;
+        city = copy.city;
+        state = copy.state;
+        description = copy.description;
+        profile_img = copy.profile_img;
+        youtube = copy.youtube;
+        embed_link = copy.embed_link;
+        verificationCode = copy.verificationCode;
+        enabled = copy.enabled;
+        proficiencies = copy.proficiencies;
+        instruments = copy.instruments;
+        genres = copy.genres;
+
+
     }
 
     public User(long id, String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String embed_link, String verificationCode, boolean enabled, List<Proficiency> proficiencies, List<Instrument> instruments, List<Genre> genres) {
