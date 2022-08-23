@@ -64,6 +64,14 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "genre_id")})
     private List<Genre> genres;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name= "user_events",joinColumns = {@JoinColumn(name="user_id")},
+            inverseJoinColumns = {@JoinColumn(name="event_id")})
+    private List<Event> events;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    private List<Event> hostedEvents;
+
     public User() {
     }
 
