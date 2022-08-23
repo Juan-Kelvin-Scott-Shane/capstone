@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <head th:replace="partials/fragment :: head('Login')"></head>
     <meta charset="UTF-8">
@@ -9,6 +9,21 @@
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div class="container-bio">
     <div class="bio-card">
+        <div class="profile-header">
+            <button class="edit-button" type="submit" value="submit"><i class="fa-solid fa-pen-to-square"></i>
+            </button><h3>Profile Info:</h3>
+        </div><br>
+        <div class="profile-info" sec:authorize="isAuthenticated()">
+            <h5>First Name: <span th:text="${#authentication.principal.firstName}"/></h5>
+            <h5>Last Name: <span th:text="${#authentication.principal.lastName}"/></h5>
+            <h5>City: <span th:text="${#authentication.principal.city}"/></h5>
+            <h5>State: <span th:text="${#authentication.principal.state}"/></h5>
+            <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
+        </div>
+        <div sec:authorize="!isAuthenticated()">
+        <br>
+        <h1>Not Authorized</h1>
+    </div>
     </div>
     <div class="bio-card">
         <div class="profile-top"><img class="profile-photo" src="/img/juan.png"></div>
@@ -18,6 +33,7 @@
     </div>
     <div class="bio-card">
     </div>
+</div>
 </div>
 </body>
 </html>
