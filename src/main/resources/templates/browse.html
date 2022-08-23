@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/fragment :: head('Browse List')"></head>
 <body>
-
+<nav th:replace="partials/fragment :: navbar"></nav>
+<div class="grid-container">
+    <main class="grid">
+        <article>
+            <a class="card-text" href="/profile">
+            <img class="mini-img" src="/img/juan.png">
+            <div class="info">
+                <h4 class="username-small">JuanoFunk</h4>
+                <p class="bottom-desc">Drummer  -  Novice  -  Grunge</p>
+                <p class="bottom-desc">Basist  -  Pro  -  Grunge</p>
+                <p class="bottom-desc">Vocals  -  Novice  -  Grunge</p>
+            </div>
+            </a>
+        </article>
+        <article>
+            <a class="card-text" href="/profile">
+                <img class="mini-img" src="/img/juan.png">
+                <div class="info">
+                    <h4 class="username-small">JuanoFunk</h4>
+                    <p class="bottom-desc">Drummer  -  Novice  -  Grunge</p>
+                    <p class="bottom-desc">Basist  -  Pro  -  Grunge</p>
+                    <p class="bottom-desc">Vocals  -  Novice  -  Grunge</p>
+                </div>
+            </a>
+        </article>
+        <article>
+            <a class="card-text" href="/profile">
+                <img class="mini-img" src="/img/juan.png">
+                <div class="info">
+                    <h4 class="username-small">JuanoFunk</h4>
+                    <p class="bottom-desc">Drummer  -  Novice  -  Grunge</p>
+                    <p class="bottom-desc">Basist  -  Pro  -  Grunge</p>
+                    <p class="bottom-desc">Vocals  -  Novice  -  Grunge</p>
+                </div>
+            </a>
+        </article>
+        <article>
+            <a class="card-text" href="/profile">
+                <img class="mini-img" src="/img/juan.png">
+                <div class="info">
+                    <h4 class="username-small">JuanoFunk</h4>
+                    <p class="bottom-desc">Drummer  -  Novice  -  Grunge</p>
+                    <p class="bottom-desc">Basist  -  Pro  -  Grunge</p>
+                    <p class="bottom-desc">Vocals  -  Novice  -  Grunge</p>
+                </div>
+            </a>
+        </article>
+    </main>
+</div>
+<div th:replace="partials/fragment :: script"></div>
 </body>
 </html>
