@@ -91,7 +91,7 @@ public class User {
         verificationCode = copy.verificationCode;
         enabled = copy.enabled;
         proficiencies = copy.proficiencies;
-        instruments = copy.instruments;
+        instruments  = copy.instruments;
         genres = copy.genres;
 
 
