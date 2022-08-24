@@ -45,13 +45,18 @@ public class EventController {
         return "/events/create";
     }
     @PostMapping("/events/create")
-    public String create(@ModelAttribute Event event, @RequestParam long id, @RequestParam String date) throws ParseException {
+    public String create(@ModelAttribute Event event, @RequestParam long id, @RequestParam String date,@RequestParam String time) throws ParseException {
         String[] dateParts = date.split("-");
         String year = dateParts[0];
         String month = dateParts[1];
         String day = dateParts[2];
         String finalDate = String.format("%s/%s/%s", month, day, year);
+        String[]timeParts = time.split(":");
+        String hour = timeParts[0];
+        String minutes= timeParts[1];
+        String finalTime = String.format("%s:%s",hour,minutes);
         System.out.println(finalDate);
+        event.setTime(finalTime);
       event.setDate(finalDate);
       eventDao.save(event);
         return "redirect:/events";
