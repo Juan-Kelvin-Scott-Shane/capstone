@@ -27,12 +27,8 @@ public class Event {
     private String location;
 
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @Column
-    private Date date;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime dateTime;
+    @Column(nullable = false)
+    private String date;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
@@ -46,25 +42,11 @@ public class Event {
     public Event() {
     }
 
-    public Event(long id, String title, String description, String location, Date date, Date time, List<Genre> genres, List<User> users, User owner) {
-        this.id = id;
+    public Event(String title, String description, String location, String date) {
         this.title = title;
         this.description = description;
         this.location = location;
         this.date = date;
-
-        this.genres = genres;
-        this.users = users;
-        this.owner = owner;
-    }
-
-    public Event(String title, String description, String location, Date date, Date time, List<Genre> genres, List<User> users, User owner) {
-        this.title = title;
-        this.description = description;
-        this.location = location;
-        this.genres = genres;
-        this.users = users;
-        this.owner = owner;
     }
 
     public Event(String title, String description, String location) {
@@ -105,14 +87,13 @@ public class Event {
         this.location = location;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
-
 
 
     public List<Genre> getGenres() {
@@ -137,12 +118,5 @@ public class Event {
 
     public void setOwner(User owner) {
         this.owner = owner;
-    }
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
     }
 }

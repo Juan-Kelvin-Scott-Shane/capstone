@@ -19,6 +19,23 @@ public class Proficiency {
     @JoinColumn(name="instrum_id")
     private Instrument instruments;
 
+    public Proficiency(long id, String skill, User user, Instrument instruments) {
+        this.id = id;
+        this.skill = skill;
+        this.user = user;
+        this.instruments = instruments;
+
+    }
+
+    public Proficiency(String skill, User user, Instrument instruments) {
+        this.skill = skill;
+        this.user = user;
+        this.instruments = instruments;
+    }
+
+    public Proficiency() {
+    }
+
     public long getId() {
         return id;
     }

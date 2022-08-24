@@ -46,14 +46,14 @@ public class EventController {
     }
     @PostMapping("/events/create")
     public String create(@ModelAttribute Event event, @RequestParam long id, @RequestParam String date) throws ParseException {
-//        if (dateContainer.getDateTime() == null) {
-//            dateContainer.setDateTime(LocalDateTime.now());
-//        event.setOwner(userDao.getById(id));
-        DateFormat df = new SimpleDateFormat();
-        Date localDate = df.parse(date);
-        System.out.println(localDate);
-        event.setDate(localDate);
-        eventDao.save(event);
+        String[] dateParts = date.split("-");
+        String year = dateParts[0];
+        String month = dateParts[1];
+        String day = dateParts[2];
+        String finalDate = String.format("%s/%s/%s", month, day, year);
+        System.out.println(finalDate);
+      event.setDate(finalDate);
+      eventDao.save(event);
         return "redirect:/events";
     }
 }
