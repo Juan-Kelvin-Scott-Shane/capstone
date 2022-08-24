@@ -8,10 +8,11 @@
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div class="container-bio">
-    <div class="bio-card" style="display: flex">
-        <div class="profile-header" style="text-align: center; display: flex">
+    <div class="bio-card">
+        <div class="profile-header">
             <button class="edit-button" type="submit" value="submit"><i class="fa-solid fa-pen-to-square"></i>
-            </button><h3>Profile Info:</h3>
+            </button><div>
+            <h3>Profile Info:</h3></div>
         </div><br>
         <div class="profile-info" sec:authorize="isAuthenticated()">
             <h5>First Name: <span th:text="${#authentication.principal.firstName}"/></h5>
@@ -21,15 +22,21 @@
             <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
         </div>
         <div sec:authorize="!isAuthenticated()">
-        <br>
-        <h1>Not Authorized</h1>
-    </div>
+            <br>
+            <h1>Not Authorized</h1>
+        </div>
     </div>
     <div class="bio-card">
         <div class="profile-top"><img class="profile-photo" th:src="${#authentication.principal.profile_img}"></div>
-            <div class="user-title">JuanaFunk</div>
+        <div class="user-title"><span th:text="${#authentication.principal.username}"/></div>
+        <div class="description"><span th:text="${#authentication.principal.description}"/></div>
     </div>
     <div class="bio-card">
+        <div class="skills-header">
+            <h3>Skills</h3></div>
+        <div class="skills">
+        <div>Instrument:</div>
+        </div>
     </div>
 </div>
 </body>
