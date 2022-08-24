@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head><head th:replace="partials/fragment :: head('reset-pass-only-email')"></head>
+    <meta charset="UTF-8">
+    <title>Reset Password with only Email</title>
+</head>
+<body>
+<nav th:replace="partials/fragment :: navbar"></nav>
+<div class="container">
+    <div class="card">
+        <h1 class="loginTitle">Reset Your Password</h1>
+
+        <form th:action="@{/login}"method="post">
+            <label for="username">User Name:</label><br>
+            <input type="text" id="username" name="username" placeholder="User Name" required><br>
+            <br>
+            <br> <button style="border-radius: 25px" type="submit" value="submit">Submit</button><br>
+        </form>
+    </div>
+</div>
+</body>
+</body>
+</html>
