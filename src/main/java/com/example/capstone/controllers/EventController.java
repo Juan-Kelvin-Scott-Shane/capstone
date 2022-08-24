@@ -30,7 +30,7 @@ public class EventController {
     public String showEvent(Model model){
         List<Event>all =  eventDao.findAll();
         model.addAttribute("event", all);
-        return "events/index";
+        return "all-events";
 
     }
     @GetMapping("/event/show/{id}")
@@ -42,7 +42,7 @@ public class EventController {
     @GetMapping("/events/create")
     public String showCreationForm(Model model){
         model.addAttribute("event",new Event());
-        return "/events/create";
+        return "create-event";
     }
     @PostMapping("/events/create")
     public String create(@ModelAttribute Event event, @RequestParam long id, @RequestParam String date,@RequestParam String time) throws ParseException {

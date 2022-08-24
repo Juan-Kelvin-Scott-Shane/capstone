@@ -42,7 +42,7 @@ public class User {
     private String youtube;
 
     @Column()
-    private String embed_link;
+    private String social_media;
 
     @Column(name = "verification_code", length = 64)
     private String verificationCode;
@@ -87,17 +87,17 @@ public class User {
         description = copy.description;
         profile_img = copy.profile_img;
         youtube = copy.youtube;
-        embed_link = copy.embed_link;
+        social_media = copy.social_media;
         verificationCode = copy.verificationCode;
         enabled = copy.enabled;
         proficiencies = copy.proficiencies;
-        instruments = copy.instruments;
+        instruments  = copy.instruments;
         genres = copy.genres;
 
 
     }
 
-    public User(long id, String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String embed_link, String verificationCode, boolean enabled, List<Proficiency> proficiencies, List<Instrument> instruments, List<Genre> genres) {
+    public User(long id, String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String social_media, String verificationCode, boolean enabled, List<Proficiency> proficiencies, List<Instrument> instruments, List<Genre> genres) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -109,7 +109,7 @@ public class User {
         this.description = description;
         this.profile_img = profile_img;
         this.youtube = youtube;
-        this.embed_link = embed_link;
+        this.social_media = social_media;
         this.verificationCode = verificationCode;
         this.enabled = enabled;
         this.proficiencies = proficiencies;
@@ -117,7 +117,7 @@ public class User {
         this.genres = genres;
     }
 
-    public User(String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String embed_link, String verificationCode, boolean enabled, List<Proficiency> proficiencies, List<Instrument> instruments, List<Genre> genres) {
+    public User(String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String social_media, String verificationCode, boolean enabled, List<Proficiency> proficiencies, List<Instrument> instruments, List<Genre> genres) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -128,7 +128,7 @@ public class User {
         this.description = description;
         this.profile_img = profile_img;
         this.youtube = youtube;
-        this.embed_link = embed_link;
+        this.social_media = social_media;
         this.verificationCode = verificationCode;
         this.enabled = enabled;
         this.proficiencies = proficiencies;
@@ -246,12 +246,20 @@ public class User {
         return proficiencies;
     }
 
-    public String getEmbed_link() {
-        return embed_link;
+    public String getSocial_media() {
+        return social_media;
     }
 
-    public void setEmbed_link(String embed_link) {
-        this.embed_link = embed_link;
+    public void setSocial_media(String social_media) {
+        this.social_media = social_media;
+    }
+
+    public String getYoutube() {
+        return youtube;
+    }
+
+    public void setYoutube(String youtube) {
+        this.youtube = youtube;
     }
 
     public void setProficiencies(List<Proficiency> proficiencies) {

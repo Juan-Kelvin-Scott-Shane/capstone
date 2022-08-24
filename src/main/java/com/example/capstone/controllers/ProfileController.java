@@ -1,5 +1,6 @@
 package com.example.capstone.controllers;
 
+
 import com.example.capstone.models.User;
 import com.example.capstone.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,8 +19,9 @@ public class ProfileController {
     }
 
     @GetMapping("/profile")
-    public String viewProfile(){
+    public String viewProfile(Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("instruments", userDao.getById(currentUser.getId()).getProficiencies());
         return "profile";
     }
 
