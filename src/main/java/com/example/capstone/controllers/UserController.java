@@ -90,4 +90,39 @@ public class UserController {
 			return "verify_fail";
 		}
 	}
+
+	@GetMapping("/resetpw")
+	public String resetPassword(Model model) {
+		model.addAttribute("newUser", new User());
+		return "";
+	}
+
+	@PostMapping("/resetpw")
+	public String processReset(User user, HttpServletRequest request, RedirectAttributes rm) throws UnsupportedEncodingException, MessagingException {
+		boolean inputHasErrors = user.getEmail().isEmpty();
+		User resetUser = userDao.findByEmail(user.getEmail());
+		if (!inputHasErrors && resetUser != null) {
+			service.reset(user, getSiteURL(request));
+			return "r";
+		} else {
+			System.out.println(String.valueOf(user.getUsername()));
+			return "redirect:/resetpw?pmfail";
+		}
+	}
+
+	@GetMapping("/verifyreset")
+	public String verifyReset(@Param("code") String code) {
+		//runs verification process from the UserServices service file to see if the code in the emailed link matches the one stored in the database
+		if (service.verifyReset(code)) {
+			return "pw set form";
+		} else {
+			return "verify_fail";
+		}
+	}
+
+	@PostMapping("/verifyreset")
+	public String doReset(User user, HttpServletRequest request, RedirectAttributes rm) throws UnsupportedEncodingException, MessagingException {
+		//runs verification process from the UserServices service file to see if the code in the emailed link matches the one stored in the database
+			return "verify_fail";
+		}
 }
