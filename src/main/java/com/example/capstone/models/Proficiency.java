@@ -24,7 +24,6 @@ public class Proficiency {
         this.skill = skill;
         this.user = user;
         this.instruments = instruments;
-
     }
 
     public Proficiency(String skill, User user, Instrument instruments) {

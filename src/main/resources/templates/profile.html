@@ -7,40 +7,53 @@
 </head>
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
-<div class="container-bio">
-    <div class="bio-card">
-        <div class="profile-header">
-            <button class="edit-button" type="submit" value="submit"><i class="fa-solid fa-pen-to-square"></i>
-            </button><div>
-            <h3>Profile Info:</h3></div>
-        </div><br>
-        <div class="profile-info" sec:authorize="isAuthenticated()">
-            <h5>First Name: <span th:text="${#authentication.principal.firstName}"/></h5>
-            <h5>Last Name: <span th:text="${#authentication.principal.lastName}"/></h5>
-            <h5>City: <span th:text="${#authentication.principal.city}"/></h5>
-            <h5>State: <span th:text="${#authentication.principal.state}"/></h5>
-            <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
-<!--            <h5>Inst: <span th:text="${#authentication.principal.instruments}"/></h5>-->
-        </div>
-        <div sec:authorize="!isAuthenticated()">
-            <br>
-            <h1>Not Authorized</h1>
-        </div>
-    </div>
-    <div class="bio-card">
-        <div class="profile-top"><img class="profile-photo" th:src="${#authentication.principal.profile_img}"></div>
-        <div class="user-title"><span th:text="${#authentication.principal.username}"/></div>
-        <div class="description"><span th:text="${#authentication.principal.description}"/></div>
-    </div>
-    <div class="bio-card">
-        <div class="skills-header">
-            <h3>Skills</h3></div>
-        <div class="skills">
-        <div>Instrument:</div>
-            <div th:each="instrument : ${instruments}">
-                <p th:text="${post.getBody()}" class="card-text"></p>
-        </div>
-    </div>
+<div sec:authorize="!isAuthenticated()">
+	<br>
+	<h1>Not Authorized</h1>
+</div>
+<div class="container-bio" sec:authorize="isAuthenticated()">
+	<div class="bio-card">
+		<div class="profile-header">
+			<button class="edit-button" type="submit" value="submit"><i class="fa-solid fa-pen-to-square"></i>
+			</button>
+			<div>
+				<h3>Profile Info:</h3></div>
+		</div>
+		<br>
+		<div class="profile-info">
+			<h5>Name: <span
+					th:text="${#authentication.principal.firstName + ' ' + #authentication.principal.lastName}"/></h5>
+			<h5>City: <span th:text="${#authentication.principal.city}"/></h5>
+			<h5>State: <span th:text="${#authentication.principal.state}"/></h5>
+			<h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
+		</div>
+	</div>
+	<div class="bio-card">
+		<div class="profile-top"><img class="profile-photo" th:src="${#authentication.principal.profile_img}"></div>
+		<div class="user-title"><span th:text="${#authentication.principal.username}"/></div>
+		<br>
+		<div class="description"><span th:text="${#authentication.principal.description}"/></div>
+		<br>
+		<div class="description">
+			Social Media: <br>
+			<a th:href="@{|${#authentication.principal.social_media}|}" target="_blank"><span th:text="${#authentication.principal.social_media}"/></a>
+			<br><br>
+			YouTube Page:<br>
+			<a th:href="@{|${#authentication.principal.youtube}|}" target="_blank"><span th:text="${#authentication.principal.youtube}"/></a>
+		</div>
+	</div>
+	<div class="bio-card">
+		<div class="skills-header">
+			<h3>Skills</h3></div>
+		<div class="skills">
+			<div th:each="instrument: ${instruments}">
+				Instrument: <span th:text="${instrument.instruments.instName}"></span>
+				<br>
+				Level: <span th:text="${instrument.skill}"></span>
+				<br><br>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>

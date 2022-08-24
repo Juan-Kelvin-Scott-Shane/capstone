@@ -21,8 +21,7 @@ public class ProfileController {
     @GetMapping("/profile")
     public String viewProfile(Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("instument", currentUser.getInstruments());
-        currentUser.getInstruments();
+        model.addAttribute("instruments", userDao.getById(currentUser.getId()).getProficiencies());
         return "profile";
     }
 
