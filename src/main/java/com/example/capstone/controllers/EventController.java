@@ -28,9 +28,9 @@ public class EventController {
     }
     @GetMapping("/events")
     public String showEvent(Model model){
-    List<Event>all =  eventDao.findAll();
-    model.addAttribute("event", all);
-    return "events/index";
+        List<Event>all =  eventDao.findAll();
+        model.addAttribute("event", all);
+        return "events/index";
 
     }
     @GetMapping("/event/show/{id}")
@@ -57,8 +57,8 @@ public class EventController {
         String finalTime = String.format("%s:%s",hour,minutes);
         System.out.println(finalDate);
         event.setTime(finalTime);
-      event.setDate(finalDate);
-      eventDao.save(event);
+        event.setDate(finalDate);
+        eventDao.save(event);
         return "redirect:/events";
     }
 }
