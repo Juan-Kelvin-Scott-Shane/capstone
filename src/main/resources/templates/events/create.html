@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create</title>
+</head>
+<body>
+<form th:action="@{/events/create}" th:method="POST" th:object="${event}">
+  <div>
+    <label for="id"></label>
+    <input type="text"id="id" name="id" th:field="*{id}">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" th:field="*{title}">
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location" th:field="*{location}">
+    <label for="description">Describe your event!</label>
+    <textarea name="description" id="description" rows="4" cols="50" th:field="*{description}"></textarea>
+    <br>
+    <label for="date"></label>
+    <input id="date" name="date" type="date">
+
+    <label for="time"></label>
+    <input id="time" name="time"type="time">
+
+    <button type="submit">Submit</button>
+  </div>
+
+</form>
+</body>
+</html>
