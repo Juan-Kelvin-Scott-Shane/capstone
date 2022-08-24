@@ -178,7 +178,6 @@ body {
 p {
     font-size: 14px;
     color: white;
-
 }
 
 .container-bio {
@@ -381,7 +380,6 @@ button {
     align-items: center;
 }
 
-
 .grid > article {
     display: grid;
     text-decoration: none;
@@ -412,8 +410,6 @@ button {
     -moz-animation: username-small 1s ease-in-out infinite alternate;
     animation: username-small 1s ease-in-out infinite alternate;
 }
-
-
 
 @-webkit-keyframes username-small {
     from {
