@@ -30,6 +30,9 @@ public class Event {
     @Column(nullable = false)
     private String date;
 
+    @Column(nullable = false)
+    private String time;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
     private List<Genre> genres;
@@ -42,11 +45,12 @@ public class Event {
     public Event() {
     }
 
-    public Event(String title, String description, String location, String date) {
+    public Event(String title, String description, String location, String date, String time) {
         this.title = title;
         this.description = description;
         this.location = location;
         this.date = date;
+        this.time=time;
     }
 
     public Event(String title, String description, String location) {
@@ -95,6 +99,13 @@ public class Event {
         this.date = date;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public List<Genre> getGenres() {
         return genres;
