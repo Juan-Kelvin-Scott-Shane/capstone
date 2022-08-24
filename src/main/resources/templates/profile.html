@@ -20,7 +20,7 @@
             <h5>City: <span th:text="${#authentication.principal.city}"/></h5>
             <h5>State: <span th:text="${#authentication.principal.state}"/></h5>
             <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
-            <h5>Inst: <span th:text="${#authentication.principal.instruments}"/></h5>
+<!--            <h5>Inst: <span th:text="${#authentication.principal.instruments}"/></h5>-->
         </div>
         <div sec:authorize="!isAuthenticated()">
             <br>
@@ -37,6 +37,8 @@
             <h3>Skills</h3></div>
         <div class="skills">
         <div>Instrument:</div>
+            <div th:each="instrument : ${instruments}">
+                <p th:text="${post.getBody()}" class="card-text"></p>
         </div>
     </div>
 </div>
