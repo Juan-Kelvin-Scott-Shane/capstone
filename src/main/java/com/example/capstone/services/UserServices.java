@@ -136,8 +136,20 @@ public class UserServices {
 		} else {
 			//if the user is valid and the code matches, remove the code and enable the user, and save to the database and return true so login continues
 			user.setVerificationCode(null);
-//			user.setEnabled(true);
-//			repo.save(user);
+			return true;
+		}
+	}
+
+	public boolean newPw(User user) {
+		//find the user with the matching verification code token in the email link
+		//if a user with the code isn't found or the user is already enabled, fail the verification
+		if (user == null || user.isEnabled()) {
+			return false;
+		} else {
+			//if the user is valid and the code matches, remove the code and enable the user, and save to the database and return true so login continues
+			user.setEnabled(true);
+			user.setPassword(user.getPassword());
+			repo.save(user);
 			return true;
 		}
 	}
