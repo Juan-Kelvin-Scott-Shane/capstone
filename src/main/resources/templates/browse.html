@@ -10,9 +10,11 @@
             <img class="mini-img" src="/img/juan.png">
             <div class="info">
                 <h4 class="username-small">JuanoFunk</h4>
-                <p class="bottom-desc">Drummer  -  Novice  -  Grunge</p>
-                <p class="bottom-desc">Basist  -  Pro  -  Grunge</p>
-                <p class="bottom-desc">Vocals  -  Novice  -  Grunge</p>
+                <div th:each="instrument: ${instruments}">
+                <b>Instrument:</b> &nbsp;&nbsp;<em><span th:text="${instrument.instruments.instName}"></span></em>
+                - <em><span th:text="${instrument.skill}"></span></em> - <em>Genre</em>
+                <br>
+                </div>
             </div>
             </a>
         </article>
