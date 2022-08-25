@@ -14,7 +14,7 @@
 <div class="container-bio" sec:authorize="isAuthenticated()">
 	<div class="bio-card">
 		<div class="profile-header">
-			<h3>Profile Info</h3>
+			<h3><i>Profile Info</i></h3>
 		</div>
 		<div class="profile-info">
 			<p>Name: <span
@@ -26,26 +26,26 @@
 	</div>
 	<div class="bio-card">
 		<div class="profile-top"><img class="profile-photo" th:src="${#authentication.principal.profile_img}"></div>
-		<div class="user-title"><span th:text="${#authentication.principal.username}"/></div>
+		<div class="user-title"><b><i><span th:text="${#authentication.principal.username}"/></i></b></div>
 		<br>
 		<div class="description"><span th:text="${#authentication.principal.description}"/></div>
 		<br>
 		<div class="media">
-			Social Media: <br>
+			<b>Social Media:</b> <br>
 			<a th:href="@{|${#authentication.principal.social_media}|}" target="_blank">my-social-media<span th:text="${#authentication.principal.social_media}"/></a>
 			<br><br>
-			YouTube Page:<br>
+			<b>YouTube Page:</b><br>
 			<a th:href="@{|${#authentication.principal.youtube}|}" target="_blank">my-youtube-link<span th:text="${#authentication.principal.youtube}"/></a>
 		</div>
 	</div>
 	<div class="bio-card">
 		<div class="skills-header">
-			<h3>Skills</h3>
+			<h3><i>Skills</i></h3>
 		</div>
 		<div class="skills">
 			<div th:each="instrument: ${instruments}">
-				Instrument: <span th:text="${instrument.instruments.instName}"></span>
-				Level: <span th:text="${instrument.skill}"></span>
+				<b>Instrument:</b> &nbsp;&nbsp;<em><span th:text="${instrument.instruments.instName}"></span></em>
+				- <em><span th:text="${instrument.skill}"></span></em> - <em>Genre</em>
 				<br><br>
 			</div>
 		</div>

@@ -195,11 +195,11 @@ body {
     border: #f1f1f1 solid 2px;
 }
 
-p {
-    margin-bottom: 0 !important;
-    font-size: 16px;
-    color: white;
-}
+/*p {*/
+/*    margin-bottom: 0 !important;*/
+/*    font-size: 16px;*/
+/*    color: white;*/
+/*}*/
 
 .container-bio {
     color: white;
@@ -465,8 +465,6 @@ button {
 
 .flip-card {
     display: grid;
-    align-items: center;
-    text-decoration: none;
     grid-auto-rows: 300px;
     margin-top: 25px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
@@ -485,6 +483,8 @@ button {
     width: 100%;
     height: 100%;
     text-align: center;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
@@ -496,8 +496,9 @@ button {
 
 /* Position the front and back side */
 .flip-card-front, .flip-card-back {
+    color: white;
+    text-align: center;
     align-items: center;
-    justify-content: center;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -505,19 +506,36 @@ button {
     backface-visibility: hidden;
 }
 
+
+.event-card-title {
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: #1F3445;
+    height: 60px;
+    border-bottom: #f1f1f1 solid 1px;
+}
+
+.event-description {
+    font-size: 18px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /* Style the front side (fallback if image is missing) */
-/*.flip-card-front {*/
-/*    background-color: #bbb;*/
-/*    color: black;*/
-/*}*/
+
+.flip-card-font{
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+}
 
 /* Style the back side */
 .flip-card-back {
     background: #1F3445;
     color: white;
     transform: rotateY(180deg);
-}
-
-.flip-card-back p {
-    padding: 10px;
 }
