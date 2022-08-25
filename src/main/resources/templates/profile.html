@@ -17,8 +17,7 @@
 			<h3><i>Profile Info</i></h3>
 		</div>
 		<div class="profile-info">
-			<p>Name: <span
-					th:text="${#authentication.principal.firstName + ' ' + #authentication.principal.lastName}"/></p>
+			<p>Name: <span th:text="${#authentication.principal.firstName + ' ' + #authentication.principal.lastName}"/></p>
 			<p>City: <span th:text="${#authentication.principal.city}"/></p>
 			<p>State: <span th:text="${#authentication.principal.state}"/></p>
 			<p>Email: <span th:text="${#authentication.principal.email}"/></p>
