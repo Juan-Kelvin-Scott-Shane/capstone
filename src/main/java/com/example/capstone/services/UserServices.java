@@ -131,9 +131,7 @@ public class UserServices {
 	}
 
 	public boolean verifyReset(String verificationCode) {
-		//find the user with the matching verification code token in the email link
 		User user = repo.findByVerificationCode(verificationCode);
-		//if a user with the code isn't found or the user is already enabled, fail the verification
 		if (user == null || user.isEnabled()) {
 			return false;
 		} else {
@@ -143,13 +141,11 @@ public class UserServices {
 
 	public boolean newPw(User user) {
 		if (user == null || user.isEnabled()) {
-			System.out.println("in newPw return false");
 			return false;
 		} else {
 			user.setEnabled(true);
 			user.setVerificationCode(null);
 			repo.save(user);
-			System.out.println("in newPw true");
 			return true;
 		}
 	}

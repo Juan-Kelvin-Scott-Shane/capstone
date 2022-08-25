@@ -100,7 +100,6 @@ public class UserController {
 	public String processReset(User user, HttpServletRequest request, RedirectAttributes rm) throws UnsupportedEncodingException, MessagingException {
 		boolean inputHasErrors = user.getEmail().isEmpty();
 		User resetUser = userDao.findByEmail(user.getEmail());
-		System.out.println(resetUser);
 		resetUser.getPassword();
 		if (!inputHasErrors && resetUser != null) {
 			service.reset(resetUser, getSiteURL(request));
@@ -122,23 +121,17 @@ public class UserController {
 
 	@PostMapping("/verifyreset")
 	public String doReset(User user, HttpServletRequest request, RedirectAttributes rm) throws UnsupportedEncodingException, MessagingException {
-		//runs verification process from the UserServices service file to see if the code in the emailed link matches the one stored in the database
 		String password = request.getParameter("password");
 		String passwordConfirmation = request.getParameter("verify-password");
 		String code = request.getParameter("code");
-		System.out.println(password);
-		System.out.println(passwordConfirmation);
-		System.out.println(code + " <--code here");
 		User editUser = userDao.findByVerificationCode(code);
 		boolean inputHasErrors = password.isEmpty() || passwordConfirmation.isEmpty();
 		if (!inputHasErrors && (password.equals(passwordConfirmation))) {
-			System.out.println("in doReset before save");
 			String encodedPassword = passwordEncoder.encode(password);
 			editUser.setPassword(encodedPassword);
 			service.newPw(editUser);
 			return "reset-complete";
 		} else {
-			System.out.println("in doReset before fail");
 			return "redirect:verifyreset?pfail";
 		}
 	}
