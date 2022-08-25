@@ -8,6 +8,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
@@ -84,4 +86,72 @@ public class UserServices {
 			return true;
 		}
 	}
+
+	public void reset(User user, String siteURL) throws UnsupportedEncodingException, MessagingException {
+		String randomCode = RandomString.make(64);
+		user.setVerificationCode(randomCode);
+		//set the user enabled flag to false in order to prevent login until the user is verified and save the user to the database
+		user.setEnabled(false);
+		user.setUsername(user.getUsername());
+		repo.save(user);
+		//run the email method by passing the created user object and URL for the site
+		sendResetEmail(user, siteURL);
+	}
+
+	private void sendResetEmail(User user, String siteURL) throws MessagingException, UnsupportedEncodingException {
+		//build email message content using the passed user object and URL from the above register function
+		String toAddress = user.getEmail();
+		String fromAddress = "byob@buildyourownband.com";
+		String senderName = "BYOB";
+		String subject = "Please verify you wish to reset your password";
+		String content = "Dear [[name]],"
+				+ "<br>"
+				+ "Please click the link below to reset your password:"
+				+ "<br>"
+				+ "<h3><a href=\"[[URL]]\" target=\"_self\">Click to RESET your password</a></h3>"
+				+ "<br>"
+				+ "You can also copy/paste this link directly into your browser:"
+				+ "<br>"
+				+ "[[URL]]"
+				+ "<br>"
+				+ "Thank you,"
+				+ "<br>"
+				+ "BYOB";
+		MimeMessage message = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+		helper.setFrom(fromAddress, senderName);
+		helper.setTo(toAddress);
+		helper.setSubject(subject);
+		content = content.replace("[[name]]", user.getUsername());
+		String verifyURL = siteURL + "/verifyreset?code=" + user.getVerificationCode();
+		content = content.replace("[[URL]]", verifyURL);
+		helper.setText(content, true);
+		//send message, credentials in application.properties
+		mailSender.send(message);
+	}
+
+	public boolean verifyReset(String verificationCode) {
+		//find the user with the matching verification code token in the email link
+		User user = repo.findByVerificationCode(verificationCode);
+		//if a user with the code isn't found or the user is already enabled, fail the verification
+		if (user == null || user.isEnabled()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean newPw(User user) {
+		if (user == null || user.isEnabled()) {
+			System.out.println("in newPw return false");
+			return false;
+		} else {
+			user.setEnabled(true);
+			user.setVerificationCode(null);
+			repo.save(user);
+			System.out.println("in newPw true");
+			return true;
+		}
+	}
+
 }
