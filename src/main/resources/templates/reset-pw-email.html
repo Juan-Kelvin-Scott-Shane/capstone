@@ -13,8 +13,8 @@
         </div>
         <p>Please enter your email address to begin the password reset process.</p>
         <form th:action="@{/resetpw}" method="post">
-            <label for="email">Email:</label><br>
-            <input type="text" id="email" name="email" placeholder="Email" required><br>
+            <label th:for="email">Email:</label><br>
+            <input type="email" th:id="email" th:name="email" placeholder="Email@" th:value="${email}" required><br>
             <br>
             <br> <button style="border-radius: 25px" type="submit" value="submit">Submit</button><br>
         </form>

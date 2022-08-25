@@ -35,7 +35,7 @@ public class User {
     @Column()
     private String description;
 
-    @Column(nullable = false)
+    @Column()
     private String profile_img = "https://cdn.filestackcontent.com/RUeUf2m3SiCYjVoIVXIm";
 
     @Column()
@@ -73,6 +73,10 @@ public class User {
     private List<Event> hostedEvents;
 
     public User() {
+    }
+
+    public User(String email) {
+        this.email = email;
     }
 
     public User(User copy) {

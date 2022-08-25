@@ -8,6 +8,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
@@ -90,6 +92,7 @@ public class UserServices {
 		user.setVerificationCode(randomCode);
 		//set the user enabled flag to false in order to prevent login until the user is verified and save the user to the database
 		user.setEnabled(false);
+		user.setUsername(user.getUsername());
 		repo.save(user);
 		//run the email method by passing the created user object and URL for the site
 		sendResetEmail(user, siteURL);
@@ -134,22 +137,19 @@ public class UserServices {
 		if (user == null || user.isEnabled()) {
 			return false;
 		} else {
-			//if the user is valid and the code matches, remove the code and enable the user, and save to the database and return true so login continues
-			user.setVerificationCode(null);
 			return true;
 		}
 	}
 
 	public boolean newPw(User user) {
-		//find the user with the matching verification code token in the email link
-		//if a user with the code isn't found or the user is already enabled, fail the verification
 		if (user == null || user.isEnabled()) {
+			System.out.println("in newPw return false");
 			return false;
 		} else {
-			//if the user is valid and the code matches, remove the code and enable the user, and save to the database and return true so login continues
 			user.setEnabled(true);
-			user.setPassword(user.getPassword());
+			user.setVerificationCode(null);
 			repo.save(user);
+			System.out.println("in newPw true");
 			return true;
 		}
 	}

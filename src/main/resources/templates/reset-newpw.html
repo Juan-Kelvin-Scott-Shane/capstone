@@ -13,17 +13,23 @@
         </div>
         <form th:action="@{/verifyreset}"method="post">
             <br>
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" placeholder="Password" required><br>
+            <label th:for="password">Password:</label><br>
+            <input type="password" th:id="password" th:name="password" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"><br>
+            <div id="message">
+                <p  id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                <p  id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                <p  id="number" class="invalid">A <b>number</b></p>
+                <p  id="length" class="invalid">Minimum <b>8 characters</b></p>
+            </div>
             <br>
-            <label for="passwordconfirm">Verify Password:</label><br>
-            <input type="password" id="passwordconfirm" name="passwordconfirm" placeholder="Verify password" required><br>
+            <label for="verify-password">Verify Password:</label><br>
+            <input type="password" id="verify-password" name="verify-password" placeholder="Verify password" required><br>
             <br>
-            <label for="username">User Name:</label><br>
-            <input type="hidden" id="username" name="username" th:value="${uName}"><br>
+            <input type="hidden" id="code" name="code" th:value="${param.code}"><br>
             <button style="border-radius: 25px" type="submit" value="submit">Submit</button><br>
         </form>
     </div>
 </div>
+<div th:replace="partials/fragment :: script"></div>
 </body>
 </html>
