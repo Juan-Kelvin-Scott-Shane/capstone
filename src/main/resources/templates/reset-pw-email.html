@@ -11,7 +11,7 @@
             Your password reset attempt was not successful, please try again.<br />
             Reason: <span th:text="${errorMsg}">Wrong input!</span>
         </div>
-        <p>Please enter your email address to begin the password reset process.</p>
+        <p class="content">Please enter your email address to begin the password reset process.</p>
         <form th:action="@{/resetpw}" method="post">
             <label th:for="email">Email:</label><br>
             <input type="email" th:id="email" th:name="email" placeholder="Email@" th:value="${email}" required><br>
