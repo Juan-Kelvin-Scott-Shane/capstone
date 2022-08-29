@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials/fragment :: head('Contact')"></head>
+<body>
+<nav th:replace="partials/fragment :: navbar"></nav>
+
+<p>Use this form to send a system email.</p>
+<p>NOTE: Your profile's email address will be included as part of this email.</p>
+<hr>
+<br>
+From: <span th:text="${}"></span>
+<br><br>
+To: <span th:text="${}"></span>
+<br><br>
+<label th:for="${msgbody}">Body:</label>
+<br>
+<textarea cols="80" rows="10" th:name="${msgbody}" th:id="${msgbody}" placeholder="Enter your message body here."></textarea>
+<input type="hidden" id="sender" name="code" th:value="${}"><br>
+<input type="hidden" id="receiver" name="code" th:value="${}"><br>
+<div th:replace="partials/fragment :: script"></div>
+</body>
+</html>

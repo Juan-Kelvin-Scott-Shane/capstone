@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.MessagingException;
@@ -148,6 +149,39 @@ public class UserServices {
 			repo.save(user);
 			return true;
 		}
+	}
+
+	private void sendContactEmail(User user, Model model, String siteURL) throws MessagingException, UnsupportedEncodingException {
+		//build email message content using the passed user object and URL from the above register function
+		String toAddress = user.getEmail();
+		String fromAddress = "byob@buildyourownband.com";
+		String senderName = "BYOB";
+		String subject = "Another user would like to contact you.";
+		String content = "Dear [[name_receiver]],"
+				+ "<br>"
+				+ "[[name]]"
+				+ "<br>"
+				+ "<h3><a href=\"[[URL]]\" target=\"_self\">Click to RESET your password</a></h3>"
+				+ "<br>"
+				+ "You can also copy/paste this link directly into your browser:"
+				+ "<br>"
+				+ "[[URL]]"
+				+ "<br>"
+				+ "Thank you,"
+				+ "<br>"
+				+ "BYOB";
+		MimeMessage message = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+		helper.setFrom(fromAddress, senderName);
+		helper.setTo(toAddress);
+		helper.setSubject(subject);
+
+		content = content.replace("[[name]]", user.getUsername());
+		String verifyURL = siteURL + "/verifyreset?code=" + user.getVerificationCode();
+		content = content.replace("[[URL]]", verifyURL);
+		helper.setText(content, true);
+		//send message, credentials in application.properties
+		mailSender.send(message);
 	}
 
 }
