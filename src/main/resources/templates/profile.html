@@ -37,11 +37,11 @@
         <br>
         <div class="media">
             <b>Social Media:</b><br>
-            <a th:href="@{|${#authentication.principal.social_media}|}" target="_blank">my-social-media<span
+            <a th:href="@{|${#authentication.principal.social_media}|}" target="_blank"><span
                     th:text="${#authentication.principal.social_media}"/></a>
             <br><br>
             <b>YouTube Page:</b><br>
-            <a th:href="@{|${#authentication.principal.youtube}|}" target="_blank">my-youtube-link<span
+            <a th:href="@{|${#authentication.principal.youtube}|}" target="_blank"><span
                     th:text="${#authentication.principal.youtube}"/></a>
         </div>
     </div>
