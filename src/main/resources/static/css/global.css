@@ -11,7 +11,17 @@ body {
 }
 
 /*----------------created break point to move to a hamburger button and resize photo-----------*/
-@media (min-width: 710px) {
+/*@media (min-width: 480px) {*/
+/*    body {*/
+/*        background-position: center center;*/
+/*        background-attachment: fixed;*/
+/*        background-repeat: no-repeat;*/
+/*        background-size: cover;*/
+/*        height: 100vh;*/
+/*    }*/
+/*}*/
+
+@media only screen and (max-width: 480px) {
     body {
         background-position: center center;
         background-attachment: fixed;
@@ -20,7 +30,6 @@ body {
         height: 100vh;
     }
 }
-
 /*--------------------------------------------NAV BAR-----------------------------------------*/
 .navbar-custom {
     font-size: 14px;
