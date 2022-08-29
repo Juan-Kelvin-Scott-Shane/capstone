@@ -5,11 +5,12 @@
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div class="grid-container">
     <main class="grid">
-        <article>
+        <article th:each="user : ${users}">
             <a class="card-text" href="/profile">
-            <img class="mini-img" src="/img/juan.png">
+            <img class="mini-img" th:src="${user.profile_img}">
             <div class="info">
-                <h4 class="username-small">JuanoFunk</h4>
+                <h4 class="username-small"><span th:text="${user.getUsername()}"/></h4>
+                <h4 class="username-small"><span th:text="${user.getInstruments()}"/></h4>
                 <div th:each="instrument: ${instruments}">
                 <b>Instrument:</b> &nbsp;&nbsp;<em><span th:text="${instrument.instruments.instName}"></span></em>
                 - <em><span th:text="${instrument.skill}"></span></em> - <em>Genre</em>
