@@ -22,10 +22,6 @@ public class Instrument {
 	@ManyToMany(mappedBy = "instruments")
 	private List<User> user;
 
-
-//	@OneToMany(cascade = CascadeType.ALL,mappedBy = "instruments")
-//	List<Genre> genre;
-
 	public Instrument() {
 	}
 
@@ -77,11 +73,4 @@ public class Instrument {
 		this.proficiencies = proficiencies;
 	}
 
-//	public List<Genre> getGenre() {
-//		return genre;
-//	}
-//
-//	public void setGenre(List<Genre> genre) {
-//		this.genre = genre;
-//	}
 }

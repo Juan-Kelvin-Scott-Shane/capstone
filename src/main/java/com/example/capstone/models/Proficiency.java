@@ -70,4 +70,12 @@ public class Proficiency {
     public void setInstruments(Instrument instruments) {
         this.instruments = instruments;
     }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
 }
