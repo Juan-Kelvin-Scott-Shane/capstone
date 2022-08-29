@@ -20,6 +20,7 @@ To: <span th:text="${}"></span>
 <input type="hidden" id="receiver" name="code" th:value="${}"><br>
 <button style="border-radius: 25px" type="submit" value="submit">Send</button>
 </form>
+<br>
 <div class="alert alert-danger" th:if="${param.error}" th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
 	Your message was not sent, please try again.<br />
 	Reason: <span th:text="${errorMsg}">Wrong input!</span>
