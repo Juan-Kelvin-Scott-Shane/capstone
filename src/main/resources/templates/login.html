@@ -19,9 +19,9 @@
 		</div>
 		<form th:action="@{/login}"method="post">
 			<label for="username">User Name:</label><br>
-			<input type="text" id="username" name="username" placeholder="User Name" required><br>
+			<input class="login-input" type="text" id="username" name="username" placeholder="User Name" required><br>
 			<br><label for="password">Password:</label><br>
-			<input type="password" id="password" name="password" placeholder="Password"><br>
+			<input class="login-input" type="password" id="password" name="password" placeholder="Password"><br>
 			<br> <button style="border-radius: 25px" type="submit" value="submit">Submit</button><br>
 			<br><a style="text-align: center" href="/resetpw">Forgot your password?</a>
 		</form>

@@ -19,6 +19,10 @@ public class Proficiency {
     @JoinColumn(name="instrum_id")
     private Instrument instruments;
 
+    @ManyToOne
+    @JoinColumn(name ="genre_id")
+    private Genre genre;
+
     public Proficiency(long id, String skill, User user, Instrument instruments) {
         this.id = id;
         this.skill = skill;
