@@ -50,6 +50,9 @@ public class User {
     @Column(name = "enabled", nullable = false)
     private boolean enabled;
 
+    @Column(nullable = false)
+    private String userType;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Proficiency> proficiencies;
 
@@ -58,16 +61,13 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "instrum_id")})
     private List<Instrument> instruments;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_genres",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "genre_id")})
-    private List<Genre> genres;
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "user_genres",
+//            joinColumns = {@JoinColumn(name = "user_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "genre_id")})
+//    private List<Genre> genres;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name= "user_events",joinColumns = {@JoinColumn(name="user_id")},
-            inverseJoinColumns = {@JoinColumn(name="event_id")})
-    private List<Event> events;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Event> hostedEvents;
@@ -96,12 +96,13 @@ public class User {
         enabled = copy.enabled;
         proficiencies = copy.proficiencies;
         instruments  = copy.instruments;
-        genres = copy.genres;
+//        genres = copy.genres;
+        userType = copy.userType;
 
 
     }
 
-    public User(long id, String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String social_media, String verificationCode, boolean enabled, List<Proficiency> proficiencies, List<Instrument> instruments, List<Genre> genres) {
+    public User(long id, String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String social_media, String verificationCode, boolean enabled, String userType, List<Proficiency> proficiencies, List<Instrument> instruments, List<Event> hostedEvents) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -116,9 +117,10 @@ public class User {
         this.social_media = social_media;
         this.verificationCode = verificationCode;
         this.enabled = enabled;
+        this.userType = userType;
         this.proficiencies = proficiencies;
         this.instruments = instruments;
-        this.genres = genres;
+        this.hostedEvents = hostedEvents;
     }
 
     public User(String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String social_media, String verificationCode, boolean enabled, List<Proficiency> proficiencies, List<Instrument> instruments, List<Genre> genres) {
@@ -137,7 +139,7 @@ public class User {
         this.enabled = enabled;
         this.proficiencies = proficiencies;
         this.instruments = instruments;
-        this.genres = genres;
+//        this.genres = genres;
     }
 
     public User(String firstName, String lastName, String username, String email, String password) {
@@ -237,14 +239,14 @@ public class User {
         this.instruments = instruments;
     }
 
-    public List<Genre> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(List<Genre> genres) {
-        this.genres = genres;
-
-    }
+//    public List<Genre> getGenres() {
+//        return genres;
+//    }
+//
+//    public void setGenres(List<Genre> genres) {
+//        this.genres = genres;
+//
+//    }
 
     public List<Proficiency> getProficiencies() {
         return proficiencies;
@@ -285,4 +287,21 @@ public class User {
     public void setVerificationCode(String verificationCode) {
         this.verificationCode = verificationCode;
     }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public List<Event> getHostedEvents() {
+        return hostedEvents;
+    }
+
+    public void setHostedEvents(List<Event> hostedEvents) {
+        this.hostedEvents = hostedEvents;
+    }
+
 }
