@@ -52,7 +52,7 @@
         <div class="skills">
             <div th:each="instrument: ${instruments}">
                 <b>Instrument:</b> &nbsp;&nbsp;<em><span th:text="${instrument.instruments.instName}"></span></em>
-                - <em><span th:text="${instrument.skill}"></span></em> - <em>Genre</em>
+                - <em><span th:text="${instrument.skill + ' - ' + instrument.genre.title}"></span></em>
                 <br><br>
             </div>
         </div>

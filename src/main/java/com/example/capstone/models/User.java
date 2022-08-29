@@ -61,13 +61,6 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "instrum_id")})
     private List<Instrument> instruments;
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "user_genres",
-//            joinColumns = {@JoinColumn(name = "user_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "genre_id")})
-//    private List<Genre> genres;
-
-
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Event> hostedEvents;
