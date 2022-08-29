@@ -17,23 +17,26 @@ public class Genre {
 	@JoinTable(name="event_genre",joinColumns = {@JoinColumn(name="event_id")},inverseJoinColumns = {@JoinColumn(name="genre_id")})
     private Event event;
 
-    @ManyToMany(mappedBy = "genres")
-	private List<User> user;
+//    @ManyToMany(mappedBy = "genres")
+//	private List<User> user;
+
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "genre")
+	private List<Proficiency>proficiencies;
+
 
 	public Genre() {
 	}
 
-	public Genre(Long id, String title, Event event, List<User> user) {
+
+	public Genre(Long id, String title, Event event, List<Proficiency> proficiencies) {
 		this.id = id;
 		this.title = title;
 		this.event = event;
-		this.user = user;
+		this.proficiencies = proficiencies;
 	}
 
-	public Genre(String title, Event event, List<User> user) {
+	public Genre(String title) {
 		this.title = title;
-		this.event = event;
-		this.user = user;
 	}
 
 	public Long getId() {
@@ -60,11 +63,26 @@ public class Genre {
 		this.event = event;
 	}
 
-	public List<User> getUser() {
-		return user;
+	public List<Proficiency> getProficiencies() {
+		return proficiencies;
 	}
 
-	public void setUser(List<User> user) {
-		this.user = user;
+	public void setProficiencies(List<Proficiency> proficiencies) {
+		this.proficiencies = proficiencies;
 	}
+	//	public List<User> getUser() {
+//		return user;
+//	}
+
+//	public void setUser(List<User> user) {
+//		this.user = user;
+//	}
+
+//	public Instrument getInstrument() {
+//		return instrument;
+//	}
+//
+//	public void setInstrument(Instrument instrument) {
+//		this.instrument = instrument;
+//	}
 }

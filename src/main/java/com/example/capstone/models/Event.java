@@ -36,14 +36,16 @@ public class Event {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
     private List<Genre> genres;
-    @ManyToMany(mappedBy = "events")
-    List<User> users;
+//    @ManyToMany(mappedBy = "events")
+//    List<User> users;
     @ManyToOne
     @JoinColumn(name = "owner_id")
     User owner;
 
     public Event() {
     }
+
+
 
     public Event(String title, String description, String location, String date, String time) {
         this.title = title;
@@ -53,10 +55,15 @@ public class Event {
         this.time=time;
     }
 
-    public Event(String title, String description, String location) {
+    public Event(long id, String title, String description, String location, String date, String time, List<Genre> genres, User owner) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.location = location;
+        this.date = date;
+        this.time = time;
+        this.genres = genres;
+        this.owner = owner;
     }
 
     public long getId() {
@@ -115,13 +122,13 @@ public class Event {
         this.genres = genres;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
 
     public User getOwner() {
         return owner;
