@@ -166,6 +166,25 @@ body {
     z-index: 1;
 }
 
+.profile-form {
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    color: white;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    background: none;
+}
+
+.profile-input {
+    border: none;
+    background-color: transparent;
+    color: white;
+    width: 80%;
+    text-wrap: normal;
+    font-style: italic;
+}
+
 .profile-info{
     background: #1F3445;
     align-items: center;
@@ -327,23 +346,31 @@ form {
     font-size: 16px;
     width: 450px;
     text-align: center;
+    background: none;
 }
 
 /*---------------input and submit button styles, can use for all forms--------*/
-input {
+.event-input {
     text-align: center;
     border-radius: 25px;
     width: 60%;
 }
 
-.createEvent-form{
-    text-align: right;
-    margin-right: 18px;
+.login-input{
+    text-align: center;
+    border-radius: 25px;
+    width: 60%;
 }
 
+.register-input{
+    text-align: center;
+    border-radius: 25px;
+    width: 60%;
 
-input[type=text]:focus {
-    background-color: lightblue;
+}
+
+.createEvent-form{
+    text-align: center;
 }
 
 button {
