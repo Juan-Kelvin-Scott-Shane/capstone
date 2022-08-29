@@ -130,32 +130,6 @@ body {
     border-bottom: #f1f1f1 solid 1px;
 }
 
-.media{
-    margin: 10px;
-    padding: 16px;
-}
-
-.skills-header{
-    margin-bottom: 30px;
-    background: #1F3445;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    border-bottom: #f1f1f1 solid 1px;
-}
-
-.skills{
-    background: #1F3445;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    padding: 20px;
-    height: 400px;
-    border: #f1f1f1 solid 2px;
-}
-
 .profile-photo {
     margin-top: 5px;
     align-items: center;
@@ -200,6 +174,34 @@ body {
     height: 150px;
     width: 150px;
 }
+
+
+.media{
+    margin: 10px;
+    padding: 16px;
+}
+
+.skills-header{
+    margin-bottom: 30px;
+    background: #1F3445;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-bottom: #f1f1f1 solid 1px;
+}
+
+.skills{
+    background: #1F3445;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 20px;
+    height: 400px;
+    border: #f1f1f1 solid 2px;
+}
+
 
 .edit-button{
     color: white;
