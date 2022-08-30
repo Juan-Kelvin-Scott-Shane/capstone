@@ -10,25 +10,19 @@
 <div class="container-bio">
     <div class="bio-card">
         <div class="profile-header">
-            <h3>Profile Info</h3>&nbsp;&nbsp;&nbsp;<a style="color: #71C3EA" href="/profile"><i class="fa-solid fa-gear"></i></a>
+            <h3>Profile Info</h3>
         </div>
         <div class="profile-info">
-            <form class="profile-form" th:action="@{/profile}" th:method="post">
-                <label th:for="name">Name:</label>
-                <input class="profile-input" type="text" th:id="name" th:name="name" disabled th:value="${user.getFirstName() + ' ' + user.getLastName()}"/><br>
-                <br><label th:for="city">City:</label>
-                <input class="profile-input" type="text" th:id="city" th:name="city" disabled th:value="${user.getCity()}"/><br>
-                <br><label th:for="state">State</label>
-                <input class="profile-input" type="text" th:id="state" th:name="state" disabled th:value="${user.getState()}"/><br>
-                <br><label th:for="email">Email:</label>
-                <input class="profile-input" type="text" th:id="email" th:name="email" disabled th:value="${user.getEmail()}" sec:authorize="isAuthenticated()"/><br>
-            </form>
+            <h5>Name: <span th:text="${user.getFirstName() + ' ' + user.getLastName()}"/></h5>
+            <h5>City: <span th:text="${user.getCity()}"/></h5>
+            <h5>State: <span th:text="${user.getState()}"/></h5>
+            <h5>Email: <span th:text="${user.getEmail()}" sec:authorize="isAuthenticated()"/><span sec:authorize="!isAuthenticated()">Please <a th:href="@{/login}">login</a> to contact this user</span></h5>
         </div>
     </div>
     <div class="bio-card">
         <div class="profile-top">
             <img class="profile-photo" th:src="${user.getProfile_img()}">
-            <a style="color: #71C3EA" href="/profile"><i class="fa-solid fa-gear"></i></a></div>
+        </div>
         <div class="user-title"><b><i><span th:text="${user.getUsername()}"/></i></b></div>
         <br>
         <div class="description"><span th:text="${user.getDescription()}"/></div>
@@ -45,14 +39,14 @@
     </div>
     <div class="bio-card">
         <div class="skills-header">
-            <h3>Skills</h3>&nbsp;&nbsp;&nbsp;<a style="color: #71C3EA" href="/profile"><i class="fa-solid fa-gear"></i></a>
+            <h3>Skills</h3>
         </div>
         <div class="skills">
             <b>Instruments:</b>
-            <br>
+            <br><br>
             <div th:each="instrument: ${user.getProficiencies()}">
                 <em><span th:text="${instrument.instruments.instName + ' - ' + instrument.skill + ' - ' + instrument.genre.title}"></span></em>
-                <br><br>
+                <br>
             </div>
         </div>
     </div>
