@@ -24,10 +24,6 @@ public class HomeController {
     @GetMapping("/browse")
     public String browse(Model model){
         model.addAttribute("users", userDao.findAll());
-
-       // model.addAttribute("instruments", user.getInstruments());
-        //User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        //model.addAttribute("instruments", userDao.getById(currentUser.getId()).getProficiencies());
         return "browse";
     }
     @GetMapping("/about")

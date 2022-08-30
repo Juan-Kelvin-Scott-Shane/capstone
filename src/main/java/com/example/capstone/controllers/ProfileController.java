@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
@@ -25,8 +27,14 @@ public class ProfileController {
         return "profile";
     }
 
-    @GetMapping("/profile/{id}/edit")
-    public String editProfile(Model model,@PathVariable long id){
-        return"profile";
+    @RequestMapping(path = "/profile/{username}", method = RequestMethod.GET)
+    public String postPage(@PathVariable String username, Model model) {
+        model.addAttribute("user", userDao.findByUsername(username));
+        return "usrprofiles";
     }
+
+//    @GetMapping("/profile/{id}/edit")
+//    public String editProfile(Model model,@PathVariable long id){
+//        return"profile";
+//    }
 }
