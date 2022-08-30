@@ -11,7 +11,7 @@ body {
 }
 
 /*----------------created break point to move to a hamburger button and resize photo-----------*/
-@media (min-width: 710px) {
+@media only screen and (max-width: 480px) {
     body {
         background-position: center center;
         background-attachment: fixed;
