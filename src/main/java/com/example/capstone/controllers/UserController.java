@@ -135,4 +135,14 @@ public class UserController {
 		}
 	}
 
+	@PostMapping("/contact")
+	public String userContact(User user, HttpServletRequest request, Model model) throws MessagingException, UnsupportedEncodingException {
+
+		model.addAttribute("subject", request.getParameter("subject"));
+		model.addAttribute("body", request.getParameter("msgbody"));
+		User toUser = userDao.findByUsername(request.getParameter("toUser"));
+		service.send(toUser, getSiteURL(request), model);
+			return "contact-success";
+	}
+
 }
