@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head th:replace="partials/fragment :: head('Your Profile')"></head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="partials/fragment :: navbar"></nav>
+<div class="container-bio">
+    <div class="bio-card">
+        <div class="profile-header">
+            <h3>Profile Info</h3>
+        </div>
+        <div class="profile-info">
+            <h5>Name: <span th:text="${user.getFirstName() + ' ' + user.getLastName()}"/></h5>
+            <h5>City: <span th:text="${user.getCity()}"/></h5>
+            <h5>State: <span th:text="${user.getState()}"/></h5>
+            <h5>Email: <span th:text="${user.getEmail()}" sec:authorize="isAuthenticated()"/><span sec:authorize="!isAuthenticated()">Please <a th:href="@{/login}">login</a> to contact this user</span></h5>
+        </div>
+    </div>
+    <div class="bio-card">
+        <div class="profile-top">
+            <img class="profile-photo" th:src="${user.getProfile_img()}">
+        </div>
+        <div class="user-title"><b><i><span th:text="${user.getUsername()}"/></i></b></div>
+        <br>
+        <div class="description"><span th:text="${user.getDescription()}"/></div>
+        <br>
+        <div class="media">
+            <b>Social Media:</b><br>
+            <a th:href="@{|${user.getSocial_media()}|}" target="_blank"><span
+                    th:text="${user.getSocial_media()}"/></a>
+            <br><br>
+            <b>YouTube Page:</b><br>
+            <a th:href="@{|${user.getYoutube()}|}" target="_blank"><span
+                    th:text="${user.getYoutube()}"/></a>
+        </div>
+    </div>
+    <div class="bio-card">
+        <div class="skills-header">
+            <h3>Skills</h3>
+        </div>
+        <div class="skills">
+            <b>Instruments:</b>
+            <br><br>
+            <div th:each="instrument: ${user.getProficiencies()}">
+                <em><span th:text="${instrument.instruments.instName + ' - ' + instrument.skill + ' - ' + instrument.genre.title}"></span></em>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

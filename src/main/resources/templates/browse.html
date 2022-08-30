@@ -6,7 +6,7 @@
 <div class="grid-container">
     <main class="grid">
         <article th:each="user : ${users}">
-            <a class="card-text" href="/profile">
+            <a class="card-text" th:href="'/profile/' + ${user.getUsername()}">
             <img class="mini-img" th:src="${user.profile_img}">
             <div class="info">
                 <h4 class="username-small"><span th:text="${user.getUsername()}"/></h4>
