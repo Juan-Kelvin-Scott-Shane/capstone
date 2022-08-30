@@ -17,16 +17,10 @@ public class Genre {
 	@JoinTable(name="event_genre",joinColumns = {@JoinColumn(name="event_id")},inverseJoinColumns = {@JoinColumn(name="genre_id")})
     private Event event;
 
-//    @ManyToMany(mappedBy = "genres")
-//	private List<User> user;
-
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "genre")
 	private List<Proficiency>proficiencies;
-
-
 	public Genre() {
 	}
-
 
 	public Genre(Long id, String title, Event event, List<Proficiency> proficiencies) {
 		this.id = id;
@@ -70,19 +64,5 @@ public class Genre {
 	public void setProficiencies(List<Proficiency> proficiencies) {
 		this.proficiencies = proficiencies;
 	}
-	//	public List<User> getUser() {
-//		return user;
-//	}
 
-//	public void setUser(List<User> user) {
-//		this.user = user;
-//	}
-
-//	public Instrument getInstrument() {
-//		return instrument;
-//	}
-//
-//	public void setInstrument(Instrument instrument) {
-//		this.instrument = instrument;
-//	}
 }

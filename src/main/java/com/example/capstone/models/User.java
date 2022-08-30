@@ -56,11 +56,6 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Proficiency> proficiencies;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_instrum",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "instrum_id")})
-    private List<Instrument> instruments;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Event> hostedEvents;
@@ -87,14 +82,8 @@ public class User {
         social_media = copy.social_media;
         verificationCode = copy.verificationCode;
         enabled = copy.enabled;
-        proficiencies = copy.proficiencies;
-        instruments  = copy.instruments;
-//        genres = copy.genres;
         userType = copy.userType;
-
-
     }
-
     public User(long id, String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String social_media, String verificationCode, boolean enabled, String userType, List<Proficiency> proficiencies, List<Instrument> instruments, List<Event> hostedEvents) {
         this.id = id;
         this.firstName = firstName;
@@ -112,7 +101,6 @@ public class User {
         this.enabled = enabled;
         this.userType = userType;
         this.proficiencies = proficiencies;
-        this.instruments = instruments;
         this.hostedEvents = hostedEvents;
     }
 
@@ -131,8 +119,7 @@ public class User {
         this.verificationCode = verificationCode;
         this.enabled = enabled;
         this.proficiencies = proficiencies;
-        this.instruments = instruments;
-//        this.genres = genres;
+
     }
 
     public User(String firstName, String lastName, String username, String email, String password) {
@@ -223,23 +210,6 @@ public class User {
     public void setProfile_img(String profile_img) {
         this.profile_img = profile_img;
     }
-
-    public List<Instrument> getInstruments() {
-        return instruments;
-    }
-
-    public void setInstruments(List<Instrument> instruments) {
-        this.instruments = instruments;
-    }
-
-//    public List<Genre> getGenres() {
-//        return genres;
-//    }
-//
-//    public void setGenres(List<Genre> genres) {
-//        this.genres = genres;
-//
-//    }
 
     public List<Proficiency> getProficiencies() {
         return proficiencies;

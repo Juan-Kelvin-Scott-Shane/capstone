@@ -1,13 +1,5 @@
 package com.example.capstone.models;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -36,16 +28,13 @@ public class Event {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
     private List<Genre> genres;
-//    @ManyToMany(mappedBy = "events")
-//    List<User> users;
+
     @ManyToOne
     @JoinColumn(name = "owner_id")
     User owner;
 
     public Event() {
     }
-
-
 
     public Event(String title, String description, String location, String date, String time) {
         this.title = title;
@@ -121,14 +110,6 @@ public class Event {
     public void setGenres(List<Genre> genres) {
         this.genres = genres;
     }
-
-//    public List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(List<User> users) {
-//        this.users = users;
-//    }
 
     public User getOwner() {
         return owner;

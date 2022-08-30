@@ -19,24 +19,19 @@ public class Instrument {
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "instruments")
 	private List<Proficiency>proficiencies;
 
-	@ManyToMany(mappedBy = "instruments")
-	private List<User> user;
-
 	public Instrument() {
 	}
 
 	public Instrument(Long id, String instName, List<User> user) {
 		this.id = id;
 		this.instName = instName;
-		this.user = user;
+
 	}
 
 	public Instrument(Long id, String instName, List<Proficiency> proficiencies, List<User> user, List<Genre> genre) {
 		this.id = id;
 		this.instName = instName;
 		this.proficiencies = proficiencies;
-		this.user = user;
-//		this.genre = genre;
 	}
 
 	public Long getId() {
@@ -55,15 +50,6 @@ public class Instrument {
 		this.instName = instName;
 	}
 
-
-
-	public List<User> getUser() {
-		return user;
-	}
-
-	public void setUser(List<User> user) {
-		this.user = user;
-	}
 
 	public List<Proficiency> getProficiencies() {
 		return proficiencies;
