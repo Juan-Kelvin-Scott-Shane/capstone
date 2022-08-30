@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <head th:replace="partials/fragment :: head('Your Profile')"></head>
     <meta charset="UTF-8">
@@ -16,7 +17,13 @@
             <h5>Name: <span th:text="${user.getFirstName() + ' ' + user.getLastName()}"/></h5>
             <h5>City: <span th:text="${user.getCity()}"/></h5>
             <h5>State: <span th:text="${user.getState()}"/></h5>
-            <h5>Email: <span th:text="${user.getEmail()}" sec:authorize="isAuthenticated()"/><span sec:authorize="!isAuthenticated()">Please <a th:href="@{/login}">login</a> to contact this user</span></h5>
+<!--            <h5>Contact this user:  <span th:text="${user.getEmail()}" sec:authorize="isAuthenticated()"/><span sec:authorize="!isAuthenticated()">Please <a th:href="@{/login}">login</a> to contact this user</span></h5>-->
+            <h5><span>Contact this user: </span>
+                <form class="form" th:action="@{/profile/contact}" th:method="POST">
+                    <input type="hidden" id="toUser" name="toUser" th:value="${user.getId()}"><br>
+                    <button type="submit"><i class="fa-regular fa-envelope" sec:authorize="isAuthenticated()"></i></button>
+                </form>
+                <span sec:authorize="!isAuthenticated()">Please <a th:href="@{/login}">login</a> to contact this user</span></h5>
         </div>
     </div>
     <div class="bio-card">

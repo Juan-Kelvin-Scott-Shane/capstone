@@ -6,6 +6,7 @@ import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 
 @Service
@@ -151,21 +153,31 @@ public class UserServices {
 		}
 	}
 
+	public void send(User user, String siteURL, Model model) throws UnsupportedEncodingException, MessagingException {
+		model.getAttribute("subject");
+		model.getAttribute("body");
+		sendContactEmail(user, model, siteURL);
+	}
+
 	private void sendContactEmail(User user, Model model, String siteURL) throws MessagingException, UnsupportedEncodingException {
 		//build email message content using the passed user object and URL from the above register function
 		String toAddress = user.getEmail();
 		String fromAddress = "byob@buildyourownband.com";
 		String senderName = "BYOB";
 		String subject = "Another user would like to contact you.";
-		String content = "Dear [[name_receiver]],"
+		String content = "Dear [[name]],"
 				+ "<br>"
-				+ "[[name]]"
 				+ "<br>"
-				+ "<h3><a href=\"[[URL]]\" target=\"_self\">Click to RESET your password</a></h3>"
+				+ "The user: [[from_name]] would like to contact you. Below is their message"
 				+ "<br>"
-				+ "You can also copy/paste this link directly into your browser:"
 				+ "<br>"
-				+ "[[URL]]"
+				+ "<h3>[[subject]]</h3>"
+				+ "<br>"
+				+ "<em>[[body]]</em>"
+				+ "<br>"
+				+ "<br>"
+				+ "If you wish to respond, please email them directly at: [[email]]"
+				+ "<br>"
 				+ "<br>"
 				+ "Thank you,"
 				+ "<br>"
@@ -175,10 +187,12 @@ public class UserServices {
 		helper.setFrom(fromAddress, senderName);
 		helper.setTo(toAddress);
 		helper.setSubject(subject);
-
 		content = content.replace("[[name]]", user.getUsername());
-		String verifyURL = siteURL + "/verifyreset?code=" + user.getVerificationCode();
-		content = content.replace("[[URL]]", verifyURL);
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		content = content.replace("[[from_name]]", currentUser.getUsername());
+		content = content.replace("[[subject]]", String.valueOf(model.getAttribute("subject")));
+		content = content.replace("[[body]]", String.valueOf(model.getAttribute("body")));
+		content = content.replace("[[email]]", currentUser.getEmail());
 		helper.setText(content, true);
 		//send message, credentials in application.properties
 		mailSender.send(message);
