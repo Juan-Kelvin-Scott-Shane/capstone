@@ -69,4 +69,10 @@ public class EventController {
         eventDao.save(event);
         return "redirect:/events";
     }
+    @GetMapping("/events/{id}/edit")
+    public String editPost(Model model, @PathVariable long id){
+
+        model.addAttribute("event",eventDao.getById(id));
+        return "create-event";
+    }
 }
