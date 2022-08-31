@@ -10,12 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -73,13 +68,14 @@ public class EventController {
     public String editPost(Model model, @PathVariable long id){
         Event event = eventDao.getById(id);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(event.getOwner());
         if(currentUser.getId() == event.getOwner().getId()){
             model.addAttribute("event",eventDao.getById(id));
+            model.addAttribute("matches",true);
         }
         else{
             return "redirect:/events";
         }
+
         return "create-event";
     }
 }

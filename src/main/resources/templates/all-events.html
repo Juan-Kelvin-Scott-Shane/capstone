@@ -14,10 +14,6 @@
 					</div>
 					<div class="event-description">
 						<p><span th:text="${event.description}"/></p>
-						<form class="form" th:action="@{/events/{id}/edit}" th:method="POST"style="margin:0;padding:0;">
-							<button type="button"></button>
-
-						</form>
 					</div>
 				</div>
 				<div class="flip-card-back">
@@ -29,6 +25,12 @@
 						<br>
 						<span th:text="${event.time}"/>
                     </p>
+
+					<form  id="edit" class="form" th:action="@{'/events/'+ ${event.getId()}+'/edit'}" th:method="GET"style="margin:0;padding:0;">
+<!--						<div th:if="${matches}== false">-->
+							<button type="submit" sec:authorize="isAuthenticated()"><i class="fa-solid fa-pen-to-square" sec:authorize="isAuthenticated()"></i></button>
+<!--						</div>-->
+					</form>
 					<form class="form" th:action="@{/profile/contact}" th:method="POST" style="margin: 0; padding: 0">
                         <p>Posted by: <a th:href="'/profile/' + ${event.getOwner().getUsername()}"><span th:text="${event.getOwner().getUsername()}"/></a>
 						<input type="hidden" id="toUser" name="toUser" th:value="${event.getOwner().getId()}">
