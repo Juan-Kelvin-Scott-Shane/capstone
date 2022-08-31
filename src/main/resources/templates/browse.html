@@ -4,6 +4,7 @@
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div class="grid-container">
+    <div class="page-header">Browse All</div>
     <main class="grid">
         <article th:each="user : ${users}">
             <a class="card-text" th:href="'/profile/' + ${user.getUsername()}">

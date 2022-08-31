@@ -4,6 +4,7 @@
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div class="grid-container">
+    <div class="page-header">Events</div>
     <main class="grid">
         <div class="flip-card" th:each="event: ${event}">
             <div class="flip-card-inner">
