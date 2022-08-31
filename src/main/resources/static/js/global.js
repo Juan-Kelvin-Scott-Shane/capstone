@@ -61,7 +61,6 @@
 
 	//File Uploader
 function pickFile(){
-		const clientApi = /*[[${fileApi}]]*/ 'default';
 	let client = filestack.init(clientApi);
 	client.pick({
 		//launching image picker and adding the restrictions of one file that is of an image file type

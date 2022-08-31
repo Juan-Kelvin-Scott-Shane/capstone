@@ -24,7 +24,7 @@ public class EventController {
     private final EventRepository eventDao;
     private final UserRepository userDao;
 
-    @Value("${FILEPICKER_API_KEY}")
+    @Value("${spring.file.api}")
     private String fileApi;
 
     public EventController(EventRepository eventDao, UserRepository userDao) {
@@ -47,10 +47,12 @@ public class EventController {
     @GetMapping("/events/create")
     public String showCreationForm(Model model){
         model.addAttribute("event",new Event());
+        model.addAttribute("fileApi", fileApi);
         return "create-event";
     }
+
     @PostMapping("/events/create")
-    public String create(@ModelAttribute Event event, @RequestParam String date,@RequestParam String time, Model model) throws ParseException {
+    public String create(@ModelAttribute Event event, @RequestParam String date,@RequestParam String time) throws ParseException {
         String[] dateParts = date.split("-");
         String year = dateParts[0];
         String month = dateParts[1];
@@ -63,7 +65,6 @@ public class EventController {
         event.setTime(finalTime);
         event.setDate(finalDate);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("fileApi", fileApi);
         event.setOwner(currentUser);
         eventDao.save(event);
         return "redirect:/events";
