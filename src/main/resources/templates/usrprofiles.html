@@ -17,7 +17,6 @@
             <h5>Name: <span th:text="${user.getFirstName() + ' ' + user.getLastName()}"/></h5>
             <h5>City: <span th:text="${user.getCity()}"/></h5>
             <h5>State: <span th:text="${user.getState()}"/></h5>
-<!--            <h5>Contact this user:  <span th:text="${user.getEmail()}" sec:authorize="isAuthenticated()"/><span sec:authorize="!isAuthenticated()">Please <a th:href="@{/login}">login</a> to contact this user</span></h5>-->
             <h5><span>Contact this user: </span>
                 <form class="form" th:action="@{/profile/contact}" th:method="POST">
                     <input type="hidden" id="toUser" name="toUser" th:value="${user.getId()}"><br>
@@ -27,32 +26,34 @@
         </div>
     </div>
     <div class="bio-card">
-        <div class="profile-top">
+        <div class="profile-header">
             <img class="profile-photo" th:src="${user.getProfile_img()}">
         </div>
-        <div class="user-title"><b><i><span th:text="${user.getUsername()}"/></i></b></div>
-        <br>
-        <div class="description"><span th:text="${user.getDescription()}"/></div>
-        <br>
-        <div class="media">
-            <b>Social Media:</b><br>
-            <a th:href="@{|${user.getSocial_media()}|}" target="_blank"><span
-                    th:text="${user.getSocial_media()}"/></a>
-            <br><br>
-            <b>YouTube Page:</b><br>
-            <a th:href="@{|${user.getYoutube()}|}" target="_blank"><span
-                    th:text="${user.getYoutube()}"/></a>
+        <div class="profile-info">
+            <div class="user-title"><b><i><span th:text="${user.getUsername()}"/></i></b></div>
+            <br>
+            <div class="description"><span th:text="${user.getDescription()}"/></div>
+            <br>
+            <div class="media">
+                <b>Social Media:</b><br>
+                <a th:href="@{|${user.getSocial_media()}|}" target="_blank"><span
+                        th:text="${user.getSocial_media()}"/></a>
+                <br><br>
+                <b>YouTube Page:</b><br>
+                <a th:href="@{|${user.getYoutube()}|}" target="_blank"><span
+                        th:text="${user.getYoutube()}"/></a>
+            </div>
         </div>
     </div>
     <div class="bio-card">
-        <div class="skills-header">
-            <h3>Skills</h3>
+        <div class="profile-header">
+            <h3>Instruments</h3>
         </div>
-        <div class="skills">
-            <b>Instruments:</b>
-            <br><br>
+        <div class="profile-info">
+            <b><em>Instruments:</em></b>
             <div th:each="instrument: ${user.getProficiencies()}">
-                <em><span th:text="${instrument.instruments.instName + ' - ' + instrument.skill + ' - ' + instrument.genre.title}"></span></em>
+                <em><span
+                        th:text="${instrument.instruments.instName + ' - ' + instrument.skill + ' - ' + instrument.genre.title}"></span></em>
                 <br>
             </div>
         </div>
