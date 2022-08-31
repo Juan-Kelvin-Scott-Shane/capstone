@@ -71,8 +71,15 @@ public class EventController {
     }
     @GetMapping("/events/{id}/edit")
     public String editPost(Model model, @PathVariable long id){
-
-        model.addAttribute("event",eventDao.getById(id));
+        Event event = eventDao.getById(id);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(event.getOwner());
+        if(currentUser.getId() == event.getOwner().getId()){
+            model.addAttribute("event",eventDao.getById(id));
+        }
+        else{
+            return "redirect:/events";
+        }
         return "create-event";
     }
 }
