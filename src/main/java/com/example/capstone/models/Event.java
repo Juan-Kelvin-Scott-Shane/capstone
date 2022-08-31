@@ -1,13 +1,6 @@
 package com.example.capstone.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -26,12 +19,14 @@ public class Event {
     @Column(nullable = false)
     private String location;
 
-
     @Column(nullable = false)
     private String date;
 
     @Column(nullable = false)
     private String time;
+
+    @Column()
+    private String flyer;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
@@ -45,14 +40,23 @@ public class Event {
     public Event() {
     }
 
-
-
     public Event(String title, String description, String location, String date, String time) {
         this.title = title;
         this.description = description;
         this.location = location;
         this.date = date;
         this.time=time;
+    }
+
+    public Event(String title, String description, String location, String date, String time, String flyer, List<Genre> genres, User owner) {
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.date = date;
+        this.time = time;
+        this.flyer = flyer;
+        this.genres = genres;
+        this.owner = owner;
     }
 
     public Event(long id, String title, String description, String location, String date, String time, List<Genre> genres, User owner) {
@@ -122,13 +126,13 @@ public class Event {
         this.genres = genres;
     }
 
-//    public List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(List<User> users) {
-//        this.users = users;
-//    }
+    public String getFlyer() {
+        return flyer;
+    }
+
+    public void setFlyer(String flyer) {
+        this.flyer = flyer;
+    }
 
     public User getOwner() {
         return owner;

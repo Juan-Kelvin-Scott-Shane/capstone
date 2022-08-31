@@ -4,6 +4,7 @@ import com.example.capstone.models.Event;
 import com.example.capstone.models.User;
 import com.example.capstone.repositories.EventRepository;
 import com.example.capstone.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class EventController {
     @GetMapping("/events")
     public String showEvent(Model model){
         List<Event>all =  eventDao.findAll();
-        model.addAttribute("event", all);
+        model.addAttribute("events", all);
         return "all-events";
 
     }
@@ -58,6 +59,8 @@ public class EventController {
         System.out.println(finalDate);
         event.setTime(finalTime);
         event.setDate(finalDate);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        event.setOwner(currentUser);
         eventDao.save(event);
         return "redirect:/events";
     }

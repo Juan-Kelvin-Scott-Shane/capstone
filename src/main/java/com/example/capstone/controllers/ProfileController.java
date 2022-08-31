@@ -36,6 +36,7 @@ public class ProfileController {
 	public String userContact(HttpServletRequest request, Model model) {
 		User toUser = userDao.getById(Long.valueOf(request.getParameter("toUser")));
 		model.addAttribute("toUser", toUser);
+		model.addAttribute("subject", request.getParameter("subject"));
 		return "contact";
 	}
 
