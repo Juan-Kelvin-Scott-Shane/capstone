@@ -77,4 +77,9 @@
         }
     }
 
+    // window.onload = function() {
+    //     let btn = document.getElementById("filePicker");
+    //     btn.onclick = pickFile;
+    // }
+
 }())
