@@ -410,10 +410,11 @@ button {
 
 .grid {
     display: grid;
+    justify-content: space-around;
+    align-content: space-between;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 1rem;
     grid-auto-rows: 310px;
-    align-items: center;
 }
 
 .grid > article {
@@ -427,6 +428,10 @@ button {
     border-top: 2px solid rgba(255, 255, 255, 0.5);
     border-left: 2px solid rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(6px);
+}
+
+article{
+    margin: 30px;
 }
 
 .card-text {
@@ -447,6 +452,7 @@ button {
 
 .page-header {
     margin-top: 10px;
+    margin-bottom: 40px;
     color: white;
     text-shadow: 4px 4px 8px black;
     text-align: center;
@@ -532,3 +538,15 @@ button {
     transform: rotateY(180deg);
 }
 
+.w3-sidebar {
+    background: #1F3445!important;
+}
+
+.w3-button{
+    margin-top: 20px;
+}
+
+.w3-white{
+    background: none;
+    color: white;
+}
