@@ -4,28 +4,32 @@
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
 
-<p>Use this form to send a system email.</p>
-<p>NOTE: Your profile's email address will be included as part of this email.</p>
+<p style="color: white">Use this form to send a system email.</p>
+<p style="color: white">NOTE: Your profile's email address will be included as part of this email.</p>
 <hr>
 <br>
-From: <span th:text="${}"></span>
-<br><br>
-To: <span th:text="${}"></span>
+<p style="color: white">From: <span th:text="${#authentication.principal.username}"></span>
+	<br><br>
+	To: <span th:text="${toUser.username}"></span>
+</p>
 <br><br>
 <form class="form" th:action="@{/contact}" th:method="POST">
-    <label th:for="${msgbody}">Body:</label>
-    <br>
-    <textarea cols="80" rows="10" th:name="${msgbody}" th:id="${msgbody}"
-              placeholder="Enter your message body here."></textarea>
-    <input type="hidden" id="sender" name="code" th:value="${}"><br>
-    <input type="hidden" id="receiver" name="code" th:value="${}"><br>
-    <button style="border-radius: 25px" type="submit" value="submit">Send</button>
+	<input type="hidden" id="toUser" name="toUser" th:value="${toUser.username}">
+	<input type="hidden" id="fromUser" name="fromUser" th:value="${#authentication.principal.username}">
+	<label th:for="subject">Subject:</label>
+	<input type="text" th:id="subject" th:name="subject">
+	<br>
+	<label th:for="${msgbody}">Body:</label>
+	<br>
+	<textarea cols="80" rows="5" th:name="msgbody" th:id="msgbody"
+			  placeholder="Enter your message body here."></textarea>
+	<button style="border-radius: 25px" type="submit" value="submit">Send</button>
 </form>
 <br>
 <div class="alert alert-danger" th:if="${param.error}"
-     th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
-    Your message was not sent, please try again.<br/>
-    Reason: <span th:text="${errorMsg}">Wrong input!</span>
+	 th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
+	Your message was not sent, please try again.<br/>
+	Reason: <span th:text="${errorMsg}">Wrong input!</span>
 </div>
 <div th:replace="partials/fragment :: script"></div>
 </body>
