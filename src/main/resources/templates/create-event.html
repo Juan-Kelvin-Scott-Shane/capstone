@@ -36,6 +36,9 @@
 		</form>
 	</div>
 </div>
+<script th:inline="javascript">
+	const clientApi = /*[[${fileApi}]]*/ "";
+</script>
 <div th:replace="partials/fragment :: script"></div>
 </body>
 </html>
