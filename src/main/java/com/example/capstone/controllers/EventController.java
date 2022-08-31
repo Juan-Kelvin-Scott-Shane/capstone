@@ -4,6 +4,7 @@ import com.example.capstone.models.Event;
 import com.example.capstone.models.User;
 import com.example.capstone.repositories.EventRepository;
 import com.example.capstone.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,9 @@ public class EventController {
 
     private final EventRepository eventDao;
     private final UserRepository userDao;
+
+    @Value("${FILEPICKER_API_KEY}")
+    private String fileApi;
 
     public EventController(EventRepository eventDao, UserRepository userDao) {
         this.eventDao = eventDao;
@@ -46,7 +50,7 @@ public class EventController {
         return "create-event";
     }
     @PostMapping("/events/create")
-    public String create(@ModelAttribute Event event, @RequestParam String date,@RequestParam String time) throws ParseException {
+    public String create(@ModelAttribute Event event, @RequestParam String date,@RequestParam String time, Model model) throws ParseException {
         String[] dateParts = date.split("-");
         String year = dateParts[0];
         String month = dateParts[1];
@@ -59,6 +63,7 @@ public class EventController {
         event.setTime(finalTime);
         event.setDate(finalDate);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("fileApi", fileApi);
         event.setOwner(currentUser);
         eventDao.save(event);
         return "redirect:/events";
