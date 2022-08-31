@@ -56,7 +56,6 @@ public class EventController {
         String hour = timeParts[0];
         String minutes= timeParts[1];
         String finalTime = String.format("%s:%s",hour,minutes);
-        System.out.println(finalDate);
         event.setTime(finalTime);
         event.setDate(finalDate);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

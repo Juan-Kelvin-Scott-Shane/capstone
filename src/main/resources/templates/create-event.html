@@ -4,32 +4,40 @@
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div class="container">
-<div class="card">
-    <div class="content">
-        <h1 class="eventCreateTitle">Create your event:</h1>
-    </div>
-    <form th:action="@{/events/create}" th:method="POST" th:object="${event}">
-        <div class="createEvent-form" style="margin-left: 30px">
-            <label for="title">Event Title:</label>
-            <input class="event-input" type="text" id="title" name="title" th:field="*{title}"><br>
-            <br><label for="location">Location: &nbsp;</label>
-            <input class="event-input" type="text" name="location" id="location" th:field="*{location}"><br>
-            <br><label for="date">Event Date:</label>
-            <input class="event-input" id="date" name="date" type="date"><br>
-          <br><label for="time">Event Time:</label>
-            <input class="event-input" id="time" name="time"type="time"><br>
-            <br><label for="description"></label>
-            <textarea name="description" placeholder="A brief description of your event" id="description" rows="4" cols="50" th:field="*{description}"></textarea>
-            <br>
-            <input id="file"  onclick='pickFile()'/>
-            <br>
-            <div class="event-submit-button" style="text-align: center">
-            <button type="submit" style="border-radius: 25px">Submit</button>
-            </div>
-        </div>
+	<div class="card">
+		<div class="content">
+			<h1 class="eventCreateTitle">Create your event:</h1>
+		</div>
+		<form th:action="@{/events/create}" th:method="POST" th:object="${event}">
+			<div class="createEvent-form" style="margin-left: 30px">
+				<label for="title">Event Title:</label>
+				<input class="event-input" type="text" id="title" name="title" th:field="*{title}"><br>
+				<br><label for="location">Location: &nbsp;</label>
+				<input class="event-input" type="text" name="location" id="location" th:field="*{location}"><br>
+				<br><label for="date">Event Date:</label>
+				<input class="event-input" id="date" name="date" type="date"><br>
+				<br><label for="time">Event Time:</label>
+				<input class="event-input" id="time" name="time" type="time"><br>
+				<label for="fileuploaddisplay">Flyer</label>
+				<input class="event-input" type="text" id="fileuploaddisplay" disabled placeholder="Select a file to upload" style="color: white">
+				<input type="hidden" id="fileupload" th:field="*{flyer}">
+<!--				<button id="picker" type="button">Select File</button>-->
+				<button type="BUTTON" id="filePicker" onclick='pickFile()'>Select File</button>
+				<br>
+				<div class="control" id="nameBox"></div>
+				<div class="control" id="urlBox"></div>
+				<br><label for="description"></label>
+				<textarea name="description" placeholder="A brief description of your event" id="description" rows="4"
+						  cols="50" th:field="*{description}"></textarea>
+				<br>
+				<div class="event-submit-button" style="text-align: center">
+					<button type="submit" style="border-radius: 25px">Submit</button>
+				</div>
+			</div>
 
-    </form>
+		</form>
+	</div>
 </div>
-</div>
+<div th:replace="partials/fragment :: script"></div>
 </body>
 </html>
