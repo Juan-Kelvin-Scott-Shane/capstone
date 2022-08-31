@@ -17,7 +17,7 @@
 	<input type="hidden" id="toUser" name="toUser" th:value="${toUser.username}">
 	<input type="hidden" id="fromUser" name="fromUser" th:value="${#authentication.principal.username}">
 	<label th:for="subject">Subject:</label>
-	<input type="text" th:id="subject" th:name="subject">
+	<input type="text" th:id="subject" th:name="subject" th:value="${subject}">
 	<br>
 	<label th:for="${msgbody}">Body:</label>
 	<br>
