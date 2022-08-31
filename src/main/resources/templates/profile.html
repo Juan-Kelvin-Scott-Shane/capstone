@@ -18,20 +18,20 @@
             <h3>Profile Info</h3>&nbsp;&nbsp;&nbsp;<a class="edit-anchor" href="/profile"><i
                 class="fa-solid fa-pen-to-square"></i></a>
         </div>
-            <form class="profile-form" th:action="@{/profile}" th:method="post">
-                <label class="profile-label" th:for="name">Name:</label>
-                <input class="profile-input" type="text" th:id="name" th:name="name" disabled
-                       th:value="${#authentication.principal.firstName + ' ' + #authentication.principal.lastName}"/><br>
-                <br><label class="profile-label" th:for="city">City:</label>
-                <input class="profile-input" type="text" th:id="city" th:name="city" disabled
-                       th:value="${#authentication.principal.city}"/><br>
-                <br><label class="profile-label" th:for="state">State</label>
-                <input class="profile-input" type="text" th:id="state" th:name="state" disabled
-                       th:value="${#authentication.principal.state}"/><br>
-                <br><label class="profile-label" th:for="email">Email:</label>
-                <input class="profile-input" type="text" th:id="email" th:name="email" disabled
-                       th:value="${#authentication.principal.email}"/><br>
-            </form>
+        <form class="profile-form" th:action="@{/profile}" th:method="post">
+            <label class="profile-label" th:for="name">Name:</label>
+            <input class="profile-input" type="text" th:id="name" th:name="name" disabled
+                   th:value="${#authentication.principal.firstName + ' ' + #authentication.principal.lastName}"/><br>
+            <br><label class="profile-label" th:for="city">City:</label>
+            <input class="profile-input" type="text" th:id="city" th:name="city" disabled
+                   th:value="${#authentication.principal.city}"/><br>
+            <br><label class="profile-label" th:for="state">State</label>
+            <input class="profile-input" type="text" th:id="state" th:name="state" disabled
+                   th:value="${#authentication.principal.state}"/><br>
+            <br><label class="profile-label" th:for="email">Email:</label>
+            <input class="profile-input" type="text" th:id="email" th:name="email" disabled
+                   th:value="${#authentication.principal.email}"/><br>
+        </form>
     </div>
     <div class="bio-card">
         <div class="profile-header"><img class="profile-photo" th:src="${#authentication.principal.profile_img}">&nbsp;&nbsp;&nbsp;<a
@@ -47,7 +47,7 @@
                 <a th:href="@{|${#authentication.principal.social_media}|}" target="_blank">
                     <input style="color: cornflowerblue; text-decoration: underline" type="url" class="profile-input"
                            name="media" disabled
-                           th:value="${#authentication.principal.social_media}"/></a><br>
+                           th:value="${#authentication.principal.social_media}"/><br></a>
                 <label class="profile-label">Youtube:</label>
                 <a th:href="@{|${#authentication.principal.youtube}|}" target="_blank">
                     <input style="color: cornflowerblue; text-decoration: underline" type="url"
@@ -61,15 +61,74 @@
             <h3>Instruments</h3>&nbsp;&nbsp;&nbsp;<a class="edit-anchor" href="/profile"><i
                 class="fa-solid fa-pen-to-square"></i></a>
         </div>
-            <form class="profile-form" th:action="@{/profile}" th:method="post">
-                <div th:each="instrument: ${instruments}">
-                    <b>Instrument:</b> &nbsp;&nbsp;<em><span
-                        th:text="${instrument.instruments.instName}"></span></em>
-                    - <em><span th:text="${instrument.skill + ' - ' + instrument.genre.title}"></span></em>
-                    <br><br>
-                </div>
-            </form>
+        <div class="profile-info">
+        <table class="instrument-table">
+        <thead>
+        <tr>
+            <th>Instrument</th>
+            <th>Proficiency</th>
+            <th>Genre</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:each="instrument: ${instruments}">
+            <tr>
+                <td th:text="${instrument.instruments.instName}"></td>
+                <td th:text="${instrument.skill}"></td>
+                <td th:text="${instrument.genre.title}"></td>
+            </tr>
+        </div>
+        </tbody>
+        </table>
+        </div>
     </div>
 </div>
 </body>
 </html>
+
+
+<!--        <form class="profile-form" th:action="@{/profile}" th:method="post">-->
+<!--            <div th:each="instrument: ${instruments}">-->
+<!--                <b>Instrument:</b> &nbsp;&nbsp;<em><span-->
+<!--                    th:text="${instrument.instruments.instName}"></span></em>-->
+<!--                - <em><span th:text="${instrument.skill + ' - ' + instrument.genre.title}"></span></em>-->
+<!--                <br><br>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+
+
+<!--<div class="container">-->
+<!--    <h1 class="my-3 text-center">Products</h1>-->
+<!--    <table class="table">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Product Name</th>-->
+<!--            <th>Price</th>-->
+<!--            <th>Quantity</th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <c:forEach items="${products}" var="product">-->
+<!--            <tr>-->
+<!--                <td>${product.name}</td>-->
+<!--                <td>${product.price}</td>-->
+<!--                <td>${product.quantity} <form action="/products/update" method="post">-->
+<!--                    <input type="hidden" name="quantity+" value="${product.quantity}">-->
+<!--                    <input class="btn-increment" type="submit" value="+">-->
+<!--                    <input type="hidden" name="quantity-" value="${product.quantity}">-->
+<!--                    <input class="btn-decrement" type="submit" value="-">-->
+<!--                </form>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <form action="/products/delete" method="post">-->
+<!--                        <input type="hidden" name="product_id" value="${product.id}">-->
+<!--                        <input class="btn btn-danger btn-sm" type="submit" value="Delete">-->
+<!--                    </form>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </c:forEach>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
