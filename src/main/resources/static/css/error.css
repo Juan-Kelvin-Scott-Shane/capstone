@@ -4,11 +4,6 @@ body {
 	color: aliceblue;
 }
 
-#metal {
-	width: 600px;
-	height: auto;
-}
-
 #tr2 {
 	justify-content: start;
 	align-items: start;
@@ -26,4 +21,16 @@ a:link {
 a:visited {
 	font:8pt/11pt verdana;
 	color:#4e4e4e
+}
+#metal{
+	width: 600px;
+	height: auto;
+}
+
+#tableProps {
+	display: flex;
+	position: relative;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
 }
