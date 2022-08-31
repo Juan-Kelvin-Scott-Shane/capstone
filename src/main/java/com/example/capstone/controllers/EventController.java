@@ -29,6 +29,14 @@ public class EventController {
     @GetMapping("/events")
     public String showEvent(Model model){
         List<Event>all =  eventDao.findAll();
+//        Event event = eventDao.getById(id);
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        boolean matches = false;
+////        if(currentUser.getId() == event.getOwner().getId()){
+////            matches =true;
+////        }
+//        model.addAttribute("matches",matches);
+
         model.addAttribute("events", all);
         return "all-events";
 
@@ -70,12 +78,7 @@ public class EventController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(currentUser.getId() == event.getOwner().getId()){
             model.addAttribute("event",eventDao.getById(id));
-            model.addAttribute("matches",true);
         }
-        else{
-            return "redirect:/events";
-        }
-
         return "create-event";
     }
 }
