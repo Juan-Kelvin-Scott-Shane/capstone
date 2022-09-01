@@ -32,8 +32,8 @@
 					</form>
 					</th:block>
 					<th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
-					<form id="delete" class="form" th:action="@{'/events/'+${event.getId()}}"th:method="POST"style="margin:0;padding:0;">
-						<button type="submit" th:value="*{id}">Delete</button>
+					<form id="delete" class="form" th:action="@{'/events/'+${event.getId()}}"th:method="POST"style="margin:0;padding:0;" onsubmit="return confirm('Do you really want to delete this Event?');">
+						<button type="submit" th:value="*{id}" onclick="validation()">Delete</button>
 					</form>
 					</th:block>
 
@@ -53,5 +53,6 @@
 	</main>
 </div>
 <div th:replace="partials/fragment :: script"></div>
+
 </body>
 </html>

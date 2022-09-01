@@ -85,11 +85,11 @@ public class EventController {
         return "create-event";
     }
 
+
     @PostMapping("/events/{id}")
     public String deletePost(Model model,@PathVariable Long id) {
-        try{
         Event event = eventDao.getById(id);
-            System.out.println(event);
+        try{
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             System.out.println("current user id -->" + currentUser.getId());
             System.out.println("owner id -->" + event.getOwner().getId());
