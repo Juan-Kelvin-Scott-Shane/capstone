@@ -74,7 +74,12 @@
         <tbody>
         <div th:each="instrument: ${instruments}">
             <tr>
-                <td><a href="#"><i class="fa-solid fa-trash-can instHide"> </i></a></td>
+                <form th:action="@{/profile/delinst}" th:method="POST" onsubmit="return confirm('Do you really want to delete this instrument?');">
+                <td>
+                    <input type="hidden" th:name="delinst" th:id="delinst" th:value="${instrument.getId()}"><br>
+                    <a href="#"><button type="submit" class="btn instHide"><i class="fa-solid fa-trash-can instHide"></i></button></a>
+                </td>
+                </form>
                 <td><span th:text="${instrument.instruments.instName}"></span></td>
                 <td th:text="${instrument.skill}"></td>
                 <td th:text="${instrument.genre.title}"></td>
