@@ -62,9 +62,10 @@
         </div>
         <div class="profile-info">
         <table class="instrument-table">
-            <i class="fa-solid fa-pen-to-square" id="addInst"></i>
+           <a href="#"><i class="fa-solid fa-pen-to-square" id="addInst"></i></a>
         <thead>
         <tr>
+            <th></th>
             <th>Instrument</th>
             <th>Proficiency</th>
             <th>Genre</th>
@@ -73,7 +74,8 @@
         <tbody>
         <div th:each="instrument: ${instruments}">
             <tr>
-                <td th:text="${instrument.instruments.instName}"></td>
+                <td><i class="fa-solid fa-trash-can instHide">  </i></td>
+                <td><span th:text="${instrument.instruments.instName}"></span></td>
                 <td th:text="${instrument.skill}"></td>
                 <td th:text="${instrument.genre.title}"></td>
             </tr>
@@ -119,6 +121,7 @@
                         <option value="14">Reggae</option>
                         <option value="15">Indies</option>
                     </select></td>
+                    <td></td>
                 </tr>
                 <tr><td></td><td><button style="border-radius: 25px; font-size: 12px" type="submit" value="submit">Submit</button></td><td></td></tr>
             </form>
