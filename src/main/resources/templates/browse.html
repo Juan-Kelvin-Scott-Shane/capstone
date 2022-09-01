@@ -3,25 +3,68 @@
 <head th:replace="partials/fragment :: head('Browse List')"></head>
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
-    <div class="grid-container">
-        <div class="page-header">Browse All</div>
-        <main class="grid">
-            <article th:each="user : ${users}">
-                <a class="card-text" th:href="'/profile/' + ${user.getUsername()}">
-                    <img class="mini-img" th:src="${user.profile_img}">
-                    <div class="info">
-                        <h4 class="username-small"><span th:text="${user.getUsername()}"/></h4>
-                        <div th:each="instrument: ${user.getProficiencies()}">
-                            <em><span
-                                    th:text="${instrument.instruments.instName + ' - ' + instrument.skill + ' - ' + instrument.genre.title}"></span></em>
-                            <br>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        </main>
+<div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="sidebar-select" style="margin-left: 30px; color: white; position: fixed">
+        <label for="usrType">User Types</label>
+        <br><select   name="usrType" id="usrType">
+        <option value="musician">Musician</option>
+        <option value="band">Band</option>
+        <option value="venue">Venue</option>
+    </select><br>
+        <br><label for="usrInst">Instruments</label>
+       <br><select   name="usrInst" id="usrInst">
+        <option value="1">Guitar</option>
+        <option value="2">Drums</option>
+        <option value="3">Bass</option>
+    </select><br>
+        <br><label for="usrInst">Proficiency</label>
+        <br><select   name="usrProf" id="usrProf">
+        <option value="1">Novice</option>
+        <option value="2">Intermediate</option>
+        <option value="3">Expert</option>
+    </select><br>
+       <br><label for="usrGenre">Genre</label>
+        <br><select   name="usrGenre" id="usrGenre">
+        <option value="1">Grunge</option>
+        <option value="2">Rock</option>
+        <option value="3">R&B</option>
+    </select><br>
+        <br><button type="submit">Search </button>
     </div>
+</div>
+<div class="grid-container">
+    <div class="page-header">Browse All
+        <div class="filter-button">
+            <button class="openbtn" onclick="openNav()">&#9776;</button>
+        </div>
+    </div>
+
+    <section class="grid">
+        <article th:each="user : ${users}">
+            <a class="card-text" th:href="'/profile/' + ${user.getUsername()}">
+                <img class="mini-img" th:src="${user.profile_img}">
+                <div class="info">
+                    <h4 class="username-small"><span th:text="${user.getUsername()}"/></h4>
+                    <div th:each="instrument: ${user.getProficiencies()}">
+                        <em><span
+                                th:text="${instrument.instruments.instName + ' - ' + instrument.skill + ' - ' + instrument.genre.title}"></span></em>
+                        <br>
+                    </div>
+                </div>
+            </a>
+        </article>
+    </section>
+</div>
 <div th:replace="partials/fragment :: script"></div>
+<script>function openNav() {
+    document.getElementById("mySidepanel").style.width = "250px";
+}
+
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+}</script>
 </body>
 </html>
 
