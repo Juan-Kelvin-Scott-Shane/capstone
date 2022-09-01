@@ -90,7 +90,8 @@
         <table class="instrument-table instHide" id="instForm">
             <form th:action="@{/profile/addinst}" th:method="POST" th:object="${newProficiency}">
                 <tr>
-                    <td><select th:id="instruments" th:name="instruments" required style="width: 110px; height: auto; font-size: 12px">
+                    <td>
+                        <select th:id="instruments" th:name="instruments" required style="width: 110px; height: auto; font-size: 12px">
                         <option value="">Instrument</option>
                         <option value="1">Acoustic Guitar</option>
                         <option value="2">Electric Guitar</option>
@@ -101,34 +102,45 @@
                         <option value="7">Trumpet</option>
                         <option value="8">Violin</option>
                         <option value="9">Saxophone</option>
-                    </select></td>
-                    <td><select th:id="skill" th:name="skill" required style="width: 100px; height: auto; font-size: 12px">
-                        <option value="">Proficiency</option>
-                        <option value="Acoustic Guitar">Novice</option>
-                        <option value="Intermediate">Intermediate</option>
-                        <option value="Expert">Expert</option>
-                    </select></td>
-                    <td><select th:id="genre" th:name="genre" required style="width: 90px; height: auto; font-size: 12px">
-                        <option value="">Genre</option>
-                        <option value="1">Rock & Roll</option>
-                        <option value="2">Jazz</option>
-                        <option value="3">Blues</option>
-                        <option value="4">R & B</option>
-                        <option value="5">Pop</option>
-                        <option value="6">Metal</option>
-                        <option value="7">Metal Core</option>
-                        <option value="8">Death Core</option>
-                        <option value="9">Death Metal</option>
-                        <option value="10">Punk</option>
-                        <option value="11">Grunge</option>
-                        <option value="12">Pop Punk</option>
-                        <option value="13">Country</option>
-                        <option value="14">Reggae</option>
-                        <option value="15">Indies</option>
-                    </select></td>
+                    </select>
+                    </td>
+                    <td>
+                        <select th:id="skill" th:name="skill" required style="width: 100px; height: auto; font-size: 12px">
+                            <option value="">Proficiency</option>
+                            <option value="Acoustic Guitar">Novice</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Expert">Expert</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select th:id="genre" th:name="genre" required style="width: 90px; height: auto; font-size: 12px">
+                            <option value="">Genre</option>
+                            <option value="1">Rock & Roll</option>
+                            <option value="2">Jazz</option>
+                            <option value="3">Blues</option>
+                            <option value="4">R & B</option>
+                            <option value="5">Pop</option>
+                            <option value="6">Metal</option>
+                            <option value="7">Metal Core</option>
+                            <option value="8">Death Core</option>
+                            <option value="9">Death Metal</option>
+                            <option value="10">Punk</option>
+                            <option value="11">Grunge</option>
+                            <option value="12">Pop Punk</option>
+                            <option value="13">Country</option>
+                            <option value="14">Reggae</option>
+                            <option value="15">Indies</option>
+                        </select>
+                    </td>
                     <td></td>
                 </tr>
-                <tr><td></td><td><button style="border-radius: 25px; font-size: 12px" type="submit" value="submit">Submit</button></td><td></td></tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button style="border-radius: 25px; font-size: 12px" type="submit" value="submit">Submit</button>
+                    </td>
+                    <td></td>
+                </tr>
             </form>
         </table>
         </div>
