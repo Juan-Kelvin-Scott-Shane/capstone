@@ -613,3 +613,8 @@ button {
     display: flex;
     float: right;
 }
+
+.instHide {
+    display: none !important;
+}
+
