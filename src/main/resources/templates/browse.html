@@ -3,48 +3,24 @@
 <head th:replace="partials/fragment :: head('Browse List')"></head>
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
-<div class="w3-sidebar w3-bar-block w3-dark-grey w3-animate-left" style="display:none" id="mySidebar">
-    <button class="w3-bar-item w3-button w3-large"
-            onclick="w3_close()">Close &times;</button>
-            <select class="filter-choice" style="margin: 5px; ">
-                <option value="0">Instrument</option>
-                <option value="1">Drums</option>
-                <option value="2">Bass</option>
-                <option value="3">Vocals</option>
-                <option value="4">Banjo</option>
-                <option value="5">DJ</option>
-            </select>
-        </div>
-<div>
-    <button class="w3-button w3-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
-</div>
-
-<script>
-    function w3_open() {
-        document.getElementById("mySidebar").style.display = "block";
-    }
-    function w3_close() {
-        document.getElementById("mySidebar").style.display = "none";
-    }
-</script>
-
-<div class="grid-container">
-    <div class="page-header">Browse All</div>
-    <main class="grid">
-        <article th:each="user : ${users}">
-            <a class="card-text" th:href="'/profile/' + ${user.getUsername()}">
-            <img class="mini-img" th:src="${user.profile_img}">
-            <div class="info">
-                <h4 class="username-small"><span th:text="${user.getUsername()}"/></h4>
-                <div th:each="instrument: ${user.getProficiencies()}">
-                    <em><span th:text="${instrument.instruments.instName + ' - ' + instrument.skill + ' - ' + instrument.genre.title}"></span></em>
-                <br>
-                </div>
-            </div>
-            </a>
-        </article>
-    </main>
-</div>
+    <div class="grid-container">
+        <div class="page-header">Browse All</div>
+        <main class="grid">
+            <article th:each="user : ${users}">
+                <a class="card-text" th:href="'/profile/' + ${user.getUsername()}">
+                    <img class="mini-img" th:src="${user.profile_img}">
+                    <div class="info">
+                        <h4 class="username-small"><span th:text="${user.getUsername()}"/></h4>
+                        <div th:each="instrument: ${user.getProficiencies()}">
+                            <em><span
+                                    th:text="${instrument.instruments.instName + ' - ' + instrument.skill + ' - ' + instrument.genre.title}"></span></em>
+                            <br>
+                        </div>
+                    </div>
+                </a>
+            </article>
+        </main>
+    </div>
 <div th:replace="partials/fragment :: script"></div>
 </body>
 </html>

@@ -167,6 +167,7 @@ body {
     font-size: 18px;
     border: #f1f1f1 solid 2px;
     height: 460px;
+    overflow: hidden;
 }
 
 .instrument-table{
@@ -301,7 +302,7 @@ td {
 }
 
 .eventCreateTitle{
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 form {
@@ -538,15 +539,4 @@ article{
     transform: rotateY(180deg);
 }
 
-.w3-sidebar {
-    background: #1F3445!important;
-}
-
-.w3-button{
-    margin-top: 20px;
-}
-
-.w3-white{
-    background: none;
-    color: white;
-}
+/*-------------------Filter Bar--------------------------*/
