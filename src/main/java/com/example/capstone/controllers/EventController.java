@@ -84,4 +84,25 @@ public class EventController {
         }
         return "create-event";
     }
+
+    @PostMapping("/events/{id}")
+    public String deletePost(Model model,@PathVariable Long id) {
+        try{
+        Event event = eventDao.getById(id);
+            System.out.println(event);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            System.out.println("current user id -->" + currentUser.getId());
+            System.out.println("owner id -->" + event.getOwner().getId());
+        if(currentUser.getId() == event.getOwner().getId()) {
+            model.addAttribute("currentUser",currentUser);
+            System.out.println("event id# -->" + id);
+            eventDao.deleteById(id);
+            return "redirect:/events";
+        }
+        }catch(Exception e){
+                System.out.println("Doesn't work");
+            }
+
+        return "all-events";
+    }
 }
