@@ -74,7 +74,7 @@
         <tbody>
         <div th:each="instrument: ${instruments}">
             <tr>
-                <td><i class="fa-solid fa-trash-can instHide">  </i></td>
+                <td><a href="#"><i class="fa-solid fa-trash-can instHide"> </i></a></td>
                 <td><span th:text="${instrument.instruments.instName}"></span></td>
                 <td th:text="${instrument.skill}"></td>
                 <td th:text="${instrument.genre.title}"></td>
