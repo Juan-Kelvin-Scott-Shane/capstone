@@ -97,7 +97,7 @@ body {
 .container .card {
     position: relative;
     width: 600px;
-    height: 700px;
+    height: 650px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     background: rgba(0, 0, 0, 0.5);
@@ -121,6 +121,7 @@ body {
 }
 
 .profile-header{
+    border: white 2px solid;
     font-family: 'Paytone One', sans-serif;
     background: rgba(11, 99, 128, 0.7);
     display: flex;
@@ -130,7 +131,8 @@ body {
     padding: 10px;
     border-bottom: #f1f1f1 solid 1px;
     text-shadow: 2px 2px 4px black;
-    height: 85px;
+    height: 83px;
+    border-radius: 15px;
 }
 
 .profile-photo {
@@ -143,34 +145,24 @@ body {
     z-index: 1;
 }
 
-.profile-form {
-    padding: 24px;
-    margin: 20px;
-    text-align: center;
-    color: #ffffff;
-    align-items: center;
-    justify-content: center;
-    background: rgba(11, 99, 128, 0.7);
-    font-size: 18px;
-    border: #f1f1f1 solid 2px;
-    height: 460px;
-}
 
 .profile-info {
-    padding: 24px;
-    margin: 20px;
+    padding: 5px;
+    margin: 5px;
     text-align: center;
     color: #ffffff;
     align-items: center;
     justify-content: center;
     background: rgba(11, 99, 128, 0.7);
-    font-size: 18px;
+    font-size: 16px;
     border: #f1f1f1 solid 2px;
-    height: 460px;
+    height: 490px;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .instrument-table{
-    border-collapse: separate;
+    /*border-collapse: separate;*/
 }
 
 th {
@@ -232,7 +224,7 @@ td {
 .container-bio .bio-card {
     position: relative;
     width: 425px;
-    height: 74vh;
+    /*height: 74vh;*/
     margin: 10px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
@@ -252,7 +244,6 @@ td {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    z-index: 1;
 }
 
 .container-about .card-about {
@@ -262,7 +253,7 @@ td {
     margin: 20px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
-    background: rgba(0, 0, 0, 0.8);
+    background: #1F3445;
     overflow: auto;
     display: flex;
     border-top: 2px solid rgba(255, 255, 255, 0.5);
@@ -285,12 +276,16 @@ td {
     background: #1F3445;
 }
 
+
+.portrait{
+    width: 148px;
+    height: 148px;
+}
+
 .verbiage {
     padding: 10px;
     text-align: center;
     width: 600px;
-    height: 190px;
-    background: #1F3445;
 }
 
 /*-------------------------login form styles, can make global for registration and edit------*/
@@ -301,22 +296,36 @@ td {
 }
 
 .eventCreateTitle{
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 form {
     color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-family: Arial, serif;
-    font-size: 16px;
     text-align: center;
     background: none;
     text-wrap: normal;
+    width: 450px
 }
 
-input[type="text"] {
-    width: 100%;
+.profile-form {
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    background: rgba(11, 99, 128, 0.7);
+    font-size: 16px;
+    border: #f1f1f1 solid 2px;
+    height: 490px;
+    border-radius: 15px;
+    width: auto;
 }
+
+/*input[type="text"] {*/
+/*    width: auto;*/
+/*}*/
 
 
 input[type="url"] {
@@ -333,12 +342,15 @@ input[type="url"] {
 .login-input {
     text-align: center;
     border-radius: 25px;
-    width: 100%;
+    width: 80%;
 }
 .register-input {
     text-align: center;
     border-radius: 25px;
-    width: 60%;
+    width: 80%;
+    height: 30px;
+    margin: 5px;
+    background: white;
 }
 
 button {
@@ -351,7 +363,7 @@ button {
 .content{
     color: white;
     text-align: center;
-   width: 90%;
+   /*width: 90%;*/
 }
 
 /*---------------validation fields that pop up--------------------*/
@@ -410,10 +422,11 @@ button {
 
 .grid {
     display: grid;
+    justify-content: space-around;
+    align-content: space-between;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 1rem;
     grid-auto-rows: 310px;
-    align-items: center;
 }
 
 .grid > article {
@@ -427,6 +440,10 @@ button {
     border-top: 2px solid rgba(255, 255, 255, 0.5);
     border-left: 2px solid rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(6px);
+}
+
+article{
+    margin: 30px;
 }
 
 .card-text {
@@ -447,6 +464,7 @@ button {
 
 .page-header {
     margin-top: 10px;
+    margin-bottom: 40px;
     color: white;
     text-shadow: 4px 4px 8px black;
     text-align: center;
@@ -532,3 +550,11 @@ button {
     transform: rotateY(180deg);
 }
 
+.back-card-form{
+    color: white;
+    font-family: Arial, serif;
+    text-align: center;
+    background: none;
+    text-wrap: normal;
+}
+/*-------------------Filter Bar--------------------------*/

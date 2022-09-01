@@ -3,23 +3,24 @@
 <head th:replace="partials/fragment :: head('Browse List')"></head>
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
-<div class="grid-container">
-    <div class="page-header">Browse All</div>
-    <main class="grid">
-        <article th:each="user : ${users}">
-            <a class="card-text" th:href="'/profile/' + ${user.getUsername()}">
-            <img class="mini-img" th:src="${user.profile_img}">
-            <div class="info">
-                <h4 class="username-small"><span th:text="${user.getUsername()}"/></h4>
-                <div th:each="instrument: ${user.getProficiencies()}">
-                    <em><span th:text="${instrument.instruments.instName + ' - ' + instrument.skill + ' - ' + instrument.genre.title}"></span></em>
-                <br>
-                </div>
-            </div>
-            </a>
-        </article>
-    </main>
-</div>
+    <div class="grid-container">
+        <div class="page-header">Browse All</div>
+        <main class="grid">
+            <article th:each="user : ${users}">
+                <a class="card-text" th:href="'/profile/' + ${user.getUsername()}">
+                    <img class="mini-img" th:src="${user.profile_img}">
+                    <div class="info">
+                        <h4 class="username-small"><span th:text="${user.getUsername()}"/></h4>
+                        <div th:each="instrument: ${user.getProficiencies()}">
+                            <em><span
+                                    th:text="${instrument.instruments.instName + ' - ' + instrument.skill + ' - ' + instrument.genre.title}"></span></em>
+                            <br>
+                        </div>
+                    </div>
+                </a>
+            </article>
+        </main>
+    </div>
 <div th:replace="partials/fragment :: script"></div>
 </body>
 </html>
