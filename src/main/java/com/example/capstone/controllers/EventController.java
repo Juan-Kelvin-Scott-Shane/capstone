@@ -34,7 +34,6 @@ public class EventController {
         List<Event> all = eventDao.findAll();
         model.addAttribute("events", all);
         try {
-
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             model.addAttribute("currentUser", currentUser);
         } catch (Exception e) {

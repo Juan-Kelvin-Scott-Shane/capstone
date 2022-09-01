@@ -556,3 +556,7 @@ article{
     text-wrap: normal;
 }
 /*-------------------Filter Bar--------------------------*/
+.instHide {
+    display: none !important;
+}
+
