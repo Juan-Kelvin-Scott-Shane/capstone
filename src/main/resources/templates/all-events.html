@@ -25,14 +25,14 @@
 						<br>
 						<span th:text="${event.time}"/>
                     </p>
-					<form class="form" th:action="@{/profile/contact}" th:method="POST" style="margin: 0; padding: 0">
-                        <p>Posted by: <a th:href="'/profile/' + ${event.getOwner().getUsername()}"><span th:text="${event.getOwner().getUsername()}"/></a>
-						<input type="hidden" id="toUser" name="toUser" th:value="${event.getOwner().getId()}">
-						<input type="hidden" id="subject" name="subject" th:value="'Event: ' + ${event.getTitle()}">
-                            <br>
-                            <span sec:authorize="isAuthenticated()">Contact the owner about this event:</span>
-						<button type="submit" sec:authorize="isAuthenticated()"><i class="fa-regular fa-envelope" sec:authorize="isAuthenticated()"></i></button>
-                        </p>
+					<form class="back-card-form" style="width: auto"  th:action="@{/profile/contact}" th:method="POST">
+						<p>Posted by: <a th:href="'/profile/' + ${event.getOwner().getUsername()}"><span th:text="${event.getOwner().getUsername()}"/></a>
+							<input type="hidden" id="toUser" name="toUser" th:value="${event.getOwner().getId()}">
+							<input type="hidden" id="subject" name="subject" th:value="'Event: ' + ${event.getTitle()}">
+							<br>
+							<span sec:authorize="isAuthenticated()">Contact the owner about this event:</span>
+							<button type="submit" sec:authorize="isAuthenticated()"><i class="fa-regular fa-envelope" sec:authorize="isAuthenticated()"></i></button>
+						</p>
 					</form>
 				</div>
 			</div>
