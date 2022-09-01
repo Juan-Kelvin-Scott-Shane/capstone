@@ -25,15 +25,18 @@
 						<br>
 						<span th:text="${event.time}"/>
                     </p>
-<!--					<th:block th:if="${!#authentication.principal != null}">-->
-<!--					<div sec:authentication="isAuthenticated()">-->
+
 					<th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
 					<form  id="edit" class="form" th:action="@{'/events/'+ ${event.getId()}+'/edit'}" th:method="GET"style="margin:0;padding:0;">
 							<button  type="submit" ><i class="fa-solid fa-pen-to-square"></i></button>
 					</form>
 					</th:block>
-<!--						</div>-->
-<!--					</th:block>-->
+					<th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
+					<form id="delete" class="form" th:action="@{'/events/'+${event.getId()}}"th:method="POST"style="margin:0;padding:0;" onsubmit="return confirm('Do you really want to delete this Event?');">
+						<button type="submit" th:value="*{id}" onclick="validation()">Delete</button>
+					</form>
+					</th:block>
+
 
 					<form class="form" th:action="@{/profile/contact}" th:method="POST" style="margin: 0; padding: 0">
                         <p>Posted by: <a th:href="'/profile/' + ${event.getOwner().getUsername()}"><span th:text="${event.getOwner().getUsername()}"/></a>
@@ -50,5 +53,6 @@
 	</main>
 </div>
 <div th:replace="partials/fragment :: script"></div>
+
 </body>
 </html>
