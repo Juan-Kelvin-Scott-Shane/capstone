@@ -17,35 +17,38 @@
 					</div>
 				</div>
 				<div class="flip-card-back">
-					<br><img th:src="${event.flyer}" alt="Avatar" id="eventImg" style="width:100px;height:100px;" onerror="this.style.display='none'"/><br>
+					<br><a th:href="${event.flyer}" target="_blank"><img th:src="${event.flyer}" alt="Avatar" id="eventImg" style="width:100px;height:100px;" onerror="this.style.display='none'"/></a><br>
 					<p>
-                        <span th:text="${event.location}"/>
+						<span th:text="${event.location}"/>
 						<br>
 						<span th:text="${event.date}"/>
 						<br>
 						<span th:text="${event.time}"/>
-                    </p>
-
+					</p>
 					<th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
-					<form  id="edit" class="form" th:action="@{'/events/'+ ${event.getId()}+'/edit'}" th:method="GET"style="margin:0;padding:0;">
-							<button  type="submit" ><i class="fa-solid fa-pen-to-square"></i></button>
-					</form>
+						<form id="edit" class="form" th:action="@{'/events/'+ ${event.getId()}+'/edit'}" th:method="GET"
+							  style="margin:0;padding:0;">
+							<button type="submit"><i class="fa-solid fa-pen-to-square"></i></button>
+						</form>
 					</th:block>
 					<th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
-					<form id="delete" class="form" th:action="@{'/events/'+${event.getId()}}"th:method="POST"style="margin:0;padding:0;" onsubmit="return confirm('Do you really want to delete this Event?');">
-						<button type="submit" th:value="*{id}" onclick="validation()">Delete</button>
-					</form>
+						<form id="delete" class="form" th:action="@{'/events/'+${event.getId()}}" th:method="POST"
+							  style="margin:0;padding:0;"
+							  onsubmit="return confirm('Do you really want to delete this Event?');">
+							<button type="submit" th:value="*{id}" onclick="validation()">Delete</button>
+						</form>
 					</th:block>
-
-
 					<form class="form" th:action="@{/profile/contact}" th:method="POST" style="margin: 0; padding: 0">
-                        <p>Posted by: <a th:href="'/profile/' + ${event.getOwner().getUsername()}"><span th:text="${event.getOwner().getUsername()}"/></a>
-						<input type="hidden" id="toUser" name="toUser" th:value="${event.getOwner().getId()}">
-						<input type="hidden" id="subject" name="subject" th:value="'Event: ' + ${event.getTitle()}">
-                            <br>
-                            <span sec:authorize="isAuthenticated()">Contact the owner about this event:</span>
-						<button type="submit" sec:authorize="isAuthenticated()"><i class="fa-regular fa-envelope" sec:authorize="isAuthenticated()"></i></button>
-                        </p>
+						<p>Posted by: <a th:href="'/profile/' + ${event.getOwner().getUsername()}"><span
+								th:text="${event.getOwner().getUsername()}"/></a>
+							<input type="hidden" id="toUser" name="toUser" th:value="${event.getOwner().getId()}">
+							<input type="hidden" id="subject" name="subject" th:value="'Event: ' + ${event.getTitle()}">
+							<br>
+							<span sec:authorize="isAuthenticated()">Contact the owner about this event:</span>
+							<button type="submit" sec:authorize="isAuthenticated()"><i class="fa-regular fa-envelope"
+																					   sec:authorize="isAuthenticated()"></i>
+							</button>
+						</p>
 					</form>
 				</div>
 			</div>
@@ -53,6 +56,5 @@
 	</main>
 </div>
 <div th:replace="partials/fragment :: script"></div>
-
 </body>
 </html>

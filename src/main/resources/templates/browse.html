@@ -46,7 +46,7 @@
                 <img class="mini-img" th:src="${user.profile_img}">
                 <div class="info">
                     <h4 class="username-small"><span th:text="${user.getUsername()}"/></h4>
-                    <div th:each="instrument: ${user.getProficiencies()}">
+                    <div th:each="instrument, status: ${user.getProficiencies()}" th:if="${status.index}<3">
                         <em><span
                                 th:text="${instrument.instruments.instName + ' - ' + instrument.skill + ' - ' + instrument.genre.title}"></span></em>
                         <br>
