@@ -17,7 +17,7 @@
 					</div>
 				</div>
 				<div class="flip-card-back">
-					<br><img th:src="${event.flyer}" alt="Avatar" id="eventImg" style="width:100px;height:100px;" onerror="this.style.display='none'"/><br>
+					<br><a th:href="${event.flyer}" target="_blank"><img th:src="${event.flyer}" alt="Avatar" id="eventImg" style="width:100px;height:100px;" onerror="this.style.display='none'"/></a><br>
 					<p>
                         <span th:text="${event.location}"/>
 						<br>
