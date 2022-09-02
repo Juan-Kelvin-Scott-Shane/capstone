@@ -74,6 +74,7 @@ public class ProfileController {
 		user.setUsername(currentUser.getUsername());
 		user.setUserType(currentUser.getUserType());
 		user.setEmail(currentUser.getEmail());
+		user.setEnabled(currentUser.isEnabled());
 		user.setPassword(currentUser.getPassword());
 		user.setId(currentUser.getId());
 		userDao.save(user);
