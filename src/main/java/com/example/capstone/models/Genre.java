@@ -35,6 +35,7 @@ public class Genre {
 		this.proficiencies = proficiencies;
 	}
 
+
 	public Genre(String title) {
 		this.title = title;
 	}
@@ -70,19 +71,5 @@ public class Genre {
 	public void setProficiencies(List<Proficiency> proficiencies) {
 		this.proficiencies = proficiencies;
 	}
-	//	public List<User> getUser() {
-//		return user;
-//	}
 
-//	public void setUser(List<User> user) {
-//		this.user = user;
-//	}
-
-//	public Instrument getInstrument() {
-//		return instrument;
-//	}
-//
-//	public void setInstrument(Instrument instrument) {
-//		this.instrument = instrument;
-//	}
 }

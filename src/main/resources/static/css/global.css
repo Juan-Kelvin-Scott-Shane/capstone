@@ -617,3 +617,7 @@ button {
         height: 100vh;
     }
 }
+
+.searchForm {
+    text-align: start;
+}
