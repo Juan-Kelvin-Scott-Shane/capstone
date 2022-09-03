@@ -80,6 +80,18 @@ public class ProfileController {
 		userDao.save(user);
 		return "redirect:/profile";
 	}
+	@PostMapping("/profile/editDescription")
+	public String editDescription(User user){
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		user.setUsername(currentUser.getUsername());
+		user.setUserType(currentUser.getUserType());
+		user.setEmail(currentUser.getEmail());
+		user.setEnabled(currentUser.isEnabled());
+		user.setPassword(currentUser.getPassword());
+		user.setId(currentUser.getId());
+		userDao.save(user);
+		return "redirect:/profile";
+	}
 
 
 

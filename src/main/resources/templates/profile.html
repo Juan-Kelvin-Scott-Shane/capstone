@@ -15,8 +15,7 @@
 <div class="container-bio" sec:authorize="isAuthenticated()">
     <div class="bio-card">
         <div class="profile-header">
-            <h3>Profile Info</h3>&nbsp;&nbsp;&nbsp;<a class="edit-anchor" href="#"><i id="bio-edit"
-                                                                                      class="fa-solid fa-pen-to-square"></i></a>
+            <h3>Profile Info</h3>&nbsp;&nbsp;&nbsp;<a class="edit-anchor" href="#"><i id="bio-edit" class="fa-solid fa-pen-to-square"></i></a>
         </div>
         <form class="profile-form" th:action="@{/profile/editBio}" th:method="POST" th:object="${user}">
             <br><label class="profile-label" th:for="city">City:</label>
@@ -32,23 +31,23 @@
         </form>
 
         <div class="profile-header"><img class="profile-photo" th:src="${#authentication.principal.profile_img}">&nbsp;&nbsp;&nbsp;<a
-                class="edit-anchor" href="/profile"><i class="fa-solid fa-pen-to-square"></i></a>
+                class="edit-anchor" href="#"><i id="des-edit" class="fa-solid fa-pen-to-square"></i></a>
         </div>
         <div class="profile-info-middle">
-            <form class="profile-form" th:action="@{/profile}" th:method="post">
+            <form class="profile-form" th:action="@{/profile/editDescription}" th:method="post">
                 <label class="profile-label" th:for="description">Description:</label><br>
-                <textarea class="profile-input" type="text" th:id="description" th:name="description"
+                <textarea class="profile-input edits" type="text" th:id="description" th:name="description"
                           rows="4" cols="25" style="resize: none" disabled
                           th:inline="text">[[${#authentication.principal.description}]]</textarea><br>
                 <label class="profile-label">Social Media:</label>
                 <a th:href="@{|${#authentication.principal.social_media}|}" target="_blank">
-                    <input style="color: cornflowerblue; text-decoration: underline" type="url" class="profile-input"
+                    <input style="color: cornflowerblue; text-decoration: underline" type="url" class="profile-input edit"
                            name="media" disabled
                            th:value="${#authentication.principal.social_media}"/><br></a>
                 <label class="profile-label">Youtube:</label>
                 <a th:href="@{|${#authentication.principal.youtube}|}" target="_blank">
                     <input style="color: cornflowerblue; text-decoration: underline" type="url"
-                           class="profile-input" name="media" disabled
+                           class="profile-input edit" name="media" disabled
                            th:value="${#authentication.principal.youtube}"/></a>
             </form>
         </div>
