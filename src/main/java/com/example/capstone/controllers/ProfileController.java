@@ -57,7 +57,6 @@ public class ProfileController {
 	@PostMapping("/profile/delinst")
 	public String delInst(HttpServletRequest request, Model model, Proficiency proficiency) {
 		String instrument = request.getParameter("delinst");
-		System.out.println(instrument);
 		proficiencyDao.deleteById(Long.valueOf(instrument));
 		return "redirect:/profile";
 	}

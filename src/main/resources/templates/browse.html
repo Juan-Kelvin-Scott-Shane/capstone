@@ -5,33 +5,74 @@
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div id="mySidepanel" class="sidepanel">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div class="sidebar-select" style="margin-left: 30px; color: white; position: fixed">
-        <label for="usrType">User Types</label>
-        <br><select   name="usrType" id="usrType">
+    <br><br>
+    <form class="searchForm" th:action="@{/browse/search}" th:method="POST">
+    <label for="usrType">Please select a user type<br>to begin search.</label>
+        <br>
+    <select class="usrType" name="usrType" id="usrType" required>
+        <option value="">Please choose an option</option>
         <option value="musician">Musician</option>
         <option value="band">Band</option>
         <option value="venue">Venue</option>
     </select><br>
-        <br><label for="usrInst">Instruments</label>
-       <br><select   name="usrInst" id="usrInst">
-        <option value="1">Guitar</option>
-        <option value="2">Drums</option>
-        <option value="3">Bass</option>
-    </select><br>
-        <br><label for="usrInst">Proficiency</label>
-        <br><select   name="usrProf" id="usrProf">
-        <option value="1">Novice</option>
-        <option value="2">Intermediate</option>
-        <option value="3">Expert</option>
-    </select><br>
-       <br><label for="usrGenre">Genre</label>
-        <br><select   name="usrGenre" id="usrGenre">
-        <option value="1">Grunge</option>
-        <option value="2">Rock</option>
-        <option value="3">R&B</option>
-    </select><br>
-        <br><button type="submit">Search </button>
+    <br>
+    <div class="musician hideThis" id="musician">
+        <label for="genre1">Genre</label>
+        <br>
+        <select id="genre1" name="genre1">
+            <option value="">Please select a genre</option>
+            <option value="1">Rock & Roll</option>
+            <option value="2">Jazz</option>
+            <option value="3">Blues</option>
+            <option value="4">R & B</option>
+            <option value="5">Pop</option>
+            <option value="6">Metal</option>
+            <option value="7">Metal Core</option>
+            <option value="8">Death Core</option>
+            <option value="9">Death Metal</option>
+            <option value="10">Punk</option>
+            <option value="11">Grunge</option>
+            <option value="12">Pop Punk</option>
+            <option value="13">Country</option>
+            <option value="14">Reggae</option>
+            <option value="15">Indies</option>
+        </select><br><br>
     </div>
+
+    <div class="band hideThis" id="band">
+        <label for="genre2">Genre</label>
+        <br>
+        <select name="genre2" id="genre2">
+            <option value="">Please select a genre</option>
+            <option value="1">Rock & Roll</option>
+            <option value="2">Jazz</option>
+            <option value="3">Blues</option>
+            <option value="4">R & B</option>
+            <option value="5">Pop</option>
+            <option value="6">Metal</option>
+            <option value="7">Metal Core</option>
+            <option value="8">Death Core</option>
+            <option value="9">Death Metal</option>
+            <option value="10">Punk</option>
+            <option value="11">Grunge</option>
+            <option value="12">Pop Punk</option>
+            <option value="13">Country</option>
+            <option value="14">Reggae</option>
+            <option value="15">Indies</option>
+        </select><br><br>
+    </div>
+    <div class="venue hideThis" id="venue">
+        <label for="city" style="color: white">Please enter the city</label>
+        <br>
+        <input type="text" name="city" id="city" placeholder="City">
+        <br><br>
+        <label for="state" style="color: white">Please enter the state</label>
+        <br>
+        <input type="text" name="state" id="state" placeholder="State">
+    </div>
+    <br><br>
+    <button type="submit">Submit</button>
+    </form>
 </div>
 <div class="grid-container">
     <div class="page-header">Browse All
@@ -57,14 +98,25 @@
     </section>
 </div>
 <div th:replace="partials/fragment :: script"></div>
-<script>function openNav() {
+<script>
+    function openNav() {
     document.getElementById("mySidepanel").style.width = "250px";
 }
 
 /* Set the width of the sidebar to 0 (hide it) */
 function closeNav() {
     document.getElementById("mySidepanel").style.width = "0";
-}</script>
+}
+
+    $('.hideThis').hide()
+
+    $('#usrType').change(function () {
+        let value = this.value;
+        $('.hideThis').hide()
+        $('#' + this.value).show();
+    });
+
+</script>
 </body>
 </html>
 
