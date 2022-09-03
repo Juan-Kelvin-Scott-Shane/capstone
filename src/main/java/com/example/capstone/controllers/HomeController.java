@@ -41,19 +41,23 @@ public class HomeController {
     @PostMapping("/browse/search")
     public String searchUsers(HttpServletRequest request, Model model) {
         String usrType = request.getParameter("usrType");
-        //Long genre2 = Long.valueOf(request.getParameter("genre2"));
         String city = request.getParameter("city");
         String state = request.getParameter("state");
-        if (usrType.equals("musician") || usrType.equals("band")) {
-            Long genre1 = Long.valueOf(request.getParameter("genre1"));
-            model.addAttribute("users", userDao.findUserWithGenre(genre1, usrType));
-            return "browse";
-        } else if (usrType.equals("venue")) {
-            //model.addAttribute("users", userDao.findVenueByLocation(city, state));
-            model.addAttribute("users", userDao.findUsersByCityLikeAndStateLike(city, state));
-            return "browse";
-        } else {
-            return "browse";
+        switch (usrType) {
+            case "musician":
+                Long genre1 = Long.valueOf(request.getParameter("genre1"));
+                model.addAttribute("users", userDao.findUserWithGenre(genre1, usrType));
+                return "browse";
+            case "band":
+                Long genre2 = Long.valueOf(request.getParameter("genre2"));
+                model.addAttribute("users", userDao.findUserWithGenre(genre2, usrType));
+                return "browse";
+            case "venue":
+                //model.addAttribute("users", userDao.findVenueByLocation(city, state));
+                model.addAttribute("users", userDao.findUsersByCityLikeAndStateLike(city, state));
+                return "browse";
+            default:
+                return "browse";
         }
     }
 
