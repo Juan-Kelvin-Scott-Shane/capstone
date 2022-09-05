@@ -11,11 +11,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 50)
-    private String firstName;
-
-    @Column(length = 50)
-    private String lastName;
+//    @Column(length = 50)
+//    private String firstName;
+//
+//    @Column(length = 50)
+//    private String lastName;
+    @Column
+    private String name;
 
     @Column(length = 50, nullable = false, unique = true)
     private String username;
@@ -74,8 +76,9 @@ public class User {
 
     public User(User copy) {
         id = copy.id;
-        firstName = copy.firstName;
-        lastName = copy.lastName;
+//        firstName = copy.firstName;
+//        lastName = copy.lastName;
+        name= copy.name;
         username = copy.username;
         email = copy.email;
         password = copy.password;
@@ -95,10 +98,11 @@ public class User {
 
     }
 
-    public User(long id, String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String social_media, String verificationCode, boolean enabled, String userType, List<Proficiency> proficiencies, List<Instrument> instruments, List<Event> hostedEvents) {
+    public User(long id, String firstName, String lastName,String name, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String social_media, String verificationCode, boolean enabled, String userType, List<Proficiency> proficiencies, List<Instrument> instruments, List<Event> hostedEvents) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+        this.name= name;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -116,9 +120,10 @@ public class User {
         this.hostedEvents = hostedEvents;
     }
 
-    public User(String firstName, String lastName, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String social_media, String verificationCode, boolean enabled, List<Proficiency> proficiencies, List<Instrument> instruments, List<Genre> genres) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String firstName, String lastName,String name, String username, String email, String password, String city, String state, String description, String profile_img, String youtube, String social_media, String verificationCode, boolean enabled, List<Proficiency> proficiencies, List<Instrument> instruments, List<Genre> genres) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+        this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -135,9 +140,10 @@ public class User {
 //        this.genres = genres;
     }
 
-    public User(String firstName, String lastName, String username, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User( String name,String firstName, String lastName, String username, String email, String password) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+        this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -151,20 +157,28 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+//    public String getFirstName() {
+//        return firstName;
+//    }
+//
+//    public void setFirstName(String firstName) {
+//        this.firstName = firstName;
+//    }
+//
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//    public void setLastName(String lastName) {
+//        this.lastName = lastName;
+//    }
+
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUsername() {

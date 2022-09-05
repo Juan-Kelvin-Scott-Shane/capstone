@@ -1,17 +1,19 @@
 package com.example.capstone.controllers;
 
+
 import com.example.capstone.models.Event;
 import com.example.capstone.models.Genre;
 import com.example.capstone.repositories.GenreRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.example.capstone.models.User;
 import com.example.capstone.repositories.UserRepository;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -25,6 +27,8 @@ public class HomeController {
     public HomeController(UserRepository userDao, GenreRepository genreDao) {
         this.userDao = userDao;
         this.genreDao = genreDao;
+
+
     }
 
     @GetMapping("/")
@@ -35,6 +39,8 @@ public class HomeController {
     @GetMapping("/browse")
     public String browse(Model model){
         model.addAttribute("users", userDao.findAll());
+
+
         return "browse";
     }
 
