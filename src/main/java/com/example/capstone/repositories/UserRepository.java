@@ -23,6 +23,7 @@ public interface UserRepository extends JpaRepository <User, Long>{
 //    List<User> findUsersByUserType(@Param("userType"))
 
 
+
     @Query("select u from User u inner join u.proficiencies pr where pr.genre.id = ?1 AND u.userType = ?2")
     List<User> findUserWithGenre(Long genre_id, String userType);
 
