@@ -41,13 +41,13 @@
                           th:inline="text">[[${#authentication.principal.description}]]</textarea><br>
                 <label class="profile-label">Social Media:</label>
                 <a th:href="@{|${#authentication.principal.social_media}|}" target="_blank">
-                    <input style="color: cornflowerblue; text-decoration: underline" type="url" class="profile-input edit"
+                    <input style="color: cornflowerblue; text-decoration: underline" type="url" class="profile-input edits"
                            name="media" disabled
                            th:value="${#authentication.principal.social_media}"/><br></a>
                 <label class="profile-label">Youtube:</label>
                 <a th:href="@{|${#authentication.principal.youtube}|}" target="_blank">
                     <input style="color: cornflowerblue; text-decoration: underline" type="url"
-                           class="profile-input edit" name="media" disabled
+                           class="profile-input edits" name="media" disabled
                            th:value="${#authentication.principal.youtube}"/></a>
             </form>
         </div>
