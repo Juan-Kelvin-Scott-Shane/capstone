@@ -15,43 +15,39 @@
 <div class="container-bio" sec:authorize="isAuthenticated()">
     <div class="bio-card">
         <div class="profile-header">
-            <h3>Profile Info</h3>&nbsp;&nbsp;&nbsp;<a class="edit-anchor" href="/profile"><i
-                class="fa-solid fa-pen-to-square"></i></a>
+            <h3>Profile Info</h3>&nbsp;&nbsp;&nbsp;<a class="edit-anchor" href="#"><i id="bio-edit" class="fa-solid fa-pen-to-square"></i></a>
         </div>
-        <form class="profile-form" th:action="@{/profile}" th:method="post">
-            <label class="profile-label" th:for="name">Name:</label>
-            <input class="profile-input" type="text" th:id="name" th:name="name" disabled
-                   th:value="${#authentication.principal.firstName + ' ' + #authentication.principal.lastName}"/><br>
+        <form class="profile-form" th:action="@{/profile/editBio}" th:method="POST" th:object="${user}">
             <br><label class="profile-label" th:for="city">City:</label>
-            <input class="profile-input" type="text" th:id="city" th:name="city" disabled
+            <input class="profile-input editable" type="text" th:id="city" th:name="city" disabled
                    th:value="${#authentication.principal.city}"/><br>
-            <br><label class="profile-label" th:for="state">State</label>
-            <input class="profile-input" type="text" th:id="state" th:name="state" disabled
+            <br><label class="profile-label, editable" th:for="state">State</label>
+            <input class="profile-input editable" type="text" th:id="state" th:name="state" disabled
                    th:value="${#authentication.principal.state}"/><br>
             <br><label class="profile-label" th:for="email">Email:</label>
             <input class="profile-input" type="text" th:id="email" th:name="email" disabled
                    th:value="${#authentication.principal.email}"/><br>
+            <button type="submit" class="editable" disabled>Sumit</button>
         </form>
-    </div>
-    <div class="bio-card">
+
         <div class="profile-header"><img class="profile-photo" th:src="${#authentication.principal.profile_img}">&nbsp;&nbsp;&nbsp;<a
-                class="edit-anchor" href="/profile"><i class="fa-solid fa-pen-to-square"></i></a>
+                class="edit-anchor" href="#"><i id="des-edit" class="fa-solid fa-pen-to-square"></i></a>
         </div>
         <div class="profile-info-middle">
-            <form class="profile-form" th:action="@{/profile}" th:method="post">
+            <form class="profile-form" th:action="@{/profile/editDescription}" th:method="post">
                 <label class="profile-label" th:for="description">Description:</label><br>
-                <textarea class="profile-input" type="text" th:id="description" th:name="description"
+                <textarea class="profile-input edits" type="text" th:id="description" th:name="description"
                           rows="4" cols="25" style="resize: none" disabled
                           th:inline="text">[[${#authentication.principal.description}]]</textarea><br>
                 <label class="profile-label">Social Media:</label>
                 <a th:href="@{|${#authentication.principal.social_media}|}" target="_blank">
-                    <input style="color: cornflowerblue; text-decoration: underline" type="url" class="profile-input"
+                    <input style="color: cornflowerblue; text-decoration: underline" type="url" class="profile-input edits"
                            name="media" disabled
                            th:value="${#authentication.principal.social_media}"/><br></a>
                 <label class="profile-label">Youtube:</label>
                 <a th:href="@{|${#authentication.principal.youtube}|}" target="_blank">
                     <input style="color: cornflowerblue; text-decoration: underline" type="url"
-                           class="profile-input" name="media" disabled
+                           class="profile-input edits" name="media" disabled
                            th:value="${#authentication.principal.youtube}"/></a>
             </form>
         </div>

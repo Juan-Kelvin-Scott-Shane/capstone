@@ -25,11 +25,17 @@ public class ProfileController {
 	}
 
 	@GetMapping("/profile")
-	public String viewProfile(Model model) {
-		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		model.addAttribute("instruments", userDao.getById(currentUser.getId()).getProficiencies());
-		model.addAttribute("newProficiency", new Proficiency());
-		return "profile";
+	public String viewProfile(Model model, User user) {
+		try {
+			User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			User editUser = userDao.findByUsername(currentUser.getUsername());
+			model.addAttribute("instruments", userDao.getById(currentUser.getId()).getProficiencies());
+			model.addAttribute("newProficiency", new Proficiency());
+			return "profile";
+		} catch (Exception e) {
+			System.out.println("Doesn't work");
+			return "redirect:/login";
+		}
 	}
 
 	@RequestMapping(path = "/profile/{username}", method = RequestMethod.GET)
@@ -60,6 +66,33 @@ public class ProfileController {
 		proficiencyDao.deleteById(Long.valueOf(instrument));
 		return "redirect:/profile";
 	}
+
+	@PostMapping("/profile/editBio")
+	public String editBio( User user, Model model){
+
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		user.setUsername(currentUser.getUsername());
+		user.setUserType(currentUser.getUserType());
+		user.setEmail(currentUser.getEmail());
+		user.setEnabled(currentUser.isEnabled());
+		user.setPassword(currentUser.getPassword());
+		user.setId(currentUser.getId());
+		userDao.save(user);
+		return "redirect:/profile";
+	}
+	@PostMapping("/profile/editDescription")
+	public String editDescription(User user){
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		user.setUsername(currentUser.getUsername());
+		user.setUserType(currentUser.getUserType());
+		user.setEmail(currentUser.getEmail());
+		user.setEnabled(currentUser.isEnabled());
+		user.setPassword(currentUser.getPassword());
+		user.setId(currentUser.getId());
+		userDao.save(user);
+		return "redirect:/profile";
+	}
+
 
 
 }
