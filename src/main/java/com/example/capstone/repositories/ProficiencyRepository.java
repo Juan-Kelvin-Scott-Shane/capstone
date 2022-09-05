@@ -3,6 +3,7 @@ package com.example.capstone.repositories;
 import com.example.capstone.models.Genre;
 import com.example.capstone.models.Instrument;
 import com.example.capstone.models.Proficiency;
+import com.example.capstone.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,6 +16,8 @@ public interface ProficiencyRepository extends JpaRepository<Proficiency,Long > 
 	@Query("FROM Proficiency p where p.skill =?1")
 	List<Proficiency> findProficienciesSkillLIKE(@Param("title")String title);
 	Proficiency findProficienciesByGenre(Genre genre);
+
+	Proficiency findProficienciesByUserIdAndGenre(User user, Genre genre);
 
 //	@Query("From Proficiency p where p.genre.title")
 //			List<Proficiency> findProficienciesByGenreLike(@Param("title")String title);

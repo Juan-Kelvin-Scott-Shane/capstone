@@ -30,4 +30,7 @@ public interface UserRepository extends JpaRepository <User, Long>{
 //    List<User> findVenueByLocation(String city, String state);
 
 
+
+
+
 }
