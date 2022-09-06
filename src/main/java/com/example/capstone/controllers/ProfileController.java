@@ -6,6 +6,7 @@ import com.example.capstone.models.User;
 import com.example.capstone.repositories.EventRepository;
 import com.example.capstone.repositories.ProficiencyRepository;
 import com.example.capstone.repositories.UserRepository;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,7 +70,6 @@ public class ProfileController {
 
 	@PostMapping("/profile/editBio")
 	public String editBio( User user){
-
 		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		user.setUsername(currentUser.getUsername());
 		user.setUserType(currentUser.getUserType());
@@ -93,11 +93,12 @@ public class ProfileController {
 		user.setCity(currentUser.getCity());
 		user.setEnabled(currentUser.isEnabled());
 		user.setPassword(currentUser.getPassword());
+		user.setCity(currentUser.getCity());
+		user.setState(currentUser.getState());
 		user.setId(currentUser.getId());
 		userDao.save(user);
+		//SecurityContextHolder.getContext().setAuthentication((Authentication) user);
 		return "redirect:/profile";
 	}
-
-
 
 }
