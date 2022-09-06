@@ -11,10 +11,10 @@
 <div class="container-bio" sec:authorize="isAuthenticated()">
     <div class="bio-card">
         <div class="profile-header">
-            <h3>Profile Info</h3>&nbsp;&nbsp;&nbsp;<a class="edit-anchor" href="#"><i id="bio-edit"
-                                                                                      class="fa-solid fa-pen-to-square"></i></a>
+            <h3>Profile Info</h3>
         </div>
         <form class="profile-form" th:action="@{/profile/editBio}" th:method="POST" th:object="${user}">
+            <a class="edit-anchor" href="#"><i id="bio-edit" class="fa-solid fa-pen-to-square"></i></a>
             <br><label class="profile-label" th:for="city">City:</label>
             <input class="profile-input editable" type="text" th:id="city" th:name="city" disabled
                    th:value="${#authentication.principal.city}"/><br>
@@ -77,7 +77,7 @@
             <table>
                 <a href="#"><i class="fa-solid fa-pen-to-square" id="addInst"></i></a>
                 <thead>
-                <tr class="tables" style=>
+                <tr>
                     <th class="instHide"></th>
                     <th>Instrument</th>
                     <th>Proficiency</th>
@@ -89,11 +89,11 @@
                     <tr>
                         <form th:action="@{/profile/delinst}" th:method="POST"
                               onsubmit="return confirm('Do you really want to delete this instrument?');">
-                            <td class="instHide">
+                            <td class="instHide" style="display: flex; justify-content: center">
                                 <input type="hidden" th:name="delinst" th:id="delinst" th:value="${instrument.getId()}"><br>
                                 <a href="#">
-                                    <button type="submit" class=" btn instHide"><i
-                                            class="fa-solid fa-trash-can instHide"></i></button>
+                                    <button type="submit" class=" btn trashCan"><i
+                                            class="fa-solid fa-trash-can trashCan"></i></button>
                                 </a>
                             </td>
                         </form>

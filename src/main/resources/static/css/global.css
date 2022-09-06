@@ -149,14 +149,16 @@ display: flex;
 
 
 .profile-info {
-    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
     margin: 5px;
     text-align: center;
     color: #ffffff;
     align-items: center;
-    justify-content: center;
+    /*justify-content: center;*/
     background: rgba(11, 99, 128, 0.7);
-    font-size: 16px;
+    font-size: 18px;
     border: #f1f1f1 solid 2px;
     height: 490px;
     border-radius: 15px;
@@ -170,8 +172,6 @@ th {
     text-shadow: 2px 2px 4px black;
     color: white;
 }
-
-
 
 table, th, td {
     text-align: center;
@@ -203,9 +203,9 @@ table, th, td {
     color: gold;
 }
 
-.edit-anchor {
-    color: #f1f1f1;
-}
+/*.edit-anchor {*/
+/*    color: #f1f1f1;*/
+/*}*/
 
 
 .container-bio {
@@ -319,21 +319,24 @@ form {
     width: 450px
 }
 
+.trashCan{
+    color: white;
+}
+
 .profile-form {
-    padding: 5px;
+    padding: 20px;
     margin: 5px;
     text-align: center;
     color: #ffffff;
     align-items: center;
     justify-content: center;
     background: rgba(11, 99, 128, 0.7);
-    font-size: 16px;
+    font-size: 18px;
     border: #f1f1f1 solid 2px;
     height: 490px;
     border-radius: 15px;
     width: auto;
 }
-
 
 /*input[type="text"] {*/
 /*    width: auto;*/
@@ -425,7 +428,7 @@ button {
 }
 
 .info{
-    font-size: 18px;
+    font-size: 14px;
     font-family: 'Paytone One', sans-serif;
     color: white;
     align-items: center;
@@ -440,13 +443,12 @@ button {
     align-content: space-between;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 1rem;
-    /*grid-auto-rows: 310px;*/
+    grid-auto-rows: 310px;
 }
 
 .grid > article {
     display: grid;
     text-decoration: none;
-    grid-auto-rows: 250px;
    margin-top: 20px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
@@ -538,11 +540,11 @@ button {
 }
 
 .event-description {
-    font-size: 18px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 10px;
+    font-size: 16px;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
 }
 /* Style the front side (fallback if image is missing) */
 
@@ -554,18 +556,14 @@ button {
 
 /* Style the back side */
 .flip-card-back {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     background: rgba(11, 99, 128, 0.7);
     color: white;
     transform: rotateY(180deg);
 }
 
-.back-card-form{
-    color: white;
-    font-family: Arial, serif;
-    text-align: center;
-    background: none;
-    text-wrap: normal;
-}
 /*-------------------Filter Bar--------------------------*/
 
 /* The sidepanel menu */
