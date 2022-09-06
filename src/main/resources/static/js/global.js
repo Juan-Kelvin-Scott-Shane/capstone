@@ -1,5 +1,5 @@
 "use strict";
-
+(function () {
 
 	let myInput = document.getElementById("password");
 	let letter = document.getElementById("letter");
@@ -75,3 +75,5 @@ function pickFile(){
 			fileInputref.value = fileData.url;
 		})
 }
+
+}())
