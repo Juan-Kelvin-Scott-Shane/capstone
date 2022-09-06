@@ -60,20 +60,20 @@
 	}
 
 	//File Uploader
-function pickFile(){
-	let client = filestack.init(clientApi);
-	client.pick({
-		//launching image picker and adding the restrictions of one file that is of an image file type
-		accept: 'image/*',
-		maxFiles: 1,
-	})
-		.then(function (result) {
-			const fileData = result.filesUploaded[0];
-			const fileInput = document.querySelector('#fileupload');
-			const fileInputref = document.querySelector('#fileuploaddisplay');
-			fileInput.value = fileData.url;
-			fileInputref.value = fileData.url;
-		})
-}
+// function pickFile(){
+// 	let client = filestack.init(clientApi);
+// 	client.pick({
+// 		//launching image picker and adding the restrictions of one file that is of an image file type
+// 		accept: 'image/*',
+// 		maxFiles: 1,
+// 	})
+// 		.then(function (result) {
+// 			const fileData = result.filesUploaded[0];
+// 			const fileInput = document.querySelector('#fileupload');
+// 			const fileInputref = document.querySelector('#fileuploaddisplay');
+// 			fileInput.value = fileData.url;
+// 			fileInputref.value = fileData.url;
+// 		})
+// }
 
 }())

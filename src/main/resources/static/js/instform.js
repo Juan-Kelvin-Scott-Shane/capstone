@@ -4,7 +4,6 @@
  const btn = document.getElementById('addInst');
  btn.addEventListener('click', function () {
   let hidden = document.getElementsByClassName("instHide");
-  console.log(hidden);
   while (hidden.length)
    hidden[0].classList.remove("instHide");
  })
@@ -26,6 +25,15 @@
    $('.medlnk').on("click", function(e) {
     e.preventDefault();
    })
+  }
+ })
+
+ const btnimg = document.getElementById('imgedit');
+ btnimg.addEventListener('click', function () {
+  let hidden = document.getElementsByClassName("imgHide");
+  while (hidden.length) {
+   hidden[0].removeAttribute("disabled")
+   hidden[0].classList.remove("imgHide");
   }
  })
 

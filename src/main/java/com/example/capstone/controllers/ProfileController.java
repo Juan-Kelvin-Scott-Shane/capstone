@@ -5,6 +5,7 @@ import com.example.capstone.models.Proficiency;
 import com.example.capstone.models.User;
 import com.example.capstone.repositories.ProficiencyRepository;
 import com.example.capstone.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
@@ -19,6 +20,9 @@ public class ProfileController {
 	private final UserRepository userDao;
 	private final ProficiencyRepository proficiencyDao;
 
+	@Value("${spring.file.api}")
+	private String fileApi;
+
 	public ProfileController(UserRepository userDao, ProficiencyRepository proficiencyDao) {
 		this.userDao = userDao;
 		this.proficiencyDao = proficiencyDao;
@@ -31,6 +35,7 @@ public class ProfileController {
 			User editUser = userDao.findByUsername(currentUser.getUsername());
 			model.addAttribute("instruments", userDao.getById(currentUser.getId()).getProficiencies());
 			model.addAttribute("newProficiency", new Proficiency());
+			model.addAttribute("fileApi", fileApi);
 			return "profile";
 		} catch (Exception e) {
 			System.out.println("Doesn't work");
@@ -98,6 +103,27 @@ public class ProfileController {
 		user.setPassword(currentUser.getPassword());
 		user.setCity(currentUser.getCity());
 		user.setState(currentUser.getState());
+		user.setId(currentUser.getId());
+		userDao.save(user);
+		final Authentication oldAuth = SecurityContextHolder.getContext().getAuthentication();
+		final Authentication newAuth = new PreAuthenticatedAuthenticationToken(user, oldAuth.getCredentials(), oldAuth.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(newAuth);
+		return "redirect:/profile";
+	}
+
+	@PostMapping("/profile/editimg")
+	public String editimg( User user){
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		user.setUsername(currentUser.getUsername());
+		user.setUserType(currentUser.getUserType());
+		user.setEmail(currentUser.getEmail());
+		user.setState(currentUser.getState());
+		user.setCity(currentUser.getCity());
+		user.setEnabled(currentUser.isEnabled());
+		user.setPassword(currentUser.getPassword());
+		user.setDescription(currentUser.getDescription());
+		user.setSocial_media(currentUser.getSocial_media());
+		user.setYoutube(currentUser.getYoutube());
 		user.setId(currentUser.getId());
 		userDao.save(user);
 		final Authentication oldAuth = SecurityContextHolder.getContext().getAuthentication();
