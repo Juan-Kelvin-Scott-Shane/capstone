@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.List;
 
@@ -101,4 +102,13 @@ public class EventController {
             }
         return "redirect:/events";
     }
+
+    @PostMapping("/events/search")
+    public String searchUsers(HttpServletRequest request, Model model) {
+        String location = request.getParameter("location");
+        String date = request.getParameter("date");
+        model.addAttribute("users", eventDao.findEventByLocationAndDate(location, date));
+        return "all-events";
+    }
+
 }

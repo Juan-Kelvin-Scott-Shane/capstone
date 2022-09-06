@@ -613,6 +613,10 @@ button {
     display: none;
 }
 
+.imgHide {
+    display: none;
+}
+
 /*----------------created break point to move to a hamburger button and resize photo-----------*/
 @media only screen and (max-width: 480px) {
     body {

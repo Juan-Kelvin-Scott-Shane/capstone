@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns="http://www.w3.org/1999/html">
-<head>
     <head th:replace="partials/fragment :: head('Your Profile')"></head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div sec:authorize="!isAuthenticated()">
@@ -30,11 +26,20 @@
             <button type="submit" class="editable bioHide" disabled>Sumit</button>
         </form>
 
-        <div class="profile-header"><img class="profile-photo" th:src="${#authentication.principal.profile_img}">&nbsp;&nbsp;&nbsp;<a
-                class="edit-anchor" href="#"><i id="des-edit" class="fa-solid fa-pen-to-square"></i></a>
+        <div class="profile-header"><img class="profile-photo" th:src="${#authentication.principal.profile_img}">  <a href="#imgedit"><i class="fa-solid fa-pen-to-square" id="imgedit"></i></a>
+            <br>
+            <form class="" th:action="@{/profile/editimg}" th:method="POST">
+            <input class="profile-input imgHide" type="text" id="fileuploaddisplay" placeholder="Select a file to upload" style="width: 110px; height: auto; font-size: 12px; color: white" disabled>
+            <input type="hidden" id="fileupload" th:name="profile_img">
+            <button class="imgHide" disabled type="BUTTON" id="filePicker2" onclick='pickFile()'>Select File</button>
+                <br>
+                <button class="imgHide" disabled style="border-radius: 25px; font-size: 12px" type="submit" value="submit">Submit</button>
+            </form>
         </div>
         <div class="profile-info-middle">
             <form class="profile-form" th:action="@{/profile/editDescription}" th:method="post">
+                <a class="edit-anchor" href="#"><i id="des-edit" class="fa-solid fa-pen-to-square"></i></a>
+                <br>
                 <label class="profile-label" th:for="description">Description:</label><br>
                 <textarea class="profile-input edits " type="text" th:id="description" th:name="description"
                           rows="4" cols="25" style="resize: none" disabled
@@ -143,6 +148,24 @@
         </div>
     </div>
 </div>
+<script th:inline="javascript">
+    const clientApi = /*[[${fileApi}]]*/ "";
+    function pickFile(){
+        let client = filestack.init(clientApi);
+        client.pick({
+            //launching image picker and adding the restrictions of one file that is of an image file type
+            accept: 'image/*',
+            maxFiles: 1,
+        })
+                .then(function (result) {
+                    const fileData = result.filesUploaded[0];
+                    const fileInput = document.querySelector('#fileupload');
+                    const fileInputref = document.querySelector('#fileuploaddisplay');
+                    fileInput.value = fileData.url;
+                    fileInputref.value = fileData.url;
+                })
+    }
+</script>
 <script type="text/javascript" src="/js/instform.js"></script>
 <div th:replace="partials/fragment :: script"></div>
 </body>
