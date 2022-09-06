@@ -38,7 +38,7 @@ public class EventController {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             model.addAttribute("currentUser", currentUser);
         } catch (Exception e) {
-            System.out.println("No User");
+            return "all-events";
         }
         return "all-events";
     }
@@ -107,7 +107,14 @@ public class EventController {
     public String searchUsers(HttpServletRequest request, Model model) {
         String location = request.getParameter("location");
         String date = String.valueOf(request.getParameter("date"));
-        model.addAttribute("events", eventDao.findEventByLocationAndDate(location, date));
+        String[] dateParts = date.split("-");
+        String year = dateParts[0];
+        String month = dateParts[1];
+        String day = dateParts[2];
+        String finalDate = String.format("%s/%s/%s", month, day, year);
+        System.out.println("Location -->" + location);
+        System.out.println("Date -->" + finalDate);
+        model.addAttribute("events", eventDao.findEventByLocationContainsIgnoreCaseAndDate(location, finalDate));
         return "all-events";
     }
 }
