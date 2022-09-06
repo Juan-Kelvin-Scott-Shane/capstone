@@ -3,7 +3,11 @@ body {
 	background-size: cover;
 	color: aliceblue;
 }
-
+/*#guitar-error{*/
+/*background-image:url("/img/NewBackground-byob.png");*/
+/*background-size: cover;*/
+/*!*color: aliceblue;*!*/
+/*}*/
 #tr2 {
 	justify-content: start;
 	align-items: start;
