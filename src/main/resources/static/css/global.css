@@ -606,8 +606,11 @@ button {
 .instHide {
     display: none !important;
 }
-.editable{
-
+.desHide{
+    display: none;
+}
+.bioHide{
+    display: none;
 }
 
 /*----------------created break point to move to a hamburger button and resize photo-----------*/

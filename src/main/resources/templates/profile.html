@@ -27,7 +27,7 @@
             <br><label class="profile-label" th:for="email">Email:</label>
             <input class="profile-input" type="text" th:id="email" th:name="email" disabled
                    th:value="${#authentication.principal.email}"/><br>
-            <button type="submit" class="editable" disabled>Sumit</button>
+            <button type="submit" class="editable bioHide" disabled>Sumit</button>
         </form>
 
         <div class="profile-header"><img class="profile-photo" th:src="${#authentication.principal.profile_img}">&nbsp;&nbsp;&nbsp;<a
@@ -36,7 +36,7 @@
         <div class="profile-info-middle">
             <form class="profile-form" th:action="@{/profile/editDescription}" th:method="post">
                 <label class="profile-label" th:for="description">Description:</label><br>
-                <textarea class="profile-input edits" type="text" th:id="description" th:name="description"
+                <textarea class="profile-input edits " type="text" th:id="description" th:name="description"
                           rows="4" cols="25" style="resize: none" disabled
                           th:inline="text">[[${#authentication.principal.description}]]</textarea><br>
                 <label class="profile-label">Social Media:</label>
@@ -49,7 +49,7 @@
                     <input style="color: cornflowerblue; text-decoration: underline" type="url"
                            class="profile-input edits" name="media" disabled
                            th:value="${#authentication.principal.youtube}"/></a>
-                <button class="edits"  type="submit" disabled >Submit</button>
+                <button class="edits desHide"  type="submit" disabled >Submit</button>
             </form>
         </div>
     </div>
