@@ -25,16 +25,19 @@
   const edit = document.getElementsByClassName("editable")
   for(let i = 0; i<edit.length; i++) {
    edit[i].removeAttribute("disabled")
-   edit[i].classList.remove("profile-input")
+   edit[i].classList.remove("profile-input","bioHide")
 
   }
+
+
  })
  const btn3 = document.getElementById("des-edit")
  btn3.addEventListener('click',function (){
   const edit = document.getElementsByClassName("edits")
   for(let i = 0; i<edit.length; i++) {
    edit[i].removeAttribute("disabled")
-   edit[i].classList.remove("profile-input")
+   edit[i].classList.remove("profile-input", "desHide")
+
 
   }
  })
