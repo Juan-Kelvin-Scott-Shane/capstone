@@ -37,6 +37,9 @@
   for(let i = 0; i<edit.length; i++) {
    edit[i].removeAttribute("disabled")
    edit[i].classList.remove("profile-input", "desHide")
+   $('.medlnk').on("click", function(e) {
+    e.preventDefault();
+   })
 
 console.log("Delete me")
   }
