@@ -612,6 +612,9 @@ button {
 .bioHide{
     display: none;
 }
+.hide{
+    display: none;
+}
 
 .imgHide {
     display: none;

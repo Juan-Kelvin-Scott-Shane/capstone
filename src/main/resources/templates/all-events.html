@@ -21,9 +21,9 @@
 					<p>
 						<span th:text="${event.location}"/>
 						<br>
-						<span th:text="${event.date}"/>
+						<span class="date" th:text="${event.date}"/>
 						<br>
-						<span th:text="${event.time}"/>
+						<span class="time" th:text="${event.time}"/>
 					</p>
 					<th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
 						<form id="edit" class="form" th:action="@{'/events/'+ ${event.getId()}+'/edit'}" th:method="GET"
