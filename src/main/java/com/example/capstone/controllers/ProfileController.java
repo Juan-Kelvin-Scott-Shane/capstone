@@ -3,15 +3,14 @@ package com.example.capstone.controllers;
 
 import com.example.capstone.models.Proficiency;
 import com.example.capstone.models.User;
-import com.example.capstone.repositories.EventRepository;
 import com.example.capstone.repositories.ProficiencyRepository;
 import com.example.capstone.repositories.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -81,8 +80,12 @@ public class ProfileController {
 		user.setYoutube(currentUser.getYoutube());
 		user.setId(currentUser.getId());
 		userDao.save(user);
+		final Authentication oldAuth = SecurityContextHolder.getContext().getAuthentication();
+		final Authentication newAuth = new PreAuthenticatedAuthenticationToken(user, oldAuth.getCredentials(), oldAuth.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(newAuth);
 		return "redirect:/profile";
 	}
+
 	@PostMapping("/profile/editDescription")
 	public String editDescription(User user){
 		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -97,7 +100,9 @@ public class ProfileController {
 		user.setState(currentUser.getState());
 		user.setId(currentUser.getId());
 		userDao.save(user);
-		//SecurityContextHolder.getContext().setAuthentication((Authentication) user);
+		final Authentication oldAuth = SecurityContextHolder.getContext().getAuthentication();
+		final Authentication newAuth = new PreAuthenticatedAuthenticationToken(user, oldAuth.getCredentials(), oldAuth.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(newAuth);
 		return "redirect:/profile";
 	}
 
