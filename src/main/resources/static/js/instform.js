@@ -40,8 +40,6 @@
    $('.medlnk').on("click", function(e) {
     e.preventDefault();
    })
-
-console.log("Delete me")
   }
  })
 
