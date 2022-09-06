@@ -38,7 +38,7 @@
    edit[i].removeAttribute("disabled")
    edit[i].classList.remove("profile-input", "desHide")
 
-
+console.log("Delete me")
   }
  })
 
