@@ -106,9 +106,8 @@ public class EventController {
     @PostMapping("/events/search")
     public String searchUsers(HttpServletRequest request, Model model) {
         String location = request.getParameter("location");
-        String date = request.getParameter("date");
-        model.addAttribute("users", eventDao.findEventByLocationAndDate(location, date));
+        String date = String.valueOf(request.getParameter("date"));
+        model.addAttribute("events", eventDao.findEventByLocationAndDate(location, date));
         return "all-events";
     }
-
 }
