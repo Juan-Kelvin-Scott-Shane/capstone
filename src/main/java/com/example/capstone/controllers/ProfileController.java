@@ -68,7 +68,7 @@ public class ProfileController {
 	}
 
 	@PostMapping("/profile/editBio")
-	public String editBio( User user, Model model){
+	public String editBio( User user){
 
 		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		user.setUsername(currentUser.getUsername());
@@ -76,6 +76,9 @@ public class ProfileController {
 		user.setEmail(currentUser.getEmail());
 		user.setEnabled(currentUser.isEnabled());
 		user.setPassword(currentUser.getPassword());
+		user.setDescription(currentUser.getDescription());
+		user.setSocial_media(currentUser.getSocial_media());
+		user.setYoutube(currentUser.getYoutube());
 		user.setId(currentUser.getId());
 		userDao.save(user);
 		return "redirect:/profile";
@@ -86,6 +89,8 @@ public class ProfileController {
 		user.setUsername(currentUser.getUsername());
 		user.setUserType(currentUser.getUserType());
 		user.setEmail(currentUser.getEmail());
+		user.setState(currentUser.getState());
+		user.setCity(currentUser.getCity());
 		user.setEnabled(currentUser.isEnabled());
 		user.setPassword(currentUser.getPassword());
 		user.setId(currentUser.getId());

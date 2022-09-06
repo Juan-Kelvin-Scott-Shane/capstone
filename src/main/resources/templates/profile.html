@@ -40,13 +40,13 @@
                           rows="4" cols="25" style="resize: none" disabled
                           th:inline="text">[[${#authentication.principal.description}]]</textarea><br>
                 <label class="profile-label">Social Media:</label>
-                <a th:href="@{|${#authentication.principal.social_media}|}" target="_blank">
+                <a class="medlnk" th:href="@{|${#authentication.principal.social_media}|}" target="_blank">
                     <input style="color: cornflowerblue; text-decoration: underline" type="url" class="profile-input edits"
-                           name="media" disabled
+                           th:name="social_media" th:id="social_media" disabled
                            th:value="${#authentication.principal.social_media}"/><br></a>
                 <label class="profile-label">Youtube:</label>
-                <a th:href="@{|${#authentication.principal.youtube}|}" target="_blank">
-                    <input style="color: cornflowerblue; text-decoration: underline" type="url"
+                <a class="medlnk" th:href="@{|${#authentication.principal.youtube}|}" target="_blank">
+                    <input style="color: cornflowerblue; text-decoration: underline" type="url" th:id="youtube" th:name="youtube"
                            class="profile-input edits" name="media" disabled
                            th:value="${#authentication.principal.youtube}"/></a>
                 <button class="edits desHide"  type="submit" disabled >Submit</button>
