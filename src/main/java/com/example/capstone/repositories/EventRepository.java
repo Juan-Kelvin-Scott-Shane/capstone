@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EventRepository extends JpaRepository<Event,Long> {
     Event deleteEventById(Long id);
-    Event findEventByLocationAndDate(String location, String date);
+    Event findEventByLocationLikeAndDate(String location, String date);
+    Event findEventByLocationContainsIgnoreCaseAndDate(String location, String date);
 }

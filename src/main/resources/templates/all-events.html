@@ -3,6 +3,23 @@
 <head th:replace="partials/fragment :: head('Browse List')"></head>
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
+<div id="mySidepanel" class="sidepanel">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	<br><br>
+	<form class="searchForm" th:action="@{/events/search}" th:method="POST">
+		Please enter a location and date<br>to begin search.
+		<br><br>
+		<label for="location">Location:</label>
+		<br>
+		<input type="text" name="location" id="location" required>
+		<br><br>
+		<label for="date">Date:</label>
+		<br>
+		<input type="date" name="date" id="date" required>
+		<br><br>
+		<button type="submit">Submit</button>
+	</form>
+</div>
 <div class="grid-container">
     <div class="page-header">Events</div>
     <main class="grid">
@@ -34,34 +51,44 @@
                             <a th:type="submit" th:href="@{'/events/'+ ${event.getId()}+'/edit'}">
                                 Edit
                             </a>
-<!--                            <button type="submit"></button>-->
                         </form>
                     </th:block>
+						<th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
+							<form id="delete" class="form" th:action="@{'/events/'+${event.getId()}}" th:method="POST"
+								  style="margin:0;padding:0;"
+								  onsubmit="return confirm('Do you really want to delete this Event?');">
+								<button type="submit" th:value="*{id}" onclick="validation()">Delete</button>
+							</form>
+						</th:block>
+						<form class="form" th:action="@{/profile/contact}" th:method="POST"
+							  style="margin: 0; padding: 0">
+							<p>Posted by: <a th:href="'/profile/' + ${event.getOwner().getUsername()}"><span
+									th:text="${event.getOwner().getUsername()}"/></a>
+								<input type="hidden" id="toUser" name="toUser" th:value="${event.getOwner().getId()}">
+								<input type="hidden" id="subject" name="subject"
+									   th:value="'Event: ' + ${event.getTitle()}">
+								<br>
+								<span sec:authorize="isAuthenticated()">Contact the owner about this event:</span>
+								<button type="submit" sec:authorize="isAuthenticated()"><i
+										class="fa-regular fa-envelope" sec:authorize="isAuthenticated()"></i>
+								</button>
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script>
+		function openNav() {
+			document.getElementById("mySidepanel").style.width = "250px";
+		}
 
-                    <th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
-                        <form id="delete" class="back-card-form" th:action="@{'/events/'+${event.getId()}}" th:method="POST"
-                              style="margin:0;padding:0;"
-                              onsubmit="return confirm('Do you really want to delete this Event?');">
-                            <button type="submit" th:value="*{id}" onclick="validation()">Delete</button>
-                        </form>
-                    </th:block>
-                    <form class="back-card-form" th:action="@{/profile/contact}" th:method="POST" style="margin: 0; padding: 0">
-                        <p>Posted by: <a th:href="'/profile/' + ${event.getOwner().getUsername()}"><span
-                                th:text="${event.getOwner().getUsername()}"/></a>
-                            <input type="hidden" id="toUser" name="toUser" th:value="${event.getOwner().getId()}">
-                            <input type="hidden" id="subject" name="subject" th:value="'Event: ' + ${event.getTitle()}">
-                            <br>
-                            <span sec:authorize="isAuthenticated()">Contact the owner about this event:</span>
-                            <button type="submit" sec:authorize="isAuthenticated()"><i class="fa-regular fa-envelope"
-                                                                                       sec:authorize="isAuthenticated()"></i>
-                            </button>
-                        </p>
-                    </form>
-                    </div>
-                </div>
-        </div>
-    </main>
-</div>
-<div th:replace="partials/fragment :: script"></div>
+		/* Set the width of the sidebar to 0 (hide it) */
+		function closeNav() {
+			document.getElementById("mySidepanel").style.width = "0";
+		}
+	</script>
+	<div th:replace="partials/fragment :: script"></div>
 </body>
 </html>
