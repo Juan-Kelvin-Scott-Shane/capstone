@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns="http://www.w3.org/1999/html">
-<head th:replace="partials/fragment :: head('Your Profile')"></head>
+<head th:replace="partials/fragment :: head('Your  B.Y.O.B Profile')"></head>
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div sec:authorize="!isAuthenticated()">
@@ -83,9 +83,7 @@
         </form>
     </div>
     <div class="bio-card">
-        <div class="profile-header"><img class="profile-photo" th:src="${#authentication.principal.profile_img}"> <a
-                href="#imgedit"><i class="fa-solid fa-pen-to-square" id="imgedit"></i></a>
-            <br>
+        <div class="profile-header"><img class="profile-photo" th:src="${#authentication.principal.profile_img}">
             <form class="" th:action="@{/profile/editimg}" th:method="POST">
                 <input class="profile-input imgHide" type="text" id="fileuploaddisplay"
                        placeholder="Select a file to upload"
@@ -99,6 +97,7 @@
                     Submit
                 </button>
             </form>
+            <a style="margin: 0; padding-right: 3px; position: absolute; top: -10px; right: 0" href="#imgedit"><i class="fa-solid fa-pen-to-square" id="imgedit"></i></a>
         </div>
         <div class="profile-info-middle">
             <form class="profile-form" th:action="@{/profile/editDescription}" th:method="post">
