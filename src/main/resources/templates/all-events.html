@@ -21,7 +21,11 @@
 	</form>
 </div>
 <div class="grid-container">
-    <div class="page-header">Events</div>
+    <div class="page-header">Events
+		<div class="filter-button">
+			<button class="openbtn" onclick="openNav()"><i class="fa-solid fa-filter" style="color: white"></i></button>
+		</div>
+	</div>
     <main class="grid">
         <div class="flip-card" th:each="event: ${events}">
             <div class="flip-card-inner">
