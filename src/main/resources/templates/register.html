@@ -28,17 +28,17 @@
                 Reason: <span th:text="${errorMsg}">Wrong input!</span>
             </div>
             <form class="form" th:action="@{/register}" th:method="POST" th:object="${newUser}">
-                <label th:for="username">User Name:</label><br>
+                <label th:for="username"><span class="required">*</span>User Name:</label><br>
                 <input class="register-input"  th:id="username" th:name="username" placeholder="User Name" th:value="${uName}" required>
-                <br><label th:for="userType">User Type:</label><br>
+                <br><label th:for="userType"><span class="required">*</span>User Type:</label><br>
                 <select   class="register-input" name="userType" id="userType">
                     <option value="musician">Musician</option>
                     <option value="band">Band</option>
                     <option value="venue">Venue</option>
                 </select>
-               <br> <label th:for="email">Email:</label><br>
+               <br> <label th:for="email"><span class="required">*</span>Email:</label><br>
                 <input class="register-input" type="email" th:id="email" th:name="email" placeholder="Email@" th:value="${email}" required>
-                <br><label for="password">Password:</label><br>
+                <br><label for="password"><span class="required">*</span>Password:</label><br>
                 <input class="register-input" type="password" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required th:field="*{password}">
                 <div id="message">
                     <p  id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -46,7 +46,7 @@
                     <p  id="number" class="invalid">A <b>number</b></p>
                     <p  id="length" class="invalid">Minimum <b>8 characters</b></p>
                 </div>
-                <br><label for="verify-password">Verfiy-Password:</label><br>
+                <br><label for="verify-password"><span class="required">*</span>Verfiy-Password:</label><br>
                 <input class="register-input" type="password" id="verify-password" name="verify-password" placeholder="Verify Password" required><br>
                 <br> <button style="border-radius: 25px" type="submit" value="submit">Submit</button>
             </form>

@@ -704,6 +704,10 @@ margin-left: 30px;
     display: none;
 }
 
+.required {
+    color: red;
+}
+
 /*----------------created break point to move to a hamburger button and resize photo-----------*/
 @media only screen and (max-width: 480px) {
     body {
@@ -714,4 +718,6 @@ margin-left: 30px;
         height: 100vh;
     }
 }
+
+
 
