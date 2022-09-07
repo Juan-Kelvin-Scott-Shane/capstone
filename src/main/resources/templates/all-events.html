@@ -9,11 +9,11 @@
 	<form class="searchForm" th:action="@{/events/search}" th:method="POST">
 		Please enter a location and date<br>to begin search.
 		<br><br>
-		<label for="location">Location:</label>
+		<label for="location"><span class="required">*</span>Location:</label>
 		<br>
 		<input type="text" name="location" id="location" required>
 		<br><br>
-		<label for="date">Date:</label>
+		<label for="date"><span class="required">*</span>Date:</label>
 		<br>
 		<input type="date" name="date" id="date" required>
 		<br><br>
