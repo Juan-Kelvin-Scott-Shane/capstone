@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns="http://www.w3.org/1999/html">
-    <head th:replace="partials/fragment :: head('Your Profile')"></head>
+<head th:replace="partials/fragment :: head('Your Profile')"></head>
 <body>
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div sec:authorize="!isAuthenticated()">
@@ -11,29 +11,38 @@
 <div class="container-bio" sec:authorize="isAuthenticated()">
     <div class="bio-card">
         <div class="profile-header">
-            <h3>Profile Info</h3>&nbsp;&nbsp;&nbsp;<a class="edit-anchor" href="#"><i id="bio-edit" class="fa-solid fa-pen-to-square"></i></a>
+            <h3>Profile Info</h3>
         </div>
         <form class="profile-form" th:action="@{/profile/editBio}" th:method="POST" th:object="${user}">
+            <a class="edit-anchor" href="#"><i id="bio-edit" class="fa-solid fa-pen-to-square"></i></a>
             <br><label class="profile-label" th:for="city">City:</label>
             <input class="profile-input editable" type="text" th:id="city" th:name="city" disabled
                    th:value="${#authentication.principal.city}"/><br>
-            <br><label class="profile-label, editable" th:for="state">State</label>
+            <br><label class="profile-label editable" th:for="state">State</label>
             <input class="profile-input editable" type="text" th:id="state" th:name="state" disabled
                    th:value="${#authentication.principal.state}"/><br>
             <br><label class="profile-label" th:for="email">Email:</label>
             <input class="profile-input" type="text" th:id="email" th:name="email" disabled
                    th:value="${#authentication.principal.email}"/><br>
-            <button type="submit" class="editable bioHide" disabled>Sumit</button>
+            <button type="submit" class="editable bioHide" disabled>Submit</button>
         </form>
-
-        <div class="profile-header"><img class="profile-photo" th:src="${#authentication.principal.profile_img}">  <a href="#imgedit"><i class="fa-solid fa-pen-to-square" id="imgedit"></i></a>
+    </div>
+    <div class="bio-card">
+        <div class="profile-header"><img class="profile-photo" th:src="${#authentication.principal.profile_img}"> <a
+                href="#imgedit"><i class="fa-solid fa-pen-to-square" id="imgedit"></i></a>
             <br>
             <form class="" th:action="@{/profile/editimg}" th:method="POST">
-            <input class="profile-input imgHide" type="text" id="fileuploaddisplay" placeholder="Select a file to upload" style="width: 110px; height: auto; font-size: 12px; color: white" disabled>
-            <input type="hidden" id="fileupload" th:name="profile_img">
-            <button class="imgHide" disabled type="BUTTON" id="filePicker2" onclick='pickFile()'>Select File</button>
+                <input class="profile-input imgHide" type="text" id="fileuploaddisplay"
+                       placeholder="Select a file to upload"
+                       style="width: 110px; height: auto; font-size: 12px; color: white" disabled>
+                <input type="hidden" id="fileupload" th:name="profile_img">
+                <button class="imgHide" disabled type="BUTTON" id="filePicker2" onclick='pickFile()'>Select File
+                </button>
                 <br>
-                <button class="imgHide" disabled style="border-radius: 25px; font-size: 12px" type="submit" value="submit">Submit</button>
+                <button class="imgHide" disabled style="border-radius: 25px; font-size: 12px" type="submit"
+                        value="submit">
+                    Submit
+                </button>
             </form>
         </div>
         <div class="profile-info-middle">
@@ -46,15 +55,17 @@
                           th:inline="text">[[${#authentication.principal.description}]]</textarea><br>
                 <label class="profile-label">Social Media:</label>
                 <a class="medlnk" th:href="@{|${#authentication.principal.social_media}|}" target="_blank">
-                    <input style="color: cornflowerblue; text-decoration: underline" type="url" class="profile-input edits"
+                    <input style="color: cornflowerblue; text-decoration: underline" type="url"
+                           class="profile-input edits"
                            th:name="social_media" th:id="social_media" disabled
                            th:value="${#authentication.principal.social_media}"/><br></a>
                 <label class="profile-label">Youtube:</label>
                 <a class="medlnk" th:href="@{|${#authentication.principal.youtube}|}" target="_blank">
-                    <input style="color: cornflowerblue; text-decoration: underline" type="url" th:id="youtube" th:name="youtube"
+                    <input style="color: cornflowerblue; text-decoration: underline" type="url" th:id="youtube"
+                           th:name="youtube"
                            class="profile-input edits" name="media" disabled
                            th:value="${#authentication.principal.youtube}"/></a>
-                <button class="edits desHide"  type="submit" disabled >Submit</button>
+                <button class="edits desHide" type="submit" disabled>Submit</button>
             </form>
         </div>
     </div>
@@ -63,107 +74,115 @@
             <h3>Instruments</h3>&nbsp;&nbsp;&nbsp;
         </div>
         <div class="profile-info">
-        <table class="instrument-table">
-           <a href="#"><i class="fa-solid fa-pen-to-square" id="addInst"></i></a>
-        <thead>
-        <tr>
-            <th class="instHide"></th>
-            <th>Instrument</th>
-            <th>Proficiency</th>
-            <th>Genre</th>
-        </tr>
-        </thead>
-        <tbody>
-        <div th:each="instrument: ${instruments}">
-            <tr>
-                <form th:action="@{/profile/delinst}" th:method="POST" onsubmit="return confirm('Do you really want to delete this instrument?');">
-                <td class="instHide">
-                    <input type="hidden" th:name="delinst" th:id="delinst" th:value="${instrument.getId()}"><br>
-                    <a href="#"><button type="submit" class=" btn instHide"><i class="fa-solid fa-trash-can instHide"></i></button></a>
-                </td>
+            <table>
+                <a href="#"><i class="fa-solid fa-pen-to-square" id="addInst"></i></a>
+                <thead>
+                <tr>
+                    <th class="instHide"></th>
+                    <th>Instrument</th>
+                    <th>Proficiency</th>
+                    <th>Genre</th>
+                </tr>
+                </thead>
+                <tbody>
+                <div th:each="instrument: ${instruments}">
+                    <tr>
+                        <form th:action="@{/profile/delinst}" th:method="POST"
+                              onsubmit="return confirm('Do you really want to delete this instrument?');">
+                            <td class="instHide" style="display: flex; justify-content: center">
+                                <input type="hidden" th:name="delinst" th:id="delinst" th:value="${instrument.getId()}"><br>
+                                <a href="#">
+                                    <button type="submit" class=" btn trashCan"><i
+                                            class="fa-solid fa-trash-can trashCan"></i></button>
+                                </a>
+                            </td>
+                        </form>
+                        <td><span th:text="${instrument.instruments.instName}"></span></td>
+                        <td th:text="${instrument.skill}"></td>
+                        <td th:text="${instrument.genre.title}"></td>
+                    </tr>
+                </div>
+                </tbody>
+            </table>
+            <table class="instrument-table instHide" id="instForm">
+                <form th:action="@{/profile/addinst}" th:method="POST" th:object="${newProficiency}">
+                    <tr>
+                        <td></td>
+                        <td>
+                            <select th:id="instruments" th:name="instruments" required
+                                    style="width: 110px; height: auto; font-size: 12px">
+                                <option value="">Instrument</option>
+                                <option value="1">Acoustic Guitar</option>
+                                <option value="2">Electric Guitar</option>
+                                <option value="3">Bass Guitar</option>
+                                <option value="4">Piano</option>
+                                <option value="5">Vocalist</option>
+                                <option value="6">Drummer</option>
+                                <option value="7">Trumpet</option>
+                                <option value="8">Violin</option>
+                                <option value="9">Saxophone</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select th:id="skill" th:name="skill" required
+                                    style="width: 100px; height: auto; font-size: 12px">
+                                <option value="">Proficiency</option>
+                                <option value="Acoustic Guitar">Novice</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Expert">Expert</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select th:id="genre" th:name="genre" required
+                                    style="width: 90px; height: auto; font-size: 12px">
+                                <option value="">Genre</option>
+                                <option value="1">Rock & Roll</option>
+                                <option value="2">Jazz</option>
+                                <option value="3">Blues</option>
+                                <option value="4">R & B</option>
+                                <option value="5">Pop</option>
+                                <option value="6">Metal</option>
+                                <option value="7">Metal Core</option>
+                                <option value="8">Death Core</option>
+                                <option value="9">Death Metal</option>
+                                <option value="10">Punk</option>
+                                <option value="11">Grunge</option>
+                                <option value="12">Pop Punk</option>
+                                <option value="13">Country</option>
+                                <option value="14">Reggae</option>
+                                <option value="15">Indies</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                        </td>
+                        <td> <button style="border-radius: 25px; font-size: 12px" type="submit" value="submit">Submit
+                        </button></td>
+                    </tr>
                 </form>
-                <td><span th:text="${instrument.instruments.instName}"></span></td>
-                <td th:text="${instrument.skill}"></td>
-                <td th:text="${instrument.genre.title}"></td>
-            </tr>
-        </div>
-        </tbody>
-        </table>
-        <table class="instrument-table instHide" id="instForm">
-            <form th:action="@{/profile/addinst}" th:method="POST" th:object="${newProficiency}">
-                <tr>
-                    <td>
-                        <select th:id="instruments" th:name="instruments" required style="width: 110px; height: auto; font-size: 12px">
-                        <option value="">Instrument</option>
-                        <option value="1">Acoustic Guitar</option>
-                        <option value="2">Electric Guitar</option>
-                        <option value="3">Bass Guitar</option>
-                        <option value="4">Piano</option>
-                        <option value="5">Vocalist</option>
-                        <option value="6">Drummer</option>
-                        <option value="7">Trumpet</option>
-                        <option value="8">Violin</option>
-                        <option value="9">Saxophone</option>
-                    </select>
-                    </td>
-                    <td>
-                        <select th:id="skill" th:name="skill" required style="width: 100px; height: auto; font-size: 12px">
-                            <option value="">Proficiency</option>
-                            <option value="Acoustic Guitar">Novice</option>
-                            <option value="Intermediate">Intermediate</option>
-                            <option value="Expert">Expert</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select th:id="genre" th:name="genre" required style="width: 90px; height: auto; font-size: 12px">
-                            <option value="">Genre</option>
-                            <option value="1">Rock & Roll</option>
-                            <option value="2">Jazz</option>
-                            <option value="3">Blues</option>
-                            <option value="4">R & B</option>
-                            <option value="5">Pop</option>
-                            <option value="6">Metal</option>
-                            <option value="7">Metal Core</option>
-                            <option value="8">Death Core</option>
-                            <option value="9">Death Metal</option>
-                            <option value="10">Punk</option>
-                            <option value="11">Grunge</option>
-                            <option value="12">Pop Punk</option>
-                            <option value="13">Country</option>
-                            <option value="14">Reggae</option>
-                            <option value="15">Indies</option>
-                        </select>
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <button style="border-radius: 25px; font-size: 12px" type="submit" value="submit">Submit</button>
-                    </td>
-                    <td></td>
-                </tr>
-            </form>
-        </table>
+            </table>
         </div>
     </div>
 </div>
 <script th:inline="javascript">
     const clientApi = /*[[${fileApi}]]*/ "";
-    function pickFile(){
+
+    function pickFile() {
         let client = filestack.init(clientApi);
         client.pick({
             //launching image picker and adding the restrictions of one file that is of an image file type
             accept: 'image/*',
             maxFiles: 1,
         })
-                .then(function (result) {
-                    const fileData = result.filesUploaded[0];
-                    const fileInput = document.querySelector('#fileupload');
-                    const fileInputref = document.querySelector('#fileuploaddisplay');
-                    fileInput.value = fileData.url;
-                    fileInputref.value = fileData.url;
-                })
+            .then(function (result) {
+                const fileData = result.filesUploaded[0];
+                const fileInput = document.querySelector('#fileupload');
+                const fileInputref = document.querySelector('#fileuploaddisplay');
+                fileInput.value = fileData.url;
+                fileInputref.value = fileData.url;
+            })
     }
 </script>
 <script type="text/javascript" src="/js/instform.js"></script>

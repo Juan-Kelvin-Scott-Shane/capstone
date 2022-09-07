@@ -21,44 +21,38 @@
 	</form>
 </div>
 <div class="grid-container">
-	<div class="page-header">Browse All
-		<div class="filter-button">
-			<button class="openbtn" onclick="openNav()"><i class="fa-solid fa-filter" style="color: white"></i></button>
-		</div>
-	</div>
+    <div class="page-header">Events</div>
+    <main class="grid">
+        <div class="flip-card" th:each="event: ${events}">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="event-card-title">
+                        <span th:text="${event.title}"/>
+                    </div>
+					<br><a th:href="${event.flyer}" target="_blank"><img th:src="${event.flyer}" alt="Avatar"
+																		 id="eventImg" style="width:100px;height:100px;"
+																		 onerror="this.style.display='none'"/></a><br>
+                    <div class="event-description">
+                        <p><span th:text="${event.description}"/></p>
+                    </div>
+                </div>
+                <div class="flip-card-back">
+                    <p style="margin-top: 10px">
+                        <span th:text="${event.location}"/>
+                        <br>
+                        <span class="date" th:text="${event.date}"/>
+                        <br>
+                        <span class="time" th:text="${event.time}"/>
+                    </p>
 
-	<div class="grid-container">
-		<div class="page-header">Events</div>
-		<main class="grid">
-			<div class="flip-card" th:each="event: ${events}">
-				<div class="flip-card-inner">
-					<div class="flip-card-front">
-						<div class="event-card-title">
-							<span th:text="${event.title}"/>
-						</div>
-						<div class="event-description">
-							<p><span th:text="${event.description}"/></p>
-						</div>
-					</div>
-					<div class="flip-card-back">
-						<br><a th:href="${event.flyer}" target="_blank"><img th:src="${event.flyer}" alt="Avatar"
-																			 id="eventImg"
-																			 style="width:100px;height:100px;"
-																			 onerror="this.style.display='none'"/></a><br>
-						<p>
-							<span th:text="${event.location}"/>
-							<br>
-							<span class="date" th:text="${event.date}"/>
-							<br>
-							<span class="time" th:text="${event.time}"/>
-						</p>
-						<th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
-							<form id="edit" class="form" th:action="@{'/events/'+ ${event.getId()}+'/edit'}"
-								  th:method="GET"
-								  style="margin:0;padding:0;">
-								<button type="submit"><i class="fa-solid fa-pen-to-square"></i></button>
-							</form>
-						</th:block>
+                    <th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
+                        <form id="edit" class="back-card-form" th:action="@{'/events/'+ ${event.getId()}+'/edit'}" th:method="GET"
+                              style="margin:0;padding:0;">
+                            <a th:type="submit" th:href="@{'/events/'+ ${event.getId()}+'/edit'}">
+                                Edit
+                            </a>
+                        </form>
+                    </th:block>
 						<th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
 							<form id="delete" class="form" th:action="@{'/events/'+${event.getId()}}" th:method="POST"
 								  style="margin:0;padding:0;"
