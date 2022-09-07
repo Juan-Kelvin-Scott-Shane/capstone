@@ -58,11 +58,14 @@ public class EventController {
 
     @PostMapping("/events/create")
     public String create(@ModelAttribute Event event, @RequestParam String date, @RequestParam String time) throws ParseException {
+        System.out.println(date);
         String[] dateParts = date.split("-");
+        System.out.println(dateParts);
         String year = dateParts[0];
         String month = dateParts[1];
         String day = dateParts[2];
         String finalDate = String.format("%s/%s/%s", month, day, year);
+        System.out.println(finalDate);
         String[] timeParts = time.split(":");
         String hour = timeParts[0];
         String minutes = timeParts[1];
@@ -81,9 +84,20 @@ public class EventController {
         model.addAttribute("fileApi", fileApi);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (currentUser.getId() == event.getOwner().getId()) {
-            model.addAttribute("event", eventDao.getById(id));
+            String date = eventDao.getById(id).getDate();
+            System.out.println(date);
+            String[] dateParts = date.split("/");
+            System.out.println(dateParts[0]);
+            System.out.println(dateParts[1]);
+            System.out.println(dateParts[2]);
+            String year = dateParts[2exit];
+            String month = dateParts[0];
+            String day = dateParts[1];
+            String finalDate = String.format("%s-%s-%s", year, month, day);
+            event.setDate(finalDate);
+            model.addAttribute("event", event);
         }
-        return "create-event";
+        return "edit-event";
     }
 
     @PostMapping("/events/{id}")

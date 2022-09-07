@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials/fragment :: head('Edit Event')"></head>
+<body>
+<nav th:replace="partials/fragment :: navbar"></nav>
+<div class="container">
+	<div class="card">
+		<div class="content">
+			<h1 class="eventCreateTitle">Edit your event:</h1>
+		</div>
+		<form th:action="@{/events/create}" th:method="POST" th:object="${event}">
+			<div class="createEvent-form">
+				<label for="title">Event Title:</label>
+				<input class="event-input" type="text" id="title" name="title" th:field="*{title}" required placeholder="Title"><br>
+				<br><label for="location">Location: &nbsp;</label>
+				<input class="event-input" type="text" name="location" id="location" th:field="*{location}" required placeholder="City, ST"><br>
+				<br><label for="date">Event Date:</label>
+				<input class="event-input" id="date" name="date" type="date" th:field="*{date}" required><br>
+				<br><label for="time">Event Time:</label>
+				<input class="event-input" id="time" name="time" type="time" th:field="*{time}" required><br>
+				<br><label for="fileuploaddisplay">Flyer</label>
+				<input class="profile-input" type="text" id="fileuploaddisplay" placeholder="Select a file to upload" style="color: white" disabled>
+				<input type="hidden" id="fileupload" th:field="*{flyer}">
+				<button type="BUTTON" id="filePicker" onclick='pickFile()'>Select File</button>
+				<br>
+				<div class="control" id="nameBox"></div>
+				<div class="control" id="urlBox"></div>
+				<br><label for="description"></label>
+				<textarea name="description" placeholder="A brief description of your event" id="description" rows="4"
+						  cols="50" th:field="*{description}" required></textarea>
+				<br>
+				<div class="event-submit-button" style="text-align: center">
+					<button type="submit" style="border-radius: 25px">Submit</button>
+				</div>
+			</div>
+			<input type="hidden" th:field="*{id}">
+		</form>
+	</div>
+</div>
+
+
+<script th:inline="javascript">
+	const clientApi = /*[[${fileApi}]]*/ "";
+	function pickFile(){
+		let client = filestack.init(clientApi);
+		client.pick({
+			//launching image picker and adding the restrictions of one file that is of an image file type
+			accept: 'image/*',
+			maxFiles: 1,
+		})
+			.then(function (result) {
+				const fileData = result.filesUploaded[0];
+				const fileInput = document.querySelector('#fileupload');
+				const fileInputref = document.querySelector('#fileuploaddisplay');
+				fileInput.value = fileData.url;
+				fileInputref.value = fileData.url;
+			})
+	}
+</script>
+<div th:replace="partials/fragment :: script"></div>
+</body>
+</html>
