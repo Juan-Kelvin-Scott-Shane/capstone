@@ -13,6 +13,7 @@
   for(let i = 0; i<edit.length; i++) {
    edit[i].removeAttribute("disabled")
    edit[i].classList.remove("profile-input","bioHide")
+
   }
 
  })
@@ -21,6 +22,7 @@
   const edit = document.getElementsByClassName("edits")
   for(let i = 0; i<edit.length; i++) {
    edit[i].removeAttribute("disabled")
+   edit[i].setAttribute("placeholder", "https://yoursitename.com")
    edit[i].classList.remove("profile-input", "desHide")
    $('.medlnk').on("click", function(e) {
     e.preventDefault();
