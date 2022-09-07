@@ -317,7 +317,7 @@ form {
     text-align: center;
     background: none;
     text-wrap: normal;
-    width: 450px
+    /*width: 450px*/
 }
 
 .trashCan{
@@ -582,6 +582,10 @@ button {
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+#msgbody{
+    width: 95%;
 }
 
 /* The sidepanel links */
