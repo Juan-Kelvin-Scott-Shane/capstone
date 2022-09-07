@@ -90,7 +90,7 @@ public class EventController {
             System.out.println(dateParts[0]);
             System.out.println(dateParts[1]);
             System.out.println(dateParts[2]);
-            String year = dateParts[2exit];
+            String year = dateParts[2];
             String month = dateParts[0];
             String day = dateParts[1];
             String finalDate = String.format("%s-%s-%s", year, month, day);
