@@ -84,6 +84,7 @@ public class ProfileController {
 		user.setSocial_media(currentUser.getSocial_media());
 		user.setYoutube(currentUser.getYoutube());
 		user.setId(currentUser.getId());
+		user.setProfile_img(currentUser.getProfile_img());
 		userDao.save(user);
 		final Authentication oldAuth = SecurityContextHolder.getContext().getAuthentication();
 		final Authentication newAuth = new PreAuthenticatedAuthenticationToken(user, oldAuth.getCredentials(), oldAuth.getAuthorities());
@@ -104,6 +105,7 @@ public class ProfileController {
 		user.setCity(currentUser.getCity());
 		user.setState(currentUser.getState());
 		user.setId(currentUser.getId());
+		user.setProfile_img(currentUser.getProfile_img());
 		userDao.save(user);
 		final Authentication oldAuth = SecurityContextHolder.getContext().getAuthentication();
 		final Authentication newAuth = new PreAuthenticatedAuthenticationToken(user, oldAuth.getCredentials(), oldAuth.getAuthorities());
