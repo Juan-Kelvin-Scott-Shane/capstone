@@ -57,7 +57,7 @@ body {
     border-top: 4px solid #000000;
     border-bottom: 4px solid #000000;
     background: #82a5b2;
-    padding: 6px 0;
+    padding: 12px!important;
     border-radius: 25px;
     text-shadow: 6px 6px 0px rgba(255, 255, 255, 0.2);
 }
