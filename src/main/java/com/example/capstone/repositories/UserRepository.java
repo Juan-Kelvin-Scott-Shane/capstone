@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository <User, Long>{
 
     User findUsersByCityLikeAndStateLike(String city, String state);
 
-    @Query("select u from User u inner join u.proficiencies pr where pr.genre.id = ?1 AND u.userType = ?2")
+    @Query("select distinct u from User u inner join u.proficiencies pr where pr.genre.id = ?1 AND u.userType = ?2")
     List<User> findUserWithGenre(Long genre_id, String userType);
 
 
