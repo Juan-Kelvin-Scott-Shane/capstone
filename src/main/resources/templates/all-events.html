@@ -33,27 +33,27 @@
                     <div class="event-card-title">
                         <span th:text="${event.title}"/>
                     </div>
-					<br><a th:href="${event.flyer}" target="_blank"><img th:src="${event.flyer}" alt="Avatar"
-																		 id="eventImg" style="width:100px;height:100px;"
-																		 onerror="this.style.display='none'"/></a><br>
                     <div class="event-description">
                         <p><span th:text="${event.description}"/></p>
+						<p style="margin-top: 10px">
+							<span th:text="${event.location}"/>
+							<br>
+							<span class="date" th:text="${event.date}"/>
+							<br>
+							<span class="time" th:text="${event.time}"/>
+						</p>
                     </div>
                 </div>
                 <div class="flip-card-back">
-                    <p style="margin-top: 10px">
-                        <span th:text="${event.location}"/>
-                        <br>
-                        <span class="date" th:text="${event.date}"/>
-                        <br>
-                        <span class="time" th:text="${event.time}"/>
-                    </p>
-
+					<br><a th:href="${event.flyer}" target="_blank"><img th:src="${event.flyer}" alt="Avatar"
+																		 id="eventImg" style="width:100px;height:100px;"
+																		 onerror="this.style.display='none'"/></a><br>
+					<div class="edit-delete" style="display: flex; align-content: center; justify-content: center">
                     <th:block th:if="${currentUser != null && currentUser.id == event.getOwner().getId()}">
                         <form id="edit" class="back-card-form" th:action="@{'/events/'+ ${event.getId()}+'/edit'}" th:method="GET"
                               style="margin:0;padding:0;">
                             <a th:type="submit" th:href="@{'/events/'+ ${event.getId()}+'/edit'}">
-                                Edit
+								<i class="fa-solid fa-pen-to-square" style="color: white"></i>
                             </a>
                         </form>
                     </th:block>
@@ -61,9 +61,11 @@
 							<form id="delete" class="form" th:action="@{'/events/'+${event.getId()}}" th:method="POST"
 								  style="margin:0;padding:0;"
 								  onsubmit="return confirm('Do you really want to delete this Event?');">
-								<button type="submit" th:value="*{id}" onclick="validation()">Delete</button>
+								<button class="delete-btn" type="submit" th:value="*{id}" onclick="validation()">
+									<i class="fa-solid fa-trash-can" style="color: white"></i></button>
 							</form>
 						</th:block>
+					</div>
 						<form class="form" th:action="@{/profile/contact}" th:method="POST"
 							  style="margin: 0; padding: 0">
 							<p>Posted by: <a th:href="'/profile/' + ${event.getOwner().getUsername()}"><span
