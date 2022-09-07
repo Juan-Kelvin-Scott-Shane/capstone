@@ -18,16 +18,16 @@
 				<input class="event-input" id="date" name="date" type="date" th:field="*{date}" required><br>
 				<br><label for="time"><span class="required">*</span>Event Time:</label>
 				<input class="event-input" id="time" name="time" type="time" th:field="*{time}" required><br>
-				<br><label for="fileuploaddisplay">Flyer</label>
-				<input class="profile-input" type="text" id="fileuploaddisplay" placeholder="Select a file to upload" style="color: white" disabled>
-				<input type="hidden" id="fileupload" th:field="*{flyer}">
+				<br><label for="fileuploaddisplay" style="color: #ef2c61; text-align: center">Select a file to upload:</label><br>
+				<input class="profile-input" type="text" id="fileuploaddisplay"  style="color: white; width: 90%" disabled>
+				<input type="hidden" id="fileupload" th:field="*{flyer}"><br>
 				<button type="BUTTON" id="filePicker" onclick='pickFile()'>Select File</button>
 				<br>
 				<div class="control" id="nameBox"></div>
 				<div class="control" id="urlBox"></div>
 				<br><label for="description"><span class="required">*</span>Description</label>
 				<br>
-				<textarea name="description" placeholder="A brief description of your event" id="description" rows="4"
+				<textarea style="border-radius: 15px" name="description" placeholder="A brief description of your event" id="description" rows="4"
 						  cols="50" th:field="*{description}" required></textarea>
 				<br>
 				<div class="event-submit-button" style="text-align: center">
