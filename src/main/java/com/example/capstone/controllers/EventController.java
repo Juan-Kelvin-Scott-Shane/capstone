@@ -122,7 +122,14 @@ public class EventController {
         String month = dateParts[1];
         String day = dateParts[2];
         String finalDate = String.format("%s/%s/%s", month, day, year);
-       model.addAttribute("events", eventDao.findEventsByCityContainingAndStateAndDate(city, state, finalDate));
-        return "all-events";
+        List<Event> returnedEvents;
+        returnedEvents = eventDao.findEventsByCityContainingAndStateAndDate(city, state, finalDate);
+        if (!returnedEvents.isEmpty()) {
+            model.addAttribute("events", returnedEvents);
+            return "all-events";
+        } else {
+            model.addAttribute("events", returnedEvents);
+            return "redirect:/events?noresults";
+        }
     }
 }

@@ -30,6 +30,9 @@
 			<button class="openbtn" onclick="openNav()"><i class="fa-solid fa-filter" style="color: white"></i></button>
 		</div>
 	</div>
+	<div class="alert alert-danger" th:if="${param.noresults}" style="margin-bottom: 3em">
+		Sorry, no results were found for that location and/or date. Please try your search again.<br />
+	</div>
     <main class="grid">
         <div class="flip-card" th:each="event: ${events}">
             <div class="flip-card-inner">

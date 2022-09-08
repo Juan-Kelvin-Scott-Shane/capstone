@@ -3,6 +3,7 @@ package com.example.capstone.controllers;
 
 import com.example.capstone.models.Event;
 import com.example.capstone.models.Genre;
+import com.example.capstone.models.User;
 import com.example.capstone.repositories.GenreRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -52,16 +53,33 @@ public class HomeController {
         switch (usrType) {
             case "musician":
                 Long genre1 = Long.valueOf(request.getParameter("genre1"));
-                model.addAttribute("users", userDao.findUserWithGenre(genre1, usrType));
-                return "browse";
+                List<User> returnedMusician;
+                returnedMusician = userDao.findUserWithGenre(genre1, usrType);
+                if (!returnedMusician.isEmpty()) {
+                    model.addAttribute("users", returnedMusician);
+                    return "browse";
+                } else {
+                return "redirect:/browse?noresults";
+            }
             case "band":
                 Long genre2 = Long.valueOf(request.getParameter("genre2"));
-                model.addAttribute("users", userDao.findUserWithGenre(genre2, usrType));
-                return "browse";
+                List<User> returnedBands;
+                returnedBands = userDao.findUserWithGenre(genre2, usrType);
+                if (!returnedBands.isEmpty()) {
+                    model.addAttribute("users", returnedBands);
+                    return "browse";
+                } else {
+                    return "redirect:/browse?noresults";
+                }
             case "venue":
-                //model.addAttribute("users", userDao.findVenueByLocation(city, state));
-                model.addAttribute("users", userDao.findUsersByCityLikeAndStateLike(city, state));
-                return "browse";
+                List<User> returnedVenues;
+                returnedVenues = userDao.findUsersByCityLikeAndStateLike(city, state);
+                if (!returnedVenues.isEmpty()) {
+                    model.addAttribute("users", returnedVenues);
+                    return "browse";
+                } else {
+                    return "redirect:/browse?noresults";
+                }
             default:
                 return "browse";
         }
