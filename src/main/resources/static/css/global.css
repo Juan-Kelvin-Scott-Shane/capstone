@@ -11,8 +11,33 @@ body {
     height: 100vh;
 }
 
-/*--------------------------------------------NAV BAR-----------------------------------------*/
+label {
+    display: inline-block;
+    width: 110px;
+    color: white;
+}
+input {
+    padding: 5px 10px;
+}
 
+
+.banner {
+    color: white;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 25px;
+    text-shadow: -1px 0 black, 0 4px black, 4px 0 black, 0 -1px black;
+}
+
+.action-banner {
+    font-family: 'Paytone One', Arial, serif;
+    width: 60%;
+    text-align: center;
+    font-size: 30px;
+}
+
+/*--------------------------------------------NAV BAR-----------------------------------------*/
 
 .navbar-nav{
     display: flex;
@@ -99,17 +124,10 @@ body {
     padding-left: 0!important;
 }
 
-/*!*-------------------------Social Media Link positioning -------------------*!*/
-/*.social-media {*/
-/*    font-size: 18px;*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    text-align: center;*/
-/*}*/
 
 /*------------------------Containers for forms and profile------------------*/
 .container {
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     position: relative;
     justify-content: center;
@@ -123,7 +141,7 @@ body {
 .container .card {
     position: relative;
     width: 600px;
-    height: 650px;
+    height: 700px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     background: rgba(0, 0, 0, 0.5);
@@ -633,7 +651,7 @@ button {
     background: rgb(4,23,30);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.93);
     margin-top: 70px ;
-    height: 50vh; /* Specify a height */
+    height: 65vh; /* Specify a height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
