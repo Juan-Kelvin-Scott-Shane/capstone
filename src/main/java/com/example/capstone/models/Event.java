@@ -20,6 +20,12 @@ public class Event {
     private String location;
 
     @Column(nullable = false)
+    private String city;
+
+    @Column(nullable = false)
+    private String state;
+
+    @Column(nullable = false)
     private String date;
 
     @Column(nullable = false)
@@ -40,34 +46,40 @@ public class Event {
     public Event() {
     }
 
-    public Event(String title, String description, String location, String date, String time) {
+    public Event(String title, String description, String city,String state,String location, String date, String time) {
         this.title = title;
         this.description = description;
         this.location = location;
         this.date = date;
         this.time=time;
+        this.city=city;
+        this.state=state;
     }
 
-    public Event(String title, String description, String location, String date, String time, String flyer, List<Genre> genres, User owner) {
+    public Event(String title, String description,String city,String state, String location, String date, String time, String flyer, List<Genre> genres, User owner) {
         this.title = title;
         this.description = description;
-        this.location = location;
+//        this.location = location;
         this.date = date;
         this.time = time;
         this.flyer = flyer;
         this.genres = genres;
         this.owner = owner;
+        this.city=city;
+        this.state=state;
     }
 
-    public Event(long id, String title, String description, String location, String date, String time, List<Genre> genres, User owner) {
+    public Event(long id, String title,String city, String state, String description, String location, String date, String time, List<Genre> genres, User owner) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.location = location;
+//        this.location = location;
         this.date = date;
         this.time = time;
         this.genres = genres;
         this.owner = owner;
+        this.state=state;
+        this.city=city;
     }
 
     public long getId() {
@@ -94,13 +106,13 @@ public class Event {
         this.description = description;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
+//    public String getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(String location) {
+//        this.location = location;
+//    }
 
     public String getDate() {
         return date;
@@ -140,5 +152,21 @@ public class Event {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
