@@ -32,10 +32,11 @@ public class ProfileController {
 	public String viewProfile(Model model, User user) {
 		try {
 			User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			User editUser = userDao.findByUsername(currentUser.getUsername());
+			String userState = currentUser.getState();
 			model.addAttribute("instruments", userDao.getById(currentUser.getId()).getProficiencies());
 			model.addAttribute("newProficiency", new Proficiency());
 			model.addAttribute("fileApi", fileApi);
+			model.addAttribute("userState", userState);
 			return "profile";
 		} catch (Exception e) {
 			System.out.println("Doesn't work");
