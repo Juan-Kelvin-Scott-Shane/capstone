@@ -651,7 +651,7 @@ button {
     background: rgb(4,23,30);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.93);
     margin-top: 70px ;
-    height: 50vh; /* Specify a height */
+    height: 65vh; /* Specify a height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
