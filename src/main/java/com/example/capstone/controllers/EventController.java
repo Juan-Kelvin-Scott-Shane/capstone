@@ -112,16 +112,15 @@ public class EventController {
 
     @PostMapping("/events/search")
     public String searchUsers(HttpServletRequest request, Model model) {
-        String location = request.getParameter("location");
+        String city = request.getParameter("city");
+        String state = request.getParameter("state");
         String date = String.valueOf(request.getParameter("date"));
         String[] dateParts = date.split("-");
         String year = dateParts[0];
         String month = dateParts[1];
         String day = dateParts[2];
         String finalDate = String.format("%s/%s/%s", month, day, year);
-        System.out.println("Location -->" + location);
-        System.out.println("Date -->" + finalDate);
-//        model.addAttribute("events", eventDao.findAllEventsByLocationContainsIgnoreCaseAndDate(location, finalDate));
+       model.addAttribute("events", eventDao.findEventsByCityContainingAndStateAndDate(city, state, finalDate));
         return "all-events";
     }
 }

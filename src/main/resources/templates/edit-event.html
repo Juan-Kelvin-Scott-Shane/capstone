@@ -10,13 +10,15 @@
 		</div>
 		<form th:action="@{/events/create}" th:method="POST" th:object="${event}">
 			<div class="createEvent-form">
-				<label for="title"><span class="required">*</span>Event Title:</label>
+				<label for="title"><span class="required">* </span>Event Title:</label>
 				<input class="event-input" type="text" id="title" name="title" th:field="*{title}" placeholder="Title" required><br>
-				<br><label for="location"><span class="required">*</span>Location: &nbsp;</label>
-				<input class="event-input" type="text" name="location" id="location" th:field="*{location}" placeholder="City, ST" required><br>
-				<br><label for="date"><span class="required">*</span>Event Date:</label>
+				<br><label for="city"><span class="required">* </span>City: &nbsp;</label>
+				<input class="event-input" type="text" name="city" id="city" th:field="*{city}" required placeholder="City"><br>
+				<br><label for="state"><span class="required">* </span>State: &nbsp;</label>
+				<input class="event-input" type="text" name="state" id="state" th:field="*{state}" required placeholder="ST" maxlength="2"><br>
+				<br><label for="date"><span class="required">* </span>Event Date:</label>
 				<input class="event-input" id="date" name="date" type="date" th:field="*{date}" required><br>
-				<br><label for="time"><span class="required">*</span>Event Time:</label>
+				<br><label for="time"><span class="required">* </span>Event Time:</label>
 				<input class="event-input" id="time" name="time" type="time" th:field="*{time}" required><br>
 				<br><label for="fileuploaddisplay">Flyer</label>
 				<input class="profile-input" type="text" id="fileuploaddisplay" placeholder="Select a file to upload" style="color: white" disabled>
@@ -25,7 +27,7 @@
 				<br>
 				<div class="control" id="nameBox"></div>
 				<div class="control" id="urlBox"></div>
-				<br><label for="description"><span class="required">*</span>Description</label>
+				<br><label for="description"><span class="required">* </span>Description</label>
 				<textarea name="description" placeholder="A brief description of your event" id="description" rows="4"
 						  cols="50" th:field="*{description}" required></textarea>
 				<br>
