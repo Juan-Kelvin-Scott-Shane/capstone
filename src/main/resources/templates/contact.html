@@ -7,7 +7,7 @@
 <div class="container">
     <div class="card">
         <div class="content">
-            <h3 style="color: white; text-align: center">Email User:</h3>
+            <h3 class="page-header">Email User</h3>
             <p style="color: white">Use this form to send a system email.</p>
             <p style="color: white">NOTE: Your profile's email address will be included as part of this email.</p>
             <hr>
@@ -26,7 +26,7 @@
                 <br><br>
                 <textarea  cols="70" rows="5" style="resize: none; border-radius: 15px;" th:name="msgbody" th:id="msgbody"
                           placeholder="Enter your message body here."></textarea><br>
-                <button style="border-radius: 25px" type="submit" value="submit">Send</button>
+                <br><button style="border-radius: 25px" type="submit" value="submit">Send</button>
             </form>
             <br>
             <div class="alert alert-danger" th:if="${param.error}"
