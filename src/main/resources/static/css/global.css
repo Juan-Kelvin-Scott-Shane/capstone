@@ -11,8 +11,16 @@ body {
     height: 100vh;
 }
 
-/*--------------------------------------------NAV BAR-----------------------------------------*/
+.banner {
+    color: white;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 25px;
+    text-shadow: -1px 0 black, 0 4px black, 4px 0 black, 0 -1px black;
+}
 
+/*--------------------------------------------NAV BAR-----------------------------------------*/
 
 .navbar-nav{
     display: flex;
@@ -99,13 +107,6 @@ body {
     padding-left: 0!important;
 }
 
-/*!*-------------------------Social Media Link positioning -------------------*!*/
-/*.social-media {*/
-/*    font-size: 18px;*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    text-align: center;*/
-/*}*/
 
 /*------------------------Containers for forms and profile------------------*/
 .container {
