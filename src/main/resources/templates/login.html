@@ -9,7 +9,7 @@
 <nav th:replace="partials/fragment :: navbar"></nav>
 <div class="container">
 	<div class="card">
-		<h1 class="loginTitle">Login</h1>
+		<h1 class="page-header">Login</h1>
 		<div class="alert alert-danger" th:if="${param.error}" th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
 			Your login attempt was not successful, try again.<br />
 			Reason: <span th:text="${errorMsg}">Wrong input!</span>

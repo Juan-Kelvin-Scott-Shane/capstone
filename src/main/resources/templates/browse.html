@@ -9,7 +9,7 @@
     <form class="searchForm" th:action="@{/browse/search}" th:method="POST">
     <label for="usrType">Please select a user type<br>to begin search.</label>
         <br>
-    <select class="usrType" name="usrType" id="usrType" required>
+    <select style="border-radius: 15px" class="usrType" name="usrType" id="usrType" required>
         <option value="">Please choose an option</option>
         <option value="musician">Musician</option>
         <option value="band">Band</option>
@@ -19,7 +19,7 @@
     <div class="musician hideThis" id="musician">
         <label for="genre1">Genre</label>
         <br>
-        <select id="genre1" name="genre1">
+        <select style="border-radius: 15px" id="genre1" name="genre1">
             <option value="">Please select a genre</option>
             <option value="1">Rock & Roll</option>
             <option value="2">Jazz</option>
@@ -42,7 +42,7 @@
     <div class="band hideThis" id="band">
         <label for="genre2">Genre</label>
         <br>
-        <select name="genre2" id="genre2">
+        <select style="border-radius: 15px" name="genre2" id="genre2">
             <option value="">Please select a genre</option>
             <option value="1">Rock & Roll</option>
             <option value="2">Jazz</option>

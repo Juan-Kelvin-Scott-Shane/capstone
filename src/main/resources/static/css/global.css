@@ -18,6 +18,7 @@ body {
     display: flex;
 }
 
+
 .navbar-custom {
     padding: 0!important;
     --bs-body-line-height: 3 !important;
@@ -58,20 +59,22 @@ body {
     padding: 5px 0;
 }
 
-.topnav-right {
-    text-align: center;
-    display: inline;
-    text-transform: uppercase;
-    font-size: 16px !important;
-    text-decoration: none;
-    color: white;
-    font-family: Arial, serif !important;
-    transition: 0.3s ease;
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-    margin: 0 10px;
-    padding: 5px 0;
-}
+/*.topnav-right {*/
+/*    display: flex;*/
+/*    float: right;*/
+/*    text-align: center;*/
+/*    !*display: inline;*!*/
+/*    text-transform: uppercase;*/
+/*    font-size: 16px !important;*/
+/*    text-decoration: none;*/
+/*    color: white;*/
+/*    font-family: Arial, serif !important;*/
+/*    transition: 0.3s ease;*/
+/*    border-top: 4px solid transparent;*/
+/*    border-bottom: 4px solid transparent;*/
+/*    margin: 0 10px;*/
+/*    padding: 5px 0;*/
+/*}*/
 
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover {
@@ -83,8 +86,6 @@ body {
     text-shadow: 6px 6px 0px rgba(255, 255, 255, 0.2);
 }
 
-
-
 .nav-item{
     margin: auto;
 }
@@ -94,13 +95,17 @@ body {
     width: 65px;
 }
 
-/*-------------------------Social Media Link positioning -------------------*/
-.social-media {
-    font-size: 18px;
-    display: flex;
-    flex-direction: row;
-    text-align: center;
+.container-fluid {
+    padding-left: 0!important;
 }
+
+/*!*-------------------------Social Media Link positioning -------------------*!*/
+/*.social-media {*/
+/*    font-size: 18px;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    text-align: center;*/
+/*}*/
 
 /*------------------------Containers for forms and profile------------------*/
 .container {
@@ -284,7 +289,7 @@ table, th, td {
     padding: 20px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
-    background: rgba(0, 0, 0, 0.8);
+    background: black;
     overflow: auto;
     display: flex;
     border-top: 2px solid rgba(255, 255, 255, 0.5);
@@ -292,9 +297,7 @@ table, th, td {
     backdrop-filter: blur(6px);
     margin-left: 85px;
     margin-right: 85px;
-    background: #1F3445;
 }
-
 
 .portrait{
     width: 148px;
@@ -302,6 +305,7 @@ table, th, td {
 }
 
 .verbiage {
+    background: black;
     padding: 10px;
     text-align: center;
     width: 600px;
@@ -408,12 +412,14 @@ button {
 /*---------------validation fields that pop up--------------------*/
 
 #message {
-    display: none;
+    /*display: none;*/
+    border-radius: 15px;
+    background: rgba(175,226,247, 0.7) ;
     margin-top: 5px;
     margin-bottom: 0;
     position: relative;
-    align-self: center;
-    padding: 2px;
+    /*align-self: center;*/
+    /*padding: 2px;*/
 
 }
 
@@ -460,7 +466,7 @@ button {
 }
 
 .grid {
-    margin-top: 30px;
+    margin-top: 10px;
     display: grid;
     justify-content: space-around;
     align-content: space-between;
@@ -565,9 +571,7 @@ button {
 .event-description {
     margin-top: 10px;
     font-size: 16px;
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
+    padding: 10px;
 }
 /* Style the front side (fallback if image is missing) */
 
@@ -601,17 +605,21 @@ button {
     color: #8AD1F2;
 }
 
+.fa-solid {
+    color: #8AD1F2;
+}
+
 #des-edit, #bio-edit,  #addInst {
     position: absolute;
     top: 80px;
-    right:10px;
+    right: 20px;
 }
 
 
-#imgedit .fa-solid{
+#imgedit {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 10px;
 }
 
 #trashicon {
@@ -651,7 +659,7 @@ button {
 }
 
 .searchForm{
-margin-left: 30px;
+margin-left: 25px;
 }
 
 /* When you mouse over the navigation links, change their color */
@@ -705,11 +713,25 @@ margin-left: 30px;
 }
 
 .required {
-    color: red;
+    color:  #ef2c61;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:  #ef2c61;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:  #ef2c61;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:  #ef2c61;
 }
 
 /*----------------created break point to move to a hamburger button and resize photo-----------*/
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 600px) {
+
     body {
         background-position: center center;
         background-attachment: fixed;

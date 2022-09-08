@@ -10,7 +10,7 @@
 <div class="container">
     <div class="card">
         <div class="content">
-            <h1 class="loginTitle">Registration</h1><br>
+            <h1 class="page-header">Registration</h1><br>
             <div class="alert alert-danger" th:if="${param.pmfail}"th:with="errorMsg='Your passwords did not match'">
                 Your registration attempt was not successful, please try again.<br />
                 Reason: <span th:text="${errorMsg}">Wrong input!</span>
@@ -46,9 +46,9 @@
                     <p  id="number" class="invalid">A <b>number</b></p>
                     <p  id="length" class="invalid">Minimum <b>8 characters</b></p>
                 </div>
-                <br><label for="verify-password"><span class="required">* </span>Verfiy-Password:</label><br>
+                <label for="verify-password"><span class="required">*</span>Verfiy-Password:</label><br>
                 <input class="register-input" type="password" id="verify-password" name="verify-password" placeholder="Verify Password" required><br>
-                <br> <button style="border-radius: 25px" type="submit" value="submit">Submit</button>
+                <button style="border-radius: 25px" type="submit" value="submit">Submit</button><br>
             </form>
         </div>
     </div>
