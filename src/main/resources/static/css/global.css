@@ -13,7 +13,7 @@ body {
 
 label {
     display: inline-block;
-    /*width: 110px;*/
+    width: 110px;
     color: white;
 }
 input {
@@ -226,6 +226,7 @@ table, th, td {
     text-decoration: underline;
     font-family: 'Paytone One', sans-serif;
     text-shadow: 2px 2px 4px black;
+    width: 110px;
 }
 
 .profile-input {
