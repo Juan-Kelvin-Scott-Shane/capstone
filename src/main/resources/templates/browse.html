@@ -79,7 +79,9 @@
             <button class="openbtn" onclick="openNav()"><i class="fa-solid fa-filter" style="color: white"></i></button>
         </div>
     </div>
-
+    <div class="alert alert-danger" th:if="${param.noresults}" style="margin-bottom: 3em">
+        Sorry, no results were found. Please try your search again.<br>
+    </div>
     <section class="grid">
         <article th:each="user : ${users}">
             <a class="card-text" th:href="'/profile/' + ${user.getUsername()}">

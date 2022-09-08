@@ -5,6 +5,7 @@ import com.example.capstone.repositories.UserRepository;
 import com.example.capstone.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -39,8 +40,14 @@ public class UserController {
 
 	@GetMapping("/register")
 	public String registrationForm(Model model) {
-		model.addAttribute("newUser", new User());
-		return "register";
+		try {
+			User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			model.addAttribute("currentUser", currentUser);
+			return "redirect:/profile";
+		} catch (Exception e) {
+			model.addAttribute("newUser", new User());
+			return "register";
+		}
 	}
 
 	@PostMapping("/register")
