@@ -30,7 +30,7 @@
 				<br><label for="description"><span class="required">* </span>Description</label>
 				<br>
 				<textarea style="border-radius: 15px" name="description" placeholder="A brief description of your event" id="description" rows="4"
-						  cols="50" th:field="*{description}" required></textarea>
+						  cols="50" maxlength="255" th:field="*{description}" required></textarea>
 				<br>
 				<div class="event-submit-button" style="text-align: center">
 					<button type="submit" style="border-radius: 25px">Submit</button>

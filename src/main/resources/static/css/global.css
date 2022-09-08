@@ -408,12 +408,14 @@ button {
 /*---------------validation fields that pop up--------------------*/
 
 #message {
-    display: none;
+    /*display: none;*/
+    border-radius: 15px;
+    background: rgba(175,226,247, 0.7) ;
     margin-top: 5px;
     margin-bottom: 0;
     position: relative;
-    align-self: center;
-    padding: 2px;
+    /*align-self: center;*/
+    /*padding: 2px;*/
 
 }
 
@@ -460,7 +462,7 @@ button {
 }
 
 .grid {
-    margin-top: 30px;
+    margin-top: 10px;
     display: grid;
     justify-content: space-around;
     align-content: space-between;
@@ -565,9 +567,7 @@ button {
 .event-description {
     margin-top: 10px;
     font-size: 16px;
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
+    padding: 10px;
 }
 /* Style the front side (fallback if image is missing) */
 
@@ -604,14 +604,14 @@ button {
 #des-edit, #bio-edit,  #addInst {
     position: absolute;
     top: 80px;
-    right:10px;
+    right: 20px;
 }
 
 
-#imgedit .fa-solid{
+#imgedit {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 10px;
 }
 
 #trashicon {
@@ -705,7 +705,20 @@ margin-left: 30px;
 }
 
 .required {
-    color: red;
+    color:  #ef2c61;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:  #ef2c61;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:  #ef2c61;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:  #ef2c61;
 }
 
 /*----------------created break point to move to a hamburger button and resize photo-----------*/

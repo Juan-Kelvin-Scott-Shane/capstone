@@ -97,7 +97,7 @@
 					</div>
 						<form class="form" th:action="@{/profile/contact}" th:method="POST"
 							  style="margin: 0; padding: 0">
-							<p>Posted by: <a th:href="'/profile/' + ${event.getOwner().getUsername()}"><span
+							<p>Posted by: <a  style="color: #ef2c61" th:href="'/profile/' + ${event.getOwner().getUsername()}"><span
 									th:text="${event.getOwner().getUsername()}"/></a>
 								<input type="hidden" id="toUser" name="toUser" th:value="${event.getOwner().getId()}">
 								<input type="hidden" id="subject" name="subject"
