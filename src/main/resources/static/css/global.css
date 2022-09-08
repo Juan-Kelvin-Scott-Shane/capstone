@@ -727,7 +727,8 @@ button {
 }
 
 .searchForm{
-margin-left: 25px;
+margin: 0 25px 0 25px;
+
 }
 
 /* When you mouse over the navigation links, change their color */

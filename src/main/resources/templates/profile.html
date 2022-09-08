@@ -104,7 +104,7 @@
                 <br>
                 <label class="profile-label" th:for="description">Description:</label><br>
                 <textarea class="profile-input edits " type="text" th:id="description" th:name="description"
-                          rows="4" cols="33" maxlength="255" style="resize: none; border-radius: 15px" disabled
+                          rows="4" cols="38" maxlength="255" style="resize: none; border-radius: 15px; width: auto" disabled
                           th:inline="text">[[${#authentication.principal.description}]]</textarea><br>
                 <label class="profile-label">Social Media:</label>
                 <a class="medlnk" th:href="@{|${#authentication.principal.social_media}|}" target="_blank">
