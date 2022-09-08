@@ -71,6 +71,7 @@ public class EventController {
         event.setDate(finalDate);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         event.setOwner(currentUser);
+        event.setState(event.getState().toUpperCase());
         eventDao.save(event);
         return "redirect:/events";
     }
@@ -88,6 +89,7 @@ public class EventController {
             String day = dateParts[1];
             String finalDate = String.format("%s-%s-%s", year, month, day);
             event.setDate(finalDate);
+            event.setState(event.getState().toUpperCase());
             model.addAttribute("event", event);
         }
         return "edit-event";
