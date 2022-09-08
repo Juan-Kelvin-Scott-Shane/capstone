@@ -17,7 +17,7 @@
 				<br><label for="state"><span class="required">* </span>State: &nbsp;</label>
 				<input class="event-input" type="text" name="state" id="state" th:field="*{state}" required placeholder="ST" maxlength="2"><br>
 				<br><label for="date"><span class="required">* </span>Event Date:</label>
-				<input class="event-input" id="date" name="date" type="date" th:field="*{date}" required><br>
+				<input class="event-input" id="date" name="date" type="date" th:field="*{date}" required min=""><br>
 				<br><label for="time"><span class="required">* </span>Event Time:</label>
 				<input class="event-input" id="time" name="time" type="time" th:field="*{time}" required><br>
 				<br><label for="fileuploaddisplay" style="color: #ef2c61; text-align: center">Select a file to upload:</label><br>
@@ -41,6 +41,9 @@
 	</div>
 </div>
 <script th:inline="javascript">
+	let today = new Date().toISOString().split('T')[0];
+	document.getElementsByName("date")[0].setAttribute('min', today);
+
 	const clientApi = /*[[${fileApi}]]*/ "";
 	function pickFile(){
 		let client = filestack.init(clientApi);
