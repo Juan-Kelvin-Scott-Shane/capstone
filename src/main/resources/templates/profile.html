@@ -20,8 +20,7 @@
                    th:value="${#authentication.principal.city}"/><br>
             <br><label class="profile-label editable" th:for="state">State</label>
             <input style="text-align: left" th:value="${#authentication.principal.state}" class="profile-input" disabled>
-            <select style="border-radius: 20px; margin-left: 95px; height: 30px; width: 195px" class="profile-input editable bioHide" type="text" th:id="state" th:name="state" disabled
-                    th:value="${#authentication.principal.state}">
+            <select style="border-radius: 20px; margin-left: 95px; height: 30px; width: 195px" class="profile-input editable bioHide" type="text" id="state" th:name="state" disabled>
                 <option value="">State</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -180,7 +179,7 @@
                             <select th:id="skill" th:name="skill" required
                                     style="width: 100px; height: 30px; font-size: 14px; border-radius: 15px">
                                 <option value="">Proficiency</option>
-                                <option value="Acoustic Guitar">Novice</option>
+                                <option value="Novice">Novice</option>
                                 <option value="Intermediate">Intermediate</option>
                                 <option value="Expert">Expert</option>
                             </select>
@@ -223,9 +222,14 @@
     </div>
 </div>
 <script th:inline="javascript">
+    const userState = /*[[${userState}]]*/ "State";
     const state = /*[[${user.state}]]*/ "State";
-
     const clientApi = /*[[${fileApi}]]*/ "";
+console.log(userState);
+if (userState != "") {
+    const formSelect = document.querySelector('#state');
+    formSelect.value = userState;
+}
 
     function pickFile() {
         let client = filestack.init(clientApi);
