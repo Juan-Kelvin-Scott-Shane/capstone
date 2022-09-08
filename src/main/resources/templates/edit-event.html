@@ -41,6 +41,9 @@
 
 
 <script th:inline="javascript">
+	let today = new Date().toISOString().split('T')[0];
+	document.getElementsByName("date")[0].setAttribute('min', today);
+
 	const fileInput = document.querySelector('#fileupload');
 	const fileInputref = document.querySelector('#fileuploaddisplay');
 	if (fileInput.value === "") {
