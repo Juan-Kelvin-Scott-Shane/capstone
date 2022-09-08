@@ -121,7 +121,7 @@ public class EventController {
         String finalDate = String.format("%s/%s/%s", month, day, year);
         System.out.println("Location -->" + location);
         System.out.println("Date -->" + finalDate);
-        model.addAttribute("events", eventDao.findAllEventsByLocationContainsIgnoreCaseAndDate(location, finalDate));
+//        model.addAttribute("events", eventDao.findAllEventsByLocationContainsIgnoreCaseAndDate(location, finalDate));
         return "all-events";
     }
 }
