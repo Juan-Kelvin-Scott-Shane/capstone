@@ -10,7 +10,7 @@
 		</div>
 		<form  th:action="@{/events/create}" th:method="POST" th:object="${event}">
 			<div class="createEvent-form">
-				<label for="title"><span class="required">* </span>Event Title:</label>
+				<label for="title"><span class="required">* </span>Event Title</label>
 				<input class="event-input" type="text" id="title" name="title" th:field="*{title}" placeholder="Title" required><br>
 				<br><label for="city"><span class="required">* </span>City: &nbsp;</label>
 				<input class="event-input" type="text" name="city" id="city" th:field="*{city}" required placeholder="City"><br>
@@ -20,8 +20,8 @@
 				<input class="event-input" id="date" name="date" type="date" th:field="*{date}" required><br>
 				<br><label for="time"><span class="required">* </span>Event Time:</label>
 				<input class="event-input" id="time" name="time" type="time" th:field="*{time}" required><br>
-				<br><label for="fileuploaddisplay">Flyer</label>
-				<input class="profile-input" type="text" id="fileuploaddisplay" placeholder="Select a file to upload" style="color: white" disabled>
+				<br><label for="fileuploaddisplay">Flyer:</label>
+				<input class="profile-input" type="text" id="fileuploaddisplay" style="color: white" disabled>
 				<input type="hidden" id="fileupload" th:field="*{flyer}">
 				<button type="BUTTON" id="filePicker" onclick='pickFile()'>Select File</button>
 				<br>
@@ -42,6 +42,14 @@
 
 
 <script th:inline="javascript">
+	const fileInput = document.querySelector('#fileupload');
+	const fileInputref = document.querySelector('#fileuploaddisplay');
+	if (fileInput.value === "") {
+		fileInputref.setAttribute("placeholder", "Select a file to upload");
+	} else {
+		fileInputref.value = fileInput.value;
+	}
+
 	const clientApi = /*[[${fileApi}]]*/ "";
 	function pickFile(){
 		let client = filestack.init(clientApi);
@@ -52,8 +60,6 @@
 		})
 			.then(function (result) {
 				const fileData = result.filesUploaded[0];
-				const fileInput = document.querySelector('#fileupload');
-				const fileInputref = document.querySelector('#fileuploaddisplay');
 				fileInput.value = fileData.url;
 				fileInputref.value = fileData.url;
 			})
