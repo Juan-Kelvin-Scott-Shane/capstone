@@ -12,8 +12,10 @@
 			<div class="createEvent-form">
 				<label for="title"><span class="required">* </span>Event Title:</label>
 				<input class="event-input" type="text" id="title" name="title" th:field="*{title}" required placeholder="Title"><br>
-				<br><label for="location"><span class="required">* </span>Location: &nbsp;</label>
-				<input class="event-input" type="text" name="location" id="location" th:field="*{location}" required placeholder="City, ST"><br>
+				<br><label for="city"><span class="required">* </span>City: &nbsp;</label>
+				<input class="event-input" type="text" name="city" id="city" th:field="*{city}" required placeholder="City"><br>
+				<br><label for="state"><span class="required">* </span>State: &nbsp;</label>
+				<input class="event-input" type="text" name="state" id="state" th:field="*{state}" required placeholder="ST" maxlength="2"><br>
 				<br><label for="date"><span class="required">* </span>Event Date:</label>
 				<input class="event-input" id="date" name="date" type="date" th:field="*{date}" required><br>
 				<br><label for="time"><span class="required">* </span>Event Time:</label>

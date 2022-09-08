@@ -9,4 +9,5 @@ public interface EventRepository extends JpaRepository<Event,Long> {
     Event deleteEventById(Long id);
 //    Event findEventByLocationLikeAndDate(String location, String date);
 //    List<Event> findAllEventsByLocationContainsIgnoreCaseAndDate(String location, String date);
+    List<Event> findEventsByCityContainingAndStateAndDate(String city, String state, String date);
 }

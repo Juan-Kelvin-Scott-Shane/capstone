@@ -9,9 +9,13 @@
 	<form class="searchForm" th:action="@{/events/search}" th:method="POST">
 		Please enter a location and date<br>to begin search.
 		<br><br>
-		<label for="location"><span class="required">* </span>Location:</label>
+		<label for="city"><span class="required">* </span>City:</label>
 		<br>
-		<input type="text" name="location" id="location" required>
+		<input type="text" name="city" id="city" required>
+		<br><br>
+		<label for="state"><span class="required">* </span>State:</label>
+		<br>
+		<input type="text" name="state" id="state" required maxlength="2">
 		<br><br>
 		<label for="date"><span class="required">* </span>Date:</label>
 		<br>
@@ -36,7 +40,7 @@
                     <div class="event-description">
                         <p><span th:text="${event.description}"/></p>
 						<p style="margin-top: 10px">
-							<span th:text="${event.location}"/>
+							<span th:text="${event.city} + ', ' + ${event.state}"/>
 							<br>
 							<span class="date" th:text="${event.date}"/>
 							<br>
