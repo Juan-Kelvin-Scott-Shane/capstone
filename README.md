@@ -79,9 +79,7 @@ Insert gif or link to demo
 15. Allow an User to have many categories via their insturments and proficiency of the musical talent
 16. Allow an User to have an image for their profile
 17. Intended Redirects
-18. Implement a Mail API
-19. Implement a Maps/Geolocation API
-20. Mobile and desktop responsiveness
+18. Mobile and desktop responsiveness
 
 
 
